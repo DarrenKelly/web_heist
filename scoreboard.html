@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maths Heist — Classroom Scoreboard</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0b0f17;
+            --panel-bg: #151c28;
+            --panel-border: #2a364f;
+            --gold: #ffd73c;
+            --blue: #58a6ff;
+            --green: #3fb950;
+            --red: #f85149;
+            --text-main: #e6edf3;
+            --text-muted: #8b949e;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 28px 36px;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--panel-bg);
+            border: 2px solid var(--panel-border);
+            border-radius: 14px;
+            padding: 18px 28px;
+            margin-bottom: 24px;
+            gap: 24px;
+        }
+
+        .title-block h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+
+        .title-block .subtitle {
+            margin-top: 6px;
+            font-size: 1.25rem;
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        .join-panel {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: #0f141e;
+            border: 1px solid var(--panel-border);
+            padding: 10px 18px;
+            border-radius: 10px;
+        }
+
+        #qrcode {
+            background: white;
+            padding: 6px;
+            border-radius: 6px;
+        }
+
+        .join-url-label {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .join-url {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--gold);
+            word-break: break-all;
+        }
+
+        .controls-block {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .reset-btn {
+            background-color: #b91c1c;
+            color: white;
+            border: 2px solid #ef4444;
+            padding: 12px 24px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .reset-btn:hover {
+            background-color: #dc2626;
+        }
+
+        .player-count {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .leaderboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 16px;
+            flex: 1;
+            align-content: start;
+        }
+
+        .player-card {
+            background: var(--panel-bg);
+            border: 2px solid var(--panel-border);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: transform 0.15s, border-color 0.15s;
+        }
+
+        .player-card.rank-1 {
+            border-color: var(--gold);
+            background: #1c2229;
+        }
+
+        .player-card.sin-binned {
+            border-color: var(--red);
+            background: #261319;
+        }
+
+        .player-card.escaped {
+            border-color: var(--green);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .student-name {
+            font-size: 1.55rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rank-badge {
+            background: #28344a;
+            color: var(--text-main);
+            font-size: 1rem;
+            padding: 3px 9px;
+            border-radius: 6px;
+        }
+
+        .rank-1 .rank-badge {
+            background: var(--gold);
+            color: #000;
+        }
+
+        .score-badge {
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        .status-tag {
+            font-size: 0.85rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .tag-sinbin {
+            background: var(--red);
+            color: #fff;
+        }
+
+        .tag-escaped {
+            background: var(--green);
+            color: #000;
+        }
+
+        .inventory-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            min-height: 36px;
+            align-items: center;
+        }
+
+        .inv-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #0f141e;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+        }
+
+        .key-sprite {
+            width: 24px;
+            height: 24px;
+            background-image: url('img/Keys.png');
+            background-size: 300% 300%;
+            background-repeat: no-repeat;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .key-single {
+            width: 24px;
+            height: 24px;
+            background-image: url('img/key6.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            border: 2px dashed var(--panel-border);
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <div class="title-block">
+            <h1>MATHS HEIST: LIVE SCOREBOARD</h1>
+            <div class="subtitle" id="classSubtitle">Loading Class Configuration...</div>
+        </div>
+
+        <div class="join-panel">
+            <div id="qrcode"></div>
+            <div>
+                <div class="join-url-label">Scan or Enter URL to Join Class:</div>
+                <div class="join-url" id="joinUrlText">...</div>
+            </div>
+        </div>
+
+        <div class="controls-block">
+            <button class="reset-btn" onclick="resetClassScores()">Reset Class Scores</button>
+            <div class="player-count" id="activeCount">0 Active Agents</div>
+        </div>
+    </div>
+
+    <div class="leaderboard-grid" id="leaderboard">
+        <div class="empty-state">Waiting for students in this class to join the heist...</div>
+    </div>
+
+    <script>
+        const FIREBASE_URL = "https://maths-heist-telemetry-default-rtdb.asia-southeast1.firebasedatabase.app";
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const classId = (urlParams.get('class') || '7MAT2').trim();
+
+        const gameUrl = new URL("index.html", window.location.href);
+        if (classId !== "DEFAULT") {
+            gameUrl.searchParams.set("class", classId);
+        }
+        document.getElementById("joinUrlText").textContent = gameUrl.href;
+        new QRCode(document.getElementById("qrcode"), {
+            text: gameUrl.href,
+            width: 84,
+            height: 84
+        });
+
+        const ITEM_ICONS = {
+            "Bag of Jelly Snakes": { type: "single" },
+            "Gold Key": { type: "slice", idx: 0 },
+            "Emerald Key": { type: "slice", idx: 1 },
+            "Saphire Key": { type: "slice", idx: 2 },
+            "Lock picks": { type: "slice", idx: 3 },
+            "Ruby Key": { type: "slice", idx: 4 },
+            "Battering Ram": { type: "slice", idx: 5 },
+            "Skeleton Key": { type: "slice", idx: 6 },
+            "Key Card": { type: "slice", idx: 7 },
+            "Silver Key": { type: "slice", idx: 8 }
+        };
+
+        function renderItemIcon(itemName) {
+            const spec = ITEM_ICONS[itemName];
+            if (!spec) return "";
+            if (spec.type === "single") {
+                return `<span class="key-single"></span>`;
+            }
+            const col = spec.idx % 3;
+            const row = Math.floor(spec.idx / 3);
+            return `<span class="key-sprite" style="background-position: ${col * 50}% ${row * 50}%;"></span>`;
+        }
+
+        let studentRoster = [];
+
+        async function loadClassRoster() {
+            const classIdUpper = classId.toUpperCase();
+            const classIdLower = classId.toLowerCase();
+            let rosterCandidates = [];
+
+            try {
+                const cfgResp = await fetch('classes.json');
+                if (cfgResp.ok) {
+                    const classesCfg = await cfgResp.json();
+                    const entry = classesCfg[classIdUpper] || classesCfg[classIdLower] || classesCfg[classId] || classesCfg["DEFAULT"];
+
+                    if (entry) {
+                        if (entry.class_name) {
+                            document.getElementById("classSubtitle").textContent = `${entry.class_name} (${entry.teacher || 'Teacher'})`;
+                        }
+                        const rosterPath = entry.students_file || entry.roster;
+                        if (rosterPath) {
+                            rosterCandidates.push(rosterPath);
+                            rosterCandidates.push(rosterPath.toLowerCase());
+                        }
+                    } else {
+                        document.getElementById("classSubtitle").textContent = `Class: ${classId}`;
+                    }
+                } else {
+                    document.getElementById("classSubtitle").textContent = `Class: ${classId}`;
+                }
+            } catch (e) {
+                document.getElementById("classSubtitle").textContent = `Class: ${classId}`;
+            }
+
+            rosterCandidates.push(`data/rosters/${classIdLower}_students.json`);
+            rosterCandidates.push(`data/rosters/${classId}_students.json`);
+            rosterCandidates.push(`data/rosters/students.json`);
+            rosterCandidates.push(`students.json`);
+
+            rosterCandidates = [...new Set(rosterCandidates)];
+
+            for (const candidate of rosterCandidates) {
+                try {
+                    const resp = await fetch(candidate);
+                    if (resp.ok) {
+                        const data = await resp.json();
+                        studentRoster = Array.isArray(data) ? data : (data.students || []);
+                        return;
+                    }
+                } catch (e) {
+                    // Continue to next candidate
+                }
+            }
+        }
+
+        function getStudentName(id) {
+            const idx = Number(id);
+            if (!Number.isNaN(idx) && idx >= 0 && idx < studentRoster.length) {
+                const studentEntry = studentRoster[idx];
+                // Handle if the roster entry is a string or an object with a name property
+                const nameStr = (typeof studentEntry === 'object' && studentEntry !== null)
+                    ? (studentEntry.name || studentEntry.student_name || studentEntry.fullName || JSON.stringify(studentEntry))
+                    : studentEntry;
+                return `${nameStr} (#${idx + 1})`;
+            }
+            return `Student #${idx + 1}`;
+        }
+
+        async function fetchScoreboard() {
+            if (!FIREBASE_URL || FIREBASE_URL.includes("YOUR-FIREBASE-PROJECT-ID")) {
+                return;
+            }
+            try {
+                const endpoint = `${FIREBASE_URL.replace(/\/$/, "")}/classes/${encodeURIComponent(classId)}/players.json`;
+                const resp = await fetch(endpoint, { cache: "no-store" });
+                if (!resp.ok) return;
+                const data = await resp.json();
+                renderLeaderboard(data);
+            } catch (err) {
+                console.warn("Scoreboard poll error:", err);
+            }
+        }
+
+        function renderLeaderboard(data) {
+            const container = document.getElementById("leaderboard");
+            if (!data) {
+                container.innerHTML = `<div class="empty-state">Waiting for students in ${classId} to join the heist...</div>`;
+                document.getElementById("activeCount").textContent = "0 Active Agents";
+                return;
+            }
+
+            const players = Object.values(data)
+                .filter(p => p && typeof p.id !== "undefined")
+                .sort((a, b) => (b.score || 0) - (a.score || 0));
+
+            document.getElementById("activeCount").textContent =
+                `${players.length} Active Agent${players.length === 1 ? "" : "s"}`;
+
+            if (players.length === 0) {
+                container.innerHTML = `<div class="empty-state">Waiting for students in ${classId} to join the heist...</div>`;
+                return;
+            }
+
+            container.innerHTML = players.map((p, index) => {
+                const rank = index + 1;
+                const cardClasses = ["player-card"];
+                if (rank === 1 && (p.score || 0) > 0) cardClasses.push("rank-1");
+                if (p.sin_binned) cardClasses.push("sin-binned");
+                if (p.escaped) cardClasses.push("escaped");
+
+                let statusBadge = "";
+                if (p.sin_binned) {
+                    statusBadge = `<span class="status-tag tag-sinbin">Sin-Binned</span>`;
+                } else if (p.escaped) {
+                    statusBadge = `<span class="status-tag tag-escaped">Escaped!</span>`;
+                }
+
+                const invItems = Array.isArray(p.inventory) ? p.inventory : [];
+                const invHtml = invItems.length > 0
+                    ? invItems.map(item => `<span class="inv-chip">${renderItemIcon(item)}<span>${item}</span></span>`).join("")
+                    : `<span style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">No items held</span>`;
+
+                return `
+                <div class="${cardClasses.join(" ")}">
+                    <div class="card-header">
+                        <div class="student-name">
+                            <span class="rank-badge">#${rank}</span>
+                            <span>${getStudentName(p.id)}</span>
+                            ${statusBadge}
+                        </div>
+                        <div class="score-badge">${p.score || 0} pts</div>
+                    </div>
+                    <div class="inventory-row">${invHtml}</div>
+                </div>
+            `;
+            }).join("");
+        }
+
+        async function resetClassScores() {
+            if (!confirm(`Reset all live scores and inventory for class ${classId}?`)) return;
+            try {
+                const endpoint = `${FIREBASE_URL.replace(/\/$/, "")}/classes/${encodeURIComponent(classId)}/players.json`;
+                await fetch(endpoint, { method: "DELETE" });
+                renderLeaderboard(null);
+            } catch (err) {
+                alert("Failed to reset class scores: " + err);
+            }
+        }
+
+        (async function init() {
+            await loadClassRoster();
+            await fetchScoreboard();
+            setInterval(fetchScoreboard, 2500);
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,654 @@
+{
+  "exam_target": "Year 7 HPL Mathematics",
+  "categories": [
+    {
+      "category_name": "Data Analysis & Visualisation",
+      "questions": [
+        {
+          "id": "data_100",
+          "points": 100,
+          "stage_3_accessible": false,
+          "question": "A stopwatch is used to record the exact time (in seconds)\nit takes students to run 100 metres.\nIs this numerical data 'discrete' or 'continuous'?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "continuous",
+            "numerical continuous"
+          ],
+          "worked_solution": "Time is measured on a continuous scale rather than counted in whole numbers, so it is continuous numerical data."
+        },
+        {
+          "id": "data_150",
+          "points": 150,
+          "stage_3_accessible": false,
+          "question": "A survey asks customers to rate service as:\n'Poor', 'Fair', 'Good', or 'Excellent'.\nWhat specific type of categorical data is this\n('nominal' or 'ordinal')?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "ordinal",
+            "categorical ordinal"
+          ],
+          "worked_solution": "Because the categories have a natural, logical order from lowest to highest rating, the data is ordinal."
+        },
+        {
+          "id": "data_200",
+          "points": 200,
+          "stage_3_accessible": false,
+          "question": "Find the median of the following 6 test scores:\n19, 12, 25, 14, 28, 17",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "18",
+            "18.0",
+            "eighteen"
+          ],
+          "worked_solution": "Ordered scores: 12, 14, 17, 19, 25, 28. The middle two scores are 17 and 19. Median = (17 + 19) ÷ 2 = 18."
+        },
+        {
+          "id": "data_250",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "Using this stem-and-leaf plot of 15 exam results,\ncalculate the Range of the data.",
+          "svg_prompt": "[SVG Prompt: Draw a stem-and-leaf plot. Stem 7 | Leaf 0  7  8. Stem 8 | Leaf 0  0  5  5  5  8  8  9. Stem 9 | Leaf 2  4  5  5. Include 'Key: 7 | 0 = 70'.]",
+          "image": "img/lin_300.png",
+          "accepted_answers": [
+            "25",
+            "twenty-five"
+          ],
+          "worked_solution": "Highest score = 95. Lowest score = 70. Range = 95 − 70 = 25."
+        },
+        {
+          "id": "data_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "A dot plot records the number of pets for 10 families:\n0 pets (2 dots), 1 pet (4 dots),\n2 pets (3 dots), and 5 pets (1 dot).\nCalculate the mean number of pets per family.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "1.5",
+            "1.50",
+            "3/2"
+          ],
+          "worked_solution": "Total pets = (0 × 2) + (1 × 4) + (2 × 3) + (5 × 1) = 0 + 4 + 6 + 5 = 15. Mean = 15 ÷ 10 = 1.5."
+        },
+        {
+          "id": "data_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "In a frequency histogram, most of the data is clustered\non the left with a long tail stretching out to the right.\nIs this distribution 'positively skewed',\n'negatively skewed', or 'symmetrical'?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "positively skewed",
+            "positive",
+            "positive skew",
+            "positively",
+            "pos"
+          ],
+          "worked_solution": "A distribution follows the direction of its tail. A long tail to the right (towards higher positive values) is positively skewed."
+        },
+        {
+          "id": "data_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "A dataset containing 5 numbers has a mean of 17.\nFour of the numbers are 12, 15, 18, and 21.\nWhat is the 5th number?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "19",
+            "nineteen"
+          ],
+          "worked_solution": "Total of all 5 numbers = 5 × 17 = 85. Sum of known 4 numbers = 12 + 15 + 18 + 21 = 66. Missing number = 85 − 66 = 19."
+        },
+        {
+          "id": "data_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "6 tradies have a mean daily wage of $200.\nA 7th tradie joins the crew, and the new mean daily wage\nfor all 7 tradies becomes $210.\nHow much does the 7th tradie earn?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "270",
+            "$270",
+            "270.00",
+            "$270.00"
+          ],
+          "worked_solution": "Old Total = 6 × $200 = $1200. New Total = 7 × $210 = $1470. 7th Tradie = $1470 − $1200 = $270."
+        },
+        {
+          "id": "data_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "8 students score a mean of 72 on a mathematics test.\nWhen an outlier score of 30 is removed from the dataset,\nwhat is the new mean of the remaining 7 students?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "78",
+            "78.0",
+            "seventy-eight"
+          ],
+          "worked_solution": "Original sum = 8 × 72 = 576. New sum after removing 30 = 576 − 30 = 546. New mean = 546 ÷ 7 = 78."
+        },
+        {
+          "id": "data_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "Five positive integers in ascending order are: 6, 8, x, 14, y.\nThe median of the dataset is 11 and the mean is 12.\nFind the value of y.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "21",
+            "twenty-one"
+          ],
+          "worked_solution": "Since the 5 scores are in order, the 3rd score is the median, so x = 11. Total sum = 5 × 12 = 60. Therefore, 6 + 8 + 11 + 14 + y = 60 → 39 + y = 60 → y = 21."
+        }
+      ]
+    },
+    {
+      "category_name": "Geometric Reasoning & Shapes",
+      "questions": [
+        {
+          "id": "geo_100",
+          "points": 100,
+          "stage_3_accessible": false,
+          "question": "Two parallel lines are cut by a transversal.\nA pair of equal angles form a 'Z' shape on opposite sides\nof the transversal between the parallel lines.\nAre they 'alternate', 'corresponding', or 'co-interior'?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "alternate",
+            "alternate angles",
+            "alt"
+          ],
+          "worked_solution": "Angles on opposite sides of the transversal inside the parallel lines (forming a Z shape) are alternate angles."
+        },
+        {
+          "id": "geo_150",
+          "points": 150,
+          "stage_3_accessible": false,
+          "question": "Two parallel lines are cut by a transversal.\nOne of the co-interior angles measures 68°.\nWhat is the size of the other co-interior angle?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "112",
+            "112°",
+            "112 degrees",
+            "112 deg"
+          ],
+          "worked_solution": "Co-interior angles on parallel lines are supplementary (add to 180°). 180° − 68° = 112°."
+        },
+        {
+          "id": "geo_200",
+          "points": 200,
+          "stage_3_accessible": false,
+          "question": "In a kite ABCD, the two unequal vertex angles\nmeasure 70° and 50°.\nWhat is the size of each of the two equal opposite angles?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "120",
+            "120°",
+            "120 degrees",
+            "120 deg"
+          ],
+          "worked_solution": "Angle sum of a quadrilateral is 360°. Remaining angle sum = 360° − (70° + 50°) = 240°. Each equal angle = 240° ÷ 2 = 120°."
+        },
+        {
+          "id": "geo_250",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "A non-convex (arrowhead) quadrilateral has three acute\ninterior angles measuring 35°, 45°, and 50°.\nWhat is the size of the fourth (reflex) interior angle?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "230",
+            "230°",
+            "230 degrees",
+            "230 deg"
+          ],
+          "worked_solution": "The interior angles of any quadrilateral sum to 360°. Reflex angle = 360° − (35° + 45° + 50°) = 360° − 130° = 230°."
+        },
+        {
+          "id": "geo_300",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "An exterior angle of a triangle measures 135°.\nOne of the opposite interior angles is 60°.\nWhat is the size of the other opposite interior angle?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "75",
+            "75°",
+            "75 degrees",
+            "75 deg"
+          ],
+          "worked_solution": "By the exterior angle theorem, the exterior angle equals the sum of the two opposite interior angles: 135° − 60° = 75°."
+        },
+        {
+          "id": "geo_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "Triangle ABC is isosceles with AB = AC.\nThe apex angle ∠BAC measures 44°.\nWhat is the size of the base angle ∠ABC?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "68",
+            "68°",
+            "68 degrees",
+            "68 deg"
+          ],
+          "worked_solution": "Base angles of an isosceles triangle are equal. ∠ABC = (180° − 44°) ÷ 2 = 136° ÷ 2 = 68°."
+        },
+        {
+          "id": "geo_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "Two co-interior angles between parallel lines\nmeasure (2x + 10)° and (x + 20)°.\nSolve for x.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "50",
+            "50°",
+            "x=50",
+            "fifty"
+          ],
+          "worked_solution": "(2x + 10) + (x + 20) = 180 (co-int. ∠s, ∥ lines) → 3x + 30 = 180 → 3x = 150 → x = 50."
+        },
+        {
+          "id": "geo_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "Two parallel horizontal lines are joined by a V-shaped\nbend pointing to the right. The top acute angle with the\nparallel line is 38° and the bottom acute angle is 54°.\nWhat is the size of the angle at the tip of the bend?",
+          "svg_prompt": "[SVG Prompt: Draw two parallel horizontal lines with arrows. Connect them with a V-shaped bend pointing right. Label the top acute interior angle 38°, the bottom acute interior angle 54°, and the vertex angle at the tip x°.]",
+          "image": "img/geo_450.png",
+          "accepted_answers": [
+            "92",
+            "92°",
+            "92 degrees",
+            "92 deg"
+          ],
+          "worked_solution": "Draw a third parallel line through the vertex of the bend. By alternate angles on parallel lines, x = 38° + 54° = 92°."
+        },
+        {
+          "id": "geo_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "The four interior angles of a quadrilateral are\nx°, (x + 20)°, (2x − 10)°, and (2x + 50)°.\nFind the value of x.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "50",
+            "50°",
+            "x=50",
+            "fifty"
+          ],
+          "worked_solution": "x + (x + 20) + (2x − 10) + (2x + 50) = 360 → 6x + 60 = 360 → 6x = 300 → x = 50."
+        },
+        {
+          "id": "geo_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "In the diagram, ΔABC is similar to ΔADE (DE ∥ BC).\nIf AE = 6 cm, AB = 15 cm, and AD = 8 cm,\nhow long is the full side AC (in cm)?",
+          "svg_prompt": "[SVG Prompt: Draw a large triangle ABC with internal line DE parallel to base BC. Label AE = 6 cm, full right side AB = 15 cm, and top left side AD = 8 cm.]",
+          "image": "img/geo_550.png",
+          "accepted_answers": [
+            "20",
+            "20cm",
+            "20 cm",
+            "twenty"
+          ],
+          "worked_solution": "Scale factor = 15 ÷ 6 = 2.5. Side AC = 8 × 2.5 = 20 cm."
+        },
+        {
+          "id": "geo_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "The diagonals of a rhombus measure 16 cm and 30 cm.\nSince the diagonals bisect each other at 90°, they form\nfour right-angled triangles with legs 8 cm and 15 cm.\nFind the PERIMETER of the rhombus.",
+          "svg_prompt": null,
+          "image": "img/geo_600.png",
+          "accepted_answers": [
+            "68",
+            "68cm",
+            "68 cm",
+            "sixty-eight"
+          ],
+          "worked_solution": "Side length s = √(8² + 15²) = √(64 + 225) = √289 = 17 cm. Perimeter of rhombus = 4 × 17 = 68 cm."
+        }
+      ]
+    },
+    {
+      "category_name": "Area, Volume & Surface Area",
+      "questions": [
+        {
+          "id": "meas_100",
+          "points": 100,
+          "stage_3_accessible": false,
+          "question": "In this right-angled triangle, side AB = 5, base BC = 12,\nand hypotenuse AC = 13.\nCalculate the area of triangle ABC.",
+          "svg_prompt": "[SVG Prompt: Draw a right-angled triangle ABC with the right angle at B. Label side AB = 5, side BC = 12, and hypotenuse AC = 13. Mark angle C with an arc.]",
+          "image": "img/trig_200.png",
+          "accepted_answers": [
+            "30",
+            "30m2",
+            "30cm2",
+            "thirty"
+          ],
+          "worked_solution": "A = ½ × base × perpendicular height = ½ × 12 × 5 = 30 square units."
+        },
+        {
+          "id": "meas_150",
+          "points": 150,
+          "stage_3_accessible": false,
+          "question": "The square shown has a side length of 5 m.\nA second square has a perimeter 3 times as large.\nWhat is the AREA of the second square (in m²)?",
+          "svg_prompt": "[SVG Prompt: Draw a square with identical tick marks on all four sides. Label the bottom side '5 m'.]",
+          "image": "img/area_150.png",
+          "accepted_answers": [
+            "225",
+            "225m2",
+            "225 m2",
+            "225m²"
+          ],
+          "worked_solution": "First square side = 5 m, so second square side = 3 × 5 = 15 m. Area = 15 × 15 = 225 m²."
+        },
+        {
+          "id": "meas_200",
+          "points": 200,
+          "stage_3_accessible": false,
+          "question": "A kite has diagonals of length 14 cm and 9 cm.\nCalculate the area of the kite (in cm²)\n.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "63",
+            "63cm2",
+            "63 cm2",
+            "63cm²"
+          ],
+          "worked_solution": "A = ½ × 14 × 9 = 7 × 9 = 63 cm²."
+        },
+        {
+          "id": "meas_250",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "A rectangular swimming pool is 8 m long, 4 m wide,\nand 2 m deep. Given that 1 m³ = 1 kilolitre (1000 L),\nhow many kilolitres (kL) of water does the full pool hold?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "64",
+            "64kl",
+            "64 kl",
+            "64m3",
+            "64m³"
+          ],
+          "worked_solution": "Volume = 8 × 4 × 2 = 64 m³. Since 1 m³ = 1 kL, capacity = 64 kL."
+        },
+        {
+          "id": "meas_300",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "A rectangular shipping crate is 10 m long, 5 m wide, and 2 m high.\nWhat is the total surface area of the prism (in m²)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "160",
+            "160m2",
+            "160 m2",
+            "160m²"
+          ],
+          "worked_solution": "Surface Area = 2 × (10×5 + 10×2 + 5×2) = 2 × (50 + 20 + 10) = 160 m²."
+        },
+        {
+          "id": "meas_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "Two similar rectangles have a scale factor of 4.\nThe small rectangle has a width of 3 cm and length of 5 cm.\nWhat is the AREA of the large rectangle (in cm²)?",
+          "svg_prompt": "[SVG Prompt: Draw two rectangles side-by-side. The smaller rectangle has a width labelled '3 cm'. A curved arrow points to the larger rectangle with the text 'Scale Factor 4'. The width of the larger rectangle is labelled 'w'.]",
+          "image": "img/area_350.png",
+          "accepted_answers": [
+            "240",
+            "240cm2",
+            "240 cm2",
+            "240cm²"
+          ],
+          "worked_solution": "Large width = 3 × 4 = 12 cm. Large length = 5 × 4 = 20 cm. Large Area = 12 × 20 = 240 cm²."
+        },
+        {
+          "id": "meas_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "The rectangular garden shown measures 12 m by 8 m.\nA uniform concrete path 1 m wide is built all the way around\nthe OUTSIDE of the garden.\nWhat is the area of the path alone (in m²)?",
+          "svg_prompt": "[SVG Prompt: Draw a simple rectangle labelled '12 m' along the top length and '8 m' along the right width.]",
+          "image": "img/area_100.png",
+          "accepted_answers": [
+            "44",
+            "44m2",
+            "44 m2",
+            "44m²"
+          ],
+          "worked_solution": "Outer rectangle = (12 + 2) × (8 + 2) = 14 × 10 = 140 m². Inner garden = 12 × 8 = 96 m². Path area = 140 − 96 = 44 m²."
+        },
+        {
+          "id": "meas_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "Calculate the area of a circle with a radius of 5 cm.\nRound your answer to the nearest whole number (in cm²).\n(Use the formula A = π × r²)",
+          "svg_prompt": "[SVG Prompt: Draw a circle with a dot in the centre. Draw a solid line from the centre to the edge, labelled 'r = 5 cm'.]",
+          "image": "img/area_450.png",
+          "accepted_answers": [
+            "79",
+            "79cm2",
+            "79 cm2",
+            "79cm²"
+          ],
+          "worked_solution": "Area = π × 5² = 78.5398... Rounds up to 79 cm²."
+        },
+        {
+          "id": "meas_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "A trapezium has an area of 54 cm² and a perpendicular\nheight of 6 cm. One of its parallel sides is 7 cm long.\nFind the length of the other parallel side (in cm).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "11",
+            "11cm",
+            "11 cm",
+            "eleven"
+          ],
+          "worked_solution": "A = ½ × h × (a + b) → 54 = ½ × 6 × (7 + b) → 54 = 3(7 + b) → 18 = 7 + b → b = 11 cm."
+        },
+        {
+          "id": "meas_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "A triangular prism has a front triangular face with an area of 12 m²,\nand a total length (depth) of 10 m.\nWhat is the volume of the prism (in m³)?\n(Use the formula V = A × h)",
+          "svg_prompt": "[SVG Prompt: Draw a 3D triangular prism. Shade the front triangular face and label it 'Area = 12 m²'. Label the long receding edge of the prism '10 m'.]",
+          "image": "img/area_550.png",
+          "accepted_answers": [
+            "120",
+            "120m3",
+            "120 m3",
+            "120m³"
+          ],
+          "worked_solution": "Volume = Area of cross-section × perpendicular height (length) = 12 × 10 = 120 m³."
+        },
+        {
+          "id": "meas_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "A rectangular garden measures 10 m by 6 m.\nInside the garden, a concreter removes a semicircular patio\n(diameter = 6 m) and a triangular flower bed (base = 4 m, height = 3 m).\nWhat area is left over for grass, correct to 1 decimal place?",
+          "svg_prompt": "[SVG Prompt: Draw a 10 m by 6 m rectangle. On one of the 6 m ends, draw an inward-curving semicircle of diameter 6 m. Inside the rectangle, draw a triangle with base 4 m and perpendicular height 3 m. Shade the remaining grass area.]",
+          "image": "img/area_600.png",
+          "accepted_answers": [
+            "39.9",
+            "39.9m2",
+            "39.9 m2",
+            "39.9m²"
+          ],
+          "worked_solution": "Rectangle = 10 × 6 = 60 m². Semicircle (r = 3) = ½ × π × 3² = 14.14 m². Triangle = ½ × 4 × 3 = 6 m². Grass = 60 − 14.14 − 6 = 39.9 m²."
+        }
+      ]
+    },
+    {
+      "category_name": "Algebra & Equations",
+      "questions": [
+        {
+          "id": "alg_100",
+          "points": 100,
+          "stage_3_accessible": false,
+          "question": "Solve for x:\n4x − 9 = 27",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "9",
+            "x=9",
+            "x = 9",
+            "nine"
+          ],
+          "worked_solution": "4x − 9 = 27 → 4x = 36 → x = 9."
+        },
+        {
+          "id": "alg_150",
+          "points": 150,
+          "stage_3_accessible": false,
+          "question": "Solve for m:\n(m ÷ 4) + 7 = 15",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "32",
+            "m=32",
+            "m = 32",
+            "thirty-two"
+          ],
+          "worked_solution": "(m ÷ 4) + 7 = 15 → m ÷ 4 = 8 → m = 32."
+        },
+        {
+          "id": "alg_200",
+          "points": 200,
+          "stage_3_accessible": false,
+          "question": "To check if x = 6 is the correct solution to\n5(x − 2) = 3x + 4, you substitute x = 6 into both sides.\nWhat is the numerical value of the Right-Hand Side (RHS)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "22",
+            "rhs=22",
+            "twenty-two"
+          ],
+          "worked_solution": "RHS = 3(6) + 4 = 18 + 4 = 22. (Since LHS = 5(6 − 2) = 20 ≠ RHS, x = 6 is not the solution)."
+        },
+        {
+          "id": "alg_250",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "Solve for x:\n3(2x − 5) = 27",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "7",
+            "x=7",
+            "x = 7",
+            "seven"
+          ],
+          "worked_solution": "6x − 15 = 27 → 6x = 42 → x = 7."
+        },
+        {
+          "id": "alg_300",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "Solve for x:\n7x − 4 = 3x + 28",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "8",
+            "x=8",
+            "x = 8",
+            "eight"
+          ],
+          "worked_solution": "Subtract 3x from both sides: 4x − 4 = 28 → 4x = 32 → x = 8."
+        },
+        {
+          "id": "alg_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "The straight line on the grid passes through (0, 2) and (3, 8),\nfollowing the linear rule y = 2x + 2.\nUse this equation to find the value of x when y = 30.",
+          "svg_prompt": "[SVG Prompt: Draw a Cartesian plane showing a straight line passing through a point on the y-axis labelled '(0, 2)' and a point further up and to the right labelled '(3, 8)'. Add a dashed right-angled triangle showing the rise and run between the points.]",
+          "image": "img/lin_350.png",
+          "accepted_answers": [
+            "14",
+            "x=14",
+            "x = 14",
+            "fourteen"
+          ],
+          "worked_solution": "Substitute y = 30: 2x + 2 = 30 → 2x = 28 → x = 14."
+        },
+        {
+          "id": "alg_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "Let x be an unknown number.\nWhen x is tripled and then decreased by 11,\nthe result is equal to x increased by 25.\nFind the value of x.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "18",
+            "x=18",
+            "x = 18",
+            "eighteen"
+          ],
+          "worked_solution": "3x − 11 = x + 25 → 2x − 11 = 25 → 2x = 36 → x = 18."
+        },
+        {
+          "id": "alg_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "Solve for x:\n(3x + 5) ÷ 4 = 8",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "9",
+            "x=9",
+            "x = 9",
+            "nine"
+          ],
+          "worked_solution": "Multiply both sides by 4: 3x + 5 = 32 → 3x = 27 → x = 9."
+        },
+        {
+          "id": "alg_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "Expand and simplify to solve for x:\n4(x + 3) − 2(x − 1) = 26",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "6",
+            "x=6",
+            "x = 6",
+            "six"
+          ],
+          "worked_solution": "4x + 12 − 2x + 2 = 26 → 2x + 14 = 26 → 2x = 12 → x = 6."
+        },
+        {
+          "id": "alg_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "The sum of three consecutive odd numbers is 81.\nLet the smallest number be x, so the next two are\n(x + 2) and (x + 4).\nWhat is the LARGEST of the three numbers?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "29",
+            "twenty-nine"
+          ],
+          "worked_solution": "x + (x + 2) + (x + 4) = 81 → 3x + 6 = 81 → 3x = 75 → x = 25. Largest number = 25 + 4 = 29."
+        },
+        {
+          "id": "alg_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "On the Cartesian plane, B is at (−1, 5) and C is at (5, −3).\nFind the exact straight-line\ndistance between Point B and Point C.",
+          "svg_prompt": "[SVG Prompt: Draw a Cartesian plane with axes from −6 to 6. Plot Point B at (−1, 5) and Point C at (5, −3), connected by a straight line segment.]",
+          "image": "img/lin_600.png",
+          "accepted_answers": [
+            "10",
+            "10 units",
+            "ten"
+          ],
+          "worked_solution": "Horizontal run = 5 − (−1) = 6. Vertical rise = 5 − (−3) = 8. Distance = √(6² + 8²) = √(36 + 64) = √100 = 10."
+        }
+      ]
+    }
+  ]
+}
