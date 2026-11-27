@@ -217,3 +217,84 @@ def get_class_config(class_id="DEFAULT", config_filename="classes.json"):
         f"Falling back to hardcoded default_cfg: {default_cfg}"
     )
     return default_cfg
+
+
+def load_students_json(filename="students.json"):
+    """
+    Loads the student roster list for a class from data/rosters/ or project root,
+    falling back gracefully to default rosters if missing.
+    """
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    fname_lower = os.path.basename(filename).lower()
+
+    primary_candidates = [
+        filename,
+        filename.lower(),
+        os.path.join(base_dir, filename),
+        os.path.join(base_dir, filename.lower()),
+        os.path.join(base_dir, "data", filename),
+        os.path.join(base_dir, "data", "rosters", os.path.basename(filename)),
+        os.path.join(base_dir, "data", "rosters", fname_lower),
+        os.path.join("data", "rosters", os.path.basename(filename)),
+        os.path.join("data", "rosters", fname_lower),
+    ]
+
+    fallback_candidates = [
+        os.path.join(base_dir, "students.json"),
+        "students.json",
+        os.path.join(base_dir, "data", "rosters", "7mat2_students.json"),
+        os.path.join("data", "rosters", "7mat2_students.json"),
+    ]
+
+    def extract_names_from_file(path):
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        extracted = []
+        raw_list = data.get("students", []) if isinstance(data, dict) else (data if isinstance(data, list) else [])
+        for item in raw_list:
+            if isinstance(item, str) and item.strip():
+                extracted.append(item.strip())
+            elif isinstance(item, dict):
+                name = (item.get("name") or item.get("student_name") or "").strip()
+                if name:
+                    extracted.append(name)
+        return extracted
+
+    seen = set()
+    unique_primary = [c for c in primary_candidates if not (c in seen or seen.add(c))]
+
+    for path in unique_primary:
+        if os.path.exists(path):
+            try:
+                names = extract_names_from_file(path)
+                if names:
+                    log_diag("INFO", f"Loaded {len(names)} students from requested roster '{path}'.")
+                    return names
+                log_diag("WARN", f"Roster file '{path}' exists but contained 0 valid student names!")
+            except Exception as e:
+                log_diag("ERROR", f"Error reading requested student roster '{path}': {e}")
+
+    rosters_dir = os.path.join(base_dir, "data", "rosters")
+    available_rosters = os.listdir(rosters_dir) if os.path.exists(rosters_dir) else "DIRECTORY MISSING"
+    log_diag(
+        "WARN",
+        f"Requested student roster '{filename}' NOT FOUND in {unique_primary}. "
+        f"Files inside data/rosters/: {available_rosters}. Attempting fallback rosters..."
+    )
+
+    unique_fallbacks = [c for c in fallback_candidates if not (c in seen or seen.add(c))]
+    for path in unique_fallbacks:
+        if os.path.exists(path):
+            try:
+                names = extract_names_from_file(path)
+                if names:
+                    log_diag("WARN", f"FALLBACK ACTIVE: Loaded {len(names)} default students from '{path}' instead of '{filename}'.")
+                    return names
+            except Exception as e:
+                log_diag("ERROR", f"Error reading fallback student roster '{path}': {e}")
+
+    log_diag(
+        "CRITICAL",
+        "All primary and fallback student rosters failed! Using hardcoded emergency list ['John', 'Mary', 'David', 'Sarah']."
+    )
+    return ["John", "Mary", "David", "Sarah"]

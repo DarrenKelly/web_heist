@@ -2,25 +2,14 @@ import pygame
 import time
 import math
 import os
+from config import (
+    TILE_SIZE, WINDOW_WIDTH, WINDOW_HEIGHT, COLOUR_BLACK, COLOUR_WHITE
+)
+from interactable import Interactable
 
-TILE_SIZE = 64
-LOCKOUT_TIERS = [5, 10, 30, 60]
-WINDOW_WIDTH = 1024
-WINDOW_HEIGHT = 768
-COLOUR_BLACK = (0, 0, 0)
-COLOUR_WHITE = (255, 255, 255)
-
-_lockout_font = None
 _badge_font = None
 _DOOR_IMAGE_CACHE = {}
 
-def get_lockout_font():
-    global _lockout_font
-    if _lockout_font is None:
-        if not pygame.font.get_init():
-            pygame.font.init()
-        _lockout_font = pygame.font.SysFont(None, 36)
-    return _lockout_font
 
 def get_badge_font():
     global _badge_font
@@ -63,17 +52,14 @@ def get_door_custom_image(door_char):
     _DOOR_IMAGE_CACHE[door_char] = None
     return None
 
-class Door(pygame.sprite.Sprite):
+class Door(Interactable):
+    is_door = True
+
     def __init__(self, x, y, door_char, question_data, required_item=None, required_chest_id=None):
-        super().__init__()
-        self.is_door = True
+        super().__init__(question_data=question_data)
         self.door_char = door_char
-        self.question_data = question_data
         self.required_item = required_item
         self.required_chest_id = required_chest_id
-        self.is_locked = True
-        self.lockout_end_time = 0
-        self.wrong_attempts = 0
         self._badge_ready_surf = None
         self._badge_need_surf = None
         self.image = pygame.Surface((TILE_SIZE, TILE_SIZE))
@@ -123,27 +109,6 @@ class Door(pygame.sprite.Sprite):
             return True
         return (self.required_item in inventory or 
                 (self.required_chest_id is not None and f"Chest {self.required_chest_id}" in inventory))
-
-    def is_interactable(self):
-        return self.is_locked and time.time() > self.lockout_end_time
-
-    def apply_wrong_answer_penalty(self):
-        penalty = LOCKOUT_TIERS[min(self.wrong_attempts, len(LOCKOUT_TIERS) - 1)]
-        self.wrong_attempts += 1
-        self.lockout_end_time = time.time() + penalty
-        return penalty
-
-    def apply_cooldown(self, seconds=1.2):
-        self.lockout_end_time = time.time() + seconds
-
-    def draw_lockout_icon(self, surface, camera_offset):
-        if time.time() < self.lockout_end_time:
-            remaining = int(self.lockout_end_time - time.time()) + 1
-            if remaining > 1:
-                text = get_lockout_font().render(str(remaining), True, (255, 100, 100))
-                draw_x = self.rect.centerx - camera_offset[0] - text.get_width() // 2
-                draw_y = self.rect.top - camera_offset[1] - 30
-                surface.blit(text, (draw_x, draw_y))
 
     def _get_badge_surf(self, has_item):
         if has_item:

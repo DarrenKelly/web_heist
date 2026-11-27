@@ -60,17 +60,17 @@ class NPCStudent(Student):
 
         return None, came_from.keys()
 
-    def find_best_stairway(self, curr_tile, curr_level, game, walkable_tiles, blocked_tiles):
+    def find_best_stairway(self, curr_tile, curr_level, world, walkable_tiles, blocked_tiles):
         reachable_stairways = []
         for s_tile, s_char in curr_level.stairway_tiles.items():
-            dest_info = game.stairway_endpoints.get((self.level_id, s_tile[0], s_tile[1]))
+            dest_info = world.stairway_endpoints.get((self.level_id, s_tile[0], s_tile[1]))
             if not dest_info:
                 continue
             (dest_lvl, dest_c, dest_r), ch = dest_info
             is_direct = (dest_lvl == self.exit_level_id)
             p, _ = self.compute_bfs_path(curr_tile, s_tile, walkable_tiles, blocked_tiles)
             if p is not None:
-                lvl_dist = game.get_level_distance(dest_lvl, self.exit_level_id)
+                lvl_dist = world.get_level_distance(dest_lvl, self.exit_level_id)
                 reachable_stairways.append((is_direct, lvl_dist, len(p), s_tile, s_char, p))
 
         if not reachable_stairways:
@@ -86,47 +86,36 @@ class NPCStudent(Student):
         best = reachable_stairways[0]
         return best[5], best[3], best[4], False
 
-    def update_npc_multilevel(self, game):
+    def update_npc_multilevel(self, world):
+        """
+        Advances NPC pathfinding and movement across levels.
+        Returns True on the frame the NPC reaches Door Z for the first time.
+        """
         curr_tile = self.get_grid_pos()
-        curr_level = game.levels[self.level_id]
+        curr_level = world.levels[self.level_id]
+        just_reached_gate = False
 
         if not self.reached_door_z and self.level_id == self.exit_level_id and self.door_z_tile:
             # Manhattan distance <= 1 triggers as soon as the NPC reaches the tile in front of Door Z
             if abs(curr_tile[0] - self.door_z_tile[0]) + abs(curr_tile[1] - self.door_z_tile[1]) <= 1:
                 self.reached_door_z = True
-                if game.player:
-                    game.player.score += 100
-                    game.notification = f"{self.name} reached the school gate! (+100 pts)"
-                    game.notification_timer = time.time() + 3.0
+                just_reached_gate = True
 
-        # Clear arrival_stairway_tile once NPC has walked away from the arrival staircase
-        if getattr(self, 'arrival_stairway_tile', None):
-            arr_c, arr_r = self.arrival_stairway_tile
-            arrival_rect = pygame.Rect(arr_c * TILE_SIZE, arr_r * TILE_SIZE, TILE_SIZE, TILE_SIZE)
-            if not self.rect.colliderect(arrival_rect):
-                self.arrival_stairway_tile = None
+        self.clear_arrival_stairway_if_left()
 
         # 1. Stairway transition check
         if curr_tile in curr_level.stairway_tiles:
-            stair_char = curr_level.stairway_tiles[curr_tile]
-            # NPCs only take stairways if they need them (not already on the exit level unless seeking a stairway)
             can_take_stairs = (self.level_id != self.exit_level_id or self.mode == "seeking_stairway")
             if can_take_stairs and getattr(self, 'arrival_stairway_tile', None) is None:
-                dest_info = game.stairway_endpoints.get((self.level_id, curr_tile[0], curr_tile[1]))
+                dest_info = world.stairway_endpoints.get((self.level_id, curr_tile[0], curr_tile[1]))
                 if dest_info:
                     (dest_lvl, dest_c, dest_r), ch = dest_info
-                    self.level_id = dest_lvl
-                    self.rect.centerx = dest_c * TILE_SIZE + TILE_SIZE // 2 + self.offset_x
-                    self.rect.centery = dest_r * TILE_SIZE + TILE_SIZE // 2 + self.offset_y
-                    self.pos_x = float(self.rect.x)
-                    self.pos_y = float(self.rect.y)
-                    self.last_stairway = ch
-                    self.arrival_stairway_tile = (dest_c, dest_r)
+                    self.teleport_to_stairway(dest_lvl, dest_c, dest_r, ch, self.offset_x, self.offset_y)
                     self.path.clear()
                     self.mode = "seeking_z"
                     self.replan_cooldown = 0.0
                     curr_tile = (dest_c, dest_r)
-                    curr_level = game.levels[self.level_id]
+                    curr_level = world.levels[self.level_id]
         else:
             self.last_stairway = None
 
@@ -143,7 +132,7 @@ class NPCStudent(Student):
                         self.mode = "seeking_z"
                         self.path = path_to_z
             else:
-                p, s_tile, s_char, is_direct = self.find_best_stairway(curr_tile, curr_level, game, walkable_tiles, blocked_tiles)
+                p, s_tile, s_char, is_direct = self.find_best_stairway(curr_tile, curr_level, world, walkable_tiles, blocked_tiles)
                 if p and is_direct:
                     self.mode = "seeking_stairway"
                     self.path = p
@@ -156,7 +145,7 @@ class NPCStudent(Student):
             if now < self.replan_cooldown:
                 fake_keys = defaultdict(bool)
                 super().update(fake_keys, solid_objects)
-                return
+                return just_reached_gate
 
             if self.mode == "wandering":
                 self.mode = "seeking_z"
@@ -185,7 +174,7 @@ class NPCStudent(Student):
                                 if rand_path:
                                     self.path = rand_path
             else:
-                p, s_tile, s_char, is_direct = self.find_best_stairway(curr_tile, curr_level, game, walkable_tiles, blocked_tiles)
+                p, s_tile, s_char, is_direct = self.find_best_stairway(curr_tile, curr_level, world, walkable_tiles, blocked_tiles)
                 if p:
                     self.path = p
                     self.mode = "seeking_stairway"
@@ -248,76 +237,4 @@ class NPCStudent(Student):
         else:
             self.stuck_frames = 0
 
-    def update_npc(self, solid_objects, walkable_tiles, blocked_tiles):
-        curr_tile = self.get_grid_pos()
-
-        if self.mode == "wandering" and self.path and random.random() < 0.05:
-            path_to_z, _ = self.compute_bfs_path(curr_tile, self.door_z_tile, walkable_tiles, blocked_tiles)
-            if path_to_z:
-                self.mode = "seeking_z"
-                self.path = path_to_z
-
-        if not self.path:
-            if self.mode == "wandering":
-                self.mode = "seeking_z"
-
-            if self.mode == "seeking_z":
-                path_to_z, reachable = self.compute_bfs_path(curr_tile, self.door_z_tile, walkable_tiles, blocked_tiles)
-                if path_to_z:
-                    self.path = path_to_z
-                else:
-                    if reachable:
-                        zx, zy = self.door_z_tile
-                        closest_tile = min(reachable, key=lambda t: (t[0] - zx) ** 2 + (t[1] - zy) ** 2)
-
-                        if closest_tile != curr_tile:
-                            path_to_closest, _ = self.compute_bfs_path(curr_tile, closest_tile, walkable_tiles, blocked_tiles)
-                            if path_to_closest:
-                                self.path = path_to_closest
-                            else:
-                                closest_tile = curr_tile
-
-                        if closest_tile == curr_tile:
-                            self.mode = "wandering"
-                            candidates = [t for t in reachable if t != curr_tile]
-                            if candidates:
-                                if len(candidates) >= 2:
-                                    cand1, cand2 = random.sample(candidates, 2)
-                                    rand_target = min(cand1, cand2, key=lambda t: (t[0] - zx) ** 2 + (t[1] - zy) ** 2)
-                                else:
-                                    rand_target = candidates[0]
-
-                                rand_path, _ = self.compute_bfs_path(curr_tile, rand_target, walkable_tiles, blocked_tiles)
-                                if rand_path:
-                                    self.path = rand_path
-
-        fake_keys = defaultdict(bool)
-        if self.path:
-            next_col, next_row = self.path[0]
-            if (next_col, next_row) in blocked_tiles and (next_col, next_row) != self.door_z_tile:
-                self.path.clear()
-            else:
-                target_px = next_col * TILE_SIZE + (TILE_SIZE // 2) + self.offset_x
-                target_py = next_row * TILE_SIZE + (TILE_SIZE // 2) + self.offset_y
-                dx = target_px - self.rect.centerx
-                dy = target_py - self.rect.centery
-
-                if math.hypot(dx, dy) <= self.speed + 4:
-                    self.path.pop(0)
-                else:
-                    if dx < -2: fake_keys[pygame.K_LEFT] = True
-                    elif dx > 2: fake_keys[pygame.K_RIGHT] = True
-                    if dy < -2: fake_keys[pygame.K_UP] = True
-                    elif dy > 2: fake_keys[pygame.K_DOWN] = True
-
-        old_x, old_y = self.rect.x, self.rect.y
-        super().update(fake_keys, solid_objects)
-
-        if self.path and self.rect.x == old_x and self.rect.y == old_y:
-            self.stuck_frames += 1
-            if self.stuck_frames > 20:
-                self.path.clear()
-                self.stuck_frames = 0
-                self.mode = "wandering"
-        else:
-            self.stuck_frames = 0
+        return just_reached_gate

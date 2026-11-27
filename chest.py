@@ -1,20 +1,9 @@
 import pygame
-import time
 import os
-
-TILE_SIZE = 64
-LOCKOUT_TIERS = [5, 10, 30, 60]
+from config import TILE_SIZE
+from interactable import Interactable
 
 _CHEST_IMAGES = None
-_lockout_font = None
-
-def get_lockout_font():
-    global _lockout_font
-    if _lockout_font is None:
-        if not pygame.font.get_init():
-            pygame.font.init()
-        _lockout_font = pygame.font.SysFont(None, 36)
-    return _lockout_font
 
 def load_chest_sheet(filename="img/TreasureChests.png"):
     base_dir = os.path.dirname(os.path.abspath(__file__))
@@ -91,7 +80,7 @@ def load_key_sheet(filename="img/Keys.png", target_size=(24, 24)):
         sheet = pygame.image.load(path)
         try:
             sheet = sheet.convert_alpha()
-        except pygame.error:
+        except pygame.error as e:
             print(f"Warning: Alpha conversion failed - {e}")
         w, h = sheet.get_size()
         slices = []
@@ -137,7 +126,7 @@ def load_single_key_icon(filename="img/key6.png", target_size=(24, 24)):
         surf = pygame.image.load(path)
         try:
             surf = surf.convert_alpha()
-        except pygame.error:
+        except pygame.error as e:
             print(f"Warning: Alpha conversion failed - {e}")
         bbox = surf.get_bounding_rect()
         sub = surf.subsurface(bbox) if (bbox.width > 0 and bbox.height > 0) else surf
@@ -207,19 +196,16 @@ OBJECT_DEFINITIONS = {
     '9': {"name": "Silver Key", "slice_index": 8, "key_slice_index": 8, "color": (255, 105, 180)},
 }
 
-class Chest(pygame.sprite.Sprite):
+class Chest(Interactable):
+    is_door = False
+
     def __init__(self, x, y, obj_char="0", question_data=None, chest_char=None):
-        super().__init__()
-        self.is_door = False
+        super().__init__(question_data=question_data)
         actual_char = obj_char if (obj_char is not None and str(obj_char) != "None") else chest_char
         if actual_char is None or str(actual_char) == "None":
             actual_char = "0"
         self.obj_char = str(actual_char)
         self.chest_id = self.obj_char
-        self.question_data = question_data
-        self.is_locked = True
-        self.lockout_end_time = 0
-        self.wrong_attempts = 0
         self.image = pygame.Surface((TILE_SIZE, TILE_SIZE), pygame.SRCALPHA)
         self.rect = self.image.get_rect(topleft=(x, y))
         
@@ -238,7 +224,7 @@ class Chest(pygame.sprite.Sprite):
                     loaded = pygame.image.load(p)
                     try:
                         loaded = loaded.convert_alpha()
-                    except pygame.error:
+                    except pygame.error as e:
                         print(f"Warning: Alpha conversion failed - {e}")
                     loaded = pygame.transform.smoothscale(loaded, (48, 48))
                 except Exception as e:
@@ -287,26 +273,6 @@ class Chest(pygame.sprite.Sprite):
             txt = obj_font.render(self.obj_char, True, (255, 255, 200))
             self.image.blit(txt, (center[0] - txt.get_width() // 2, 42))
 
-    def is_interactable(self):
-        return self.is_locked and time.time() > self.lockout_end_time
-
-    def apply_wrong_answer_penalty(self):
-        penalty = LOCKOUT_TIERS[min(self.wrong_attempts, len(LOCKOUT_TIERS) - 1)]
-        self.wrong_attempts += 1
-        self.lockout_end_time = time.time() + penalty
-        return penalty
-
-    def apply_cooldown(self, seconds=1.2):
-        self.lockout_end_time = time.time() + seconds
-
-    def draw_lockout_icon(self, surface, camera_offset):
-        if time.time() < self.lockout_end_time:
-            remaining = int(self.lockout_end_time - time.time()) + 1
-            if remaining > 1:
-                text = get_lockout_font().render(str(remaining), True, (255, 100, 100))
-                draw_x = self.rect.centerx - camera_offset[0] - text.get_width() // 2
-                draw_y = self.rect.top - camera_offset[1] - 30
-                surface.blit(text, (draw_x, draw_y))
 
 def __getattr__(name):
     if name == "CHEST_IMAGES":

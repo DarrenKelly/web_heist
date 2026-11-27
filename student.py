@@ -6,7 +6,7 @@ import pygame
 import time
 import math
 import os
-from config import COLOUR_WHITE, COLOUR_BLACK
+from config import TILE_SIZE, COLOUR_WHITE, COLOUR_BLACK
 
 
 class Student(pygame.sprite.Sprite):
@@ -148,6 +148,22 @@ class Student(pygame.sprite.Sprite):
             center=(self.rect.centerx - camera_offset[0], self.rect.top - camera_offset[1] - 10)
         )
         surface.blit(self._cached_name_surf, bg_rect)
+
+    def clear_arrival_stairway_if_left(self):
+        if getattr(self, "arrival_stairway_tile", None):
+            arr_c, arr_r = self.arrival_stairway_tile
+            arrival_rect = pygame.Rect(arr_c * TILE_SIZE, arr_r * TILE_SIZE, TILE_SIZE, TILE_SIZE)
+            if not self.rect.colliderect(arrival_rect):
+                self.arrival_stairway_tile = None
+
+    def teleport_to_stairway(self, dest_lvl, dest_c, dest_r, stair_char, offset_x=0, offset_y=0):
+        self.level_id = dest_lvl
+        self.rect.centerx = dest_c * TILE_SIZE + TILE_SIZE // 2 + offset_x
+        self.rect.centery = dest_r * TILE_SIZE + TILE_SIZE // 2 + offset_y
+        self.pos_x = float(self.rect.x)
+        self.pos_y = float(self.rect.y)
+        self.last_stairway = stair_char
+        self.arrival_stairway_tile = (dest_c, dest_r)
 
 
 class HeroStudent(Student):
