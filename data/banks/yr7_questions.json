@@ -116,7 +116,7 @@
           "id": "data_325",
           "points": 350,
           "stage_3_accessible": false,
-          "question": "A frequency table shows quiz scores out of 5:\nScore 2 (freq 3), Score 3 (freq 4), Score 4 (freq 3).\nCalculate the mean score.",
+          "question": "A frequency table shows quiz scores out of 5:\nScore 1 (freq 2), Score 2 (freq 4), Score 5 (freq 4).\nCalculate the mean score.",
           "svg_prompt": null,
           "image": null,
           "accepted_answers": [
@@ -124,7 +124,7 @@
             "3.0",
             "three"
           ],
-          "worked_solution": "Total score = (2 × 3) + (3 × 4) + (4 × 3) = 6 + 12 + 12 = 30. Total frequency = 10. Mean = 30 ÷ 10 = 3."
+          "worked_solution": "Total score = (1 × 2) + (2 × 4) + (5 × 4) = 2 + 8 + 20 = 30. Total frequency = 10. Mean = 30 ÷ 10 = 3."
         },
         {
           "id": "data_350",
@@ -730,14 +730,18 @@
           "id": "meas_475",
           "points": 500,
           "stage_3_accessible": false,
-          "question": "A cylinder has a radius of 4 cm and a height of 10 cm.\nCalculate its volume (in cm³), rounded to the nearest\nwhole number. (Use V = π × r² × h)",
+          "question": "A cylinder has a radius of 4 cm and a height of 10 cm.\nCalculate its volume (in cm³), rounded to the nearest\nwhole number. (Use V = π × r² × h and the π button)",
           "svg_prompt": null,
           "image": null,
           "accepted_answers": [
             "503",
             "503cm3",
             "503 cm3",
-            "503cm³"
+            "503cm³",
+            "502",
+            "502cm3",
+            "502 cm3",
+            "502cm³"
           ],
           "worked_solution": "V = π × 4² × 10 = 160π ≈ 502.65 cm³, which rounds to 503 cm³."
         },
@@ -791,7 +795,7 @@
           "id": "meas_600",
           "points": 600,
           "stage_3_accessible": false,
-          "question": "A rectangular garden measures 10 m by 6 m.\nInside the garden, a concreter removes a semicircular patio\n(diameter = 6 m) and a triangular flower bed (base = 4 m, height = 3 m).\nWhat area is left over for grass, correct to 1 decimal place?",
+          "question": "A rectangular garden measures 10 m by 6 m. A concreter\nremoves a semicircular patio (diameter = 6 m)\nand a triangular flower bed (base = 4 m, height = 3 m).\nWhat area is left over for grass, correct to 1 decimal place?",
           "svg_prompt": "[SVG Prompt: Draw a 10 m by 6 m rectangle. On one of the 6 m ends, draw an inward-curving semicircle of diameter 6 m. Inside the rectangle, draw a triangle with base 4 m and perpendicular height 3 m. Shade the remaining grass area.]",
           "image": "img/area_600.png",
           "accepted_answers": [
@@ -1190,7 +1194,7 @@
           "id": "int_450",
           "points": 450,
           "stage_3_accessible": false,
-          "question": "A submarine is at an elevation of −140 m.\nIt dives 35 m per minute for 4 minutes,\nthen rises 95 m. What is its new elevation (in m)?",
+          "question": "A submarine is at an elevation of −140 m.\nIt dives 35 m per minute for 4 minutes,\nthen rises 95 m. What is its new elevation\n(in m, include the − sign)?",
           "svg_prompt": null,
           "image": null,
           "accepted_answers": [
@@ -1232,7 +1236,7 @@
           "id": "int_600",
           "points": 600,
           "stage_3_accessible": false,
-          "question": "Two integers have a product of −36 and a sum of −5.\nWhat is the SMALLER of the two integers?",
+          "question": "Two integers have a product of −36 and a sum of −5.\nWhat is the SMALLER (more negative) of the two integers?",
           "svg_prompt": null,
           "image": null,
           "accepted_answers": [
@@ -1490,7 +1494,7 @@
           "id": "rat_400",
           "points": 400,
           "stage_3_accessible": false,
-          "question": "Pack A has 6 muffins for $9.00.\nPack B has 8 muffins for $10.40.\nWhat is the unit price (in dollars) of the CHEAPER pack?",
+          "question": "Pack A has 6 muffins for $9.00.\nPack B has 8 muffins for $10.40.\nWhat is the unit price (in dollars) of the BETTER VALUE pack?",
           "svg_prompt": null,
           "image": null,
           "accepted_answers": [
@@ -1499,7 +1503,7 @@
             "$1.30",
             "$1.3"
           ],
-          "worked_solution": "Pack A: $9.00 ÷ 6 = $1.50 each. Pack B: $10.40 ÷ 8 = $1.30 each. Cheaper unit price is $1.30."
+          "worked_solution": "Pack A: $9.00 ÷ 6 = $1.50 each. Pack B: $10.40 ÷ 8 = $1.30 each. Better value is Pack B at $1.30 each."
         },
         {
           "id": "rat_450",
@@ -1547,7 +1551,7 @@
           "id": "rat_600",
           "points": 600,
           "stage_3_accessible": false,
-          "question": "A cyclist rides 30 km in 1.5 hours,\nthen rides another 45 km in 1.5 hours.\nWhat is the cyclist's average speed (in km/h)?",
+          "question": "A cyclist rides 15 km in 1 hour,\nthen rides another 60 km in 2 hours.\nWhat is the cyclist's average speed (in km/h)?",
           "svg_prompt": null,
           "image": null,
           "accepted_answers": [
@@ -1555,7 +1559,7 @@
             "25km/h",
             "25 km/h"
           ],
-          "worked_solution": "Total distance = 30 + 45 = 75 km. Total time = 1.5 + 1.5 = 3 hours. Average speed = 75 ÷ 3 = 25 km/h."
+          "worked_solution": "Total distance = 15 + 60 = 75 km. Total time = 1 + 2 = 3 hours. Average speed = 75 ÷ 3 = 25 km/h."
         }
       ]
     },
@@ -1775,7 +1779,7 @@
           "id": "prob_300",
           "points": 300,
           "stage_3_accessible": false,
-          "question": "One card is drawn at random from a standard 52-card deck.\nWhat is the probability of drawing a Heart?\n(Give as a simplified fraction or decimal)",
+          "question": "One card is drawn at random from a standard 52-card deck.\nWhat is the probability of drawing a Heart?\n(Give as a simplified fraction)",
           "svg_prompt": null,
           "image": null,
           "accepted_answers": [
@@ -1844,7 +1848,7 @@
           "id": "prob_550",
           "points": 550,
           "stage_3_accessible": false,
-          "question": "In a class of 25 students: 10 boys play sport,\n4 boys do not, 8 girls play sport, and 3 girls do not.\nWhat is the probability a random student is a girl\nwho plays sport? (Give as a fraction or decimal)",
+          "question": "In a class of 25 students: 10 boys play sport,\n4 boys do not, 8 girls play sport, and 3 girls do not.\nWhat is the probability a random student is a girl\nwho plays sport? (Give as a simplified fraction or decimal)",
           "svg_prompt": null,
           "image": null,
           "accepted_answers": [

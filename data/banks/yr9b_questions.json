@@ -484,7 +484,7 @@
           "id": "meas_600",
           "points": 600,
           "stage_3_accessible": false,
-          "question": "A rectangular garden measures 10 m by 6 m.\nInside the garden, a concreter removes a semicircular patio\n(diameter = 6 m) and a triangular flower bed (base = 4 m, height = 3 m).\nWhat area is left over for grass, correct to 1 decimal place?",
+          "question": "A rectangular garden measures 10 m by 6 m. A concreter\nremoves a semicircular patio (diameter = 6 m)\nand a triangular flower bed (base = 4 m, height = 3 m).\nWhat area is left over for grass, correct to 1 decimal place?",
           "svg_prompt": "[SVG Prompt: Draw a 10 m by 6 m rectangle. On one of the 6 m ends, draw an inward-curving semicircle of diameter 6 m. Inside the rectangle, draw a triangle with base 4 m and perpendicular height 3 m. Shade the remaining grass area.]",
           "image": "img/area_600.png",
           "accepted_answers": [

@@ -85,6 +85,11 @@ def parameterise_question(q_data, force_regenerate=False):
     if has_diagram and not force_regenerate:
         return q
 
+    if force_regenerate and has_diagram and qid != "alg_350":
+        q["image"] = None
+        for cache_key in ("_cached_surface", "_cached_scaled_img", "_cached_scaled_src"):
+            q.pop(cache_key, None)
+
     # --- 1. Data Analysis & Visualisation ---
     if qid == "data_200":
         s1 = random.randint(8, 12)
@@ -287,7 +292,6 @@ def parameterise_question(q_data, force_regenerate=False):
         top_ang = random.randint(32, 46)
         bot_ang = random.randint(48, 62)
         tot_ang = top_ang + bot_ang
-        q["image"] = "img/geo_450.png"
         q["question"] = (
             f"Two parallel horizontal lines are joined by a V-shaped\n"
             f"bend pointing to the right. The top acute angle with the\n"
@@ -296,6 +300,45 @@ def parameterise_question(q_data, force_regenerate=False):
         )
         q["accepted_answers"] = [str(tot_ang), f"{tot_ang}°", f"{tot_ang} degrees", f"{tot_ang} deg"]
         q["worked_solution"] = f"By alternate angles on parallel lines, tip angle = {top_ang}° + {bot_ang}° = {tot_ang}°."
+
+    elif qid == "geo_475":
+        scenarios = [
+            (
+                "Two triangles both have side lengths of 6 cm, 8 cm, and 10 cm.\n"
+                "Which congruence test proves they are congruent\n"
+                "('SSS', 'SAS', 'AAS', or 'RHS')?",
+                "sss",
+                "All three pairs of corresponding sides are equal (Side-Side-Side, SSS)."
+            ),
+            (
+                "Two triangles both have side lengths of 6 cm and 9 cm,\n"
+                "with the included angle between those sides equal to 50°.\n"
+                "Which congruence test proves they are congruent\n"
+                "('SSS', 'SAS', 'AAS', or 'RHS')?",
+                "sas",
+                "Two pairs of matching sides and the included angle satisfy SAS."
+            ),
+            (
+                "Two triangles both have angles of 45° and 70°,\n"
+                "and a matching side of 8 cm opposite the 70° angle.\n"
+                "Which congruence test proves they are congruent\n"
+                "('SSS', 'SAS', 'AAS', or 'RHS')?",
+                "aas",
+                "Two matching angles and a corresponding side satisfy AAS."
+            ),
+            (
+                "Two right-angled triangles both have a hypotenuse of 13 cm\n"
+                "and one matching shorter side of 5 cm.\n"
+                "Which congruence test proves they are congruent\n"
+                "('SSS', 'SAS', 'AAS', or 'RHS')?",
+                "rhs",
+                "Right angle, matching hypotenuse, and one other matching side satisfy RHS."
+            ),
+        ]
+        prompt, ans, sol = random.choice(scenarios)
+        q["question"] = prompt
+        q["accepted_answers"] = [ans]
+        q["worked_solution"] = sol
 
     elif qid == "geo_500":
         x_val = random.randint(42, 54)
@@ -318,7 +361,6 @@ def parameterise_question(q_data, force_regenerate=False):
         ab = ae * scale
         ad = random.randint(5, 9)
         ac = ad * scale
-        q["image"] = "img/geo_550.png"
         q["question"] = (
             f"Triangle ABC is similar to Triangle AED (with DE parallel to BC).\n"
             f"If AE = {ae} cm, AB = {ab} cm, and AD = {ad} cm,\n"
@@ -333,7 +375,6 @@ def parameterise_question(q_data, force_regenerate=False):
         d1 = leg1 * 2
         d2 = leg2 * 2
         perim = 4 * hyp
-        q["image"] = "img/geo_600.png"
         q["question"] = (
             f"The diagonals of a rhombus measure {d1} cm and {d2} cm.\n"
             f"Since the diagonals bisect each other at 90°, they form\n"
@@ -348,7 +389,6 @@ def parameterise_question(q_data, force_regenerate=False):
         b = random.randrange(6, 16, 2)
         h = random.randint(5, 11)
         ans = (b * h) // 2
-        q["image"] = "img/trig_200.png"
         q["question"] = (
             f"In a right-angled triangle, perpendicular height AB = {h} cm\n"
             f"and base BC = {b} cm.\n"
@@ -361,7 +401,6 @@ def parameterise_question(q_data, force_regenerate=False):
         s = random.randint(3, 7)
         k = random.choice([2, 3, 4])
         ans = (s * k) ** 2
-        q["image"] = "img/meas_150.png"
         q["question"] = (
             f"A square has a side length of {s} m.\n"
             f"A second square has a perimeter {k} times as large.\n"
@@ -413,7 +452,6 @@ def parameterise_question(q_data, force_regenerate=False):
         l = random.randint(6, 9)
         k = random.choice([2, 3, 4])
         ans = (w * k) * (l * k)
-        q["image"] = "img/area_350.png"
         q["question"] = (
             f"Two similar rectangles have a scale factor of k={k}.\n"
             f"The small rectangle has a width of w={w} cm and length of l={l} cm.\n"
@@ -429,7 +467,6 @@ def parameterise_question(q_data, force_regenerate=False):
         out_l = gl + 2 * pw
         out_w = gw + 2 * pw
         ans = (out_l * out_w) - (gl * gw)
-        q["image"] = "img/area_100.png"
         q["question"] = (
             f"A rectangular garden measures l={gl} m by w={gw} m.\n"
             f"A uniform path {pw} m wide is built all the way around\n"
@@ -458,7 +495,6 @@ def parameterise_question(q_data, force_regenerate=False):
         area = random.randint(10, 18)
         depth = random.randint(6, 14)
         ans = area * depth
-        q["image"] = "img/area_550.png"
         q["question"] = (
             f"A triangular prism has a front triangular face with an area of\n"
             f"A={area} m², and a total length (depth) of d={depth} m.\n"
@@ -637,16 +673,22 @@ def parameterise_question(q_data, force_regenerate=False):
         q["worked_solution"] = f"Sum = {5 * mean_val}. Mean = {5 * mean_val} ÷ 5 = {mean_val}."
 
     elif qid == "data_325":
-        mid_s = random.randint(2, 4)
-        k = random.choice([2, 3, 4])
-        mid_f = 10 - 2 * k
+        s1, f1, s2, f2, s3, f3, ans_s = random.choice([
+            (1, 2, 2, 4, 5, 4, "3"),
+            (1, 2, 2, 2, 4, 6, "3"),
+            (1, 4, 2, 2, 4, 4, "2.4"),
+            (1, 2, 3, 4, 5, 4, "3.4"),
+            (2, 2, 3, 4, 5, 4, "3.6"),
+            (1, 3, 2, 2, 5, 5, "3.2"),
+        ])
+        tot_s = s1 * f1 + s2 * f2 + s3 * f3
         q["question"] = (
             f"A frequency table shows quiz scores out of 5:\n"
-            f"Score {mid_s - 1} (freq {k}), Score {mid_s} (freq {mid_f}), Score {mid_s + 1} (freq {k}).\n"
+            f"Score {s1} (freq {f1}), Score {s2} (freq {f2}), Score {s3} (freq {f3}).\n"
             f"Calculate the mean score."
         )
-        q["accepted_answers"] = [str(mid_s), f"{mid_s}.0"]
-        q["worked_solution"] = f"Total score = {10 * mid_s}, total frequency = 10. Mean = {mid_s}."
+        q["accepted_answers"] = [ans_s, f"{ans_s}.0" if "." not in ans_s else f"{ans_s}0"]
+        q["worked_solution"] = f"Total score = {tot_s}, total frequency = 10. Mean = {tot_s} ÷ 10 = {ans_s}."
 
     elif qid == "data_425":
         m1 = random.randint(64, 78)
@@ -818,12 +860,16 @@ def parameterise_question(q_data, force_regenerate=False):
         h = random.randint(6, 14)
         vol = math.pi * r * r * h
         ans = int(round(vol))
+        ans_314 = int(round(3.14 * r * r * h))
         q["question"] = (
             f"A cylinder has a radius of {r} cm and a height of {h} cm.\n"
             f"Calculate its volume (in cm³), rounded to the nearest\n"
-            f"whole number. (Use V = π × r² × h)"
+            f"whole number. (Use V = π × r² × h and the π button)"
         )
-        q["accepted_answers"] = [str(ans), f"{ans}cm3", f"{ans} cm3", f"{ans}cm³"]
+        accepted = [str(ans), f"{ans}cm3", f"{ans} cm3", f"{ans}cm³"]
+        if ans_314 != ans:
+            accepted.extend([str(ans_314), f"{ans_314}cm3", f"{ans_314} cm3", f"{ans_314}cm³"])
+        q["accepted_answers"] = accepted
         q["worked_solution"] = f"V = π × {r}² × {h} ≈ {vol:.2f} cm³ → {ans} cm³."
 
     elif qid == "meas_525":
@@ -1023,7 +1069,8 @@ def parameterise_question(q_data, force_regenerate=False):
         q["question"] = (
             f"A submarine is at an elevation of −{start} m.\n"
             f"It dives {rate} m per minute for {mins} minutes,\n"
-            f"then rises {rise} m. What is its new elevation (in m)?"
+            f"then rises {rise} m. What is its new elevation\n"
+            f"(in m, include the − sign)?"
         )
         q["accepted_answers"] = [str(ans), f"{ans}m", f"{ans} m"]
         q["worked_solution"] = f"−{start} − ({rate} × {mins}) + {rise} = {ans} m."
@@ -1062,7 +1109,7 @@ def parameterise_question(q_data, force_regenerate=False):
         s = big + small
         q["question"] = (
             f"Two integers have a product of −{abs(prod)} and a sum of −{abs(s)}.\n"
-            f"What is the SMALLER of the two integers?"
+            f"What is the SMALLER (more negative) of the two integers?"
         )
         q["accepted_answers"] = [str(small)]
         q["worked_solution"] = f"The integers are {small} and {big}. The smaller is {small}."
@@ -1147,8 +1194,13 @@ def parameterise_question(q_data, force_regenerate=False):
         num, den = a * d, b * c
         g = math.gcd(num, den)
         rn, rd = num // g, den // g
+        accepted = [f"{rn}/{rd}"]
+        if rn > rd:
+            accepted.append(f"{rn // rd} {rn % rd}/{rd}")
+            if rd in (2, 4, 5, 8, 10):
+                accepted.append(f"{rn / rd:g}")
         q["question"] = f"Evaluate ({a}/{b}) ÷ ({c}/{d}).\nWrite your answer as a simplified fraction."
-        q["accepted_answers"] = [f"{rn}/{rd}"]
+        q["accepted_answers"] = accepted
         q["worked_solution"] = f"({a}/{b}) × ({d}/{c}) = {num}/{den} = {rn}/{rd}."
 
     elif qid == "fdp_550":
@@ -1230,18 +1282,28 @@ def parameterise_question(q_data, force_regenerate=False):
         q["worked_solution"] = f"Speed = {speed} km/h. Distance in {t2} h = {d2} km."
 
     elif qid == "rat_400":
-        p_a = random.choice([1.40, 1.50, 1.60])
-        p_b = round(p_a - random.choice([0.15, 0.20, 0.25]), 2)
+        low_p = random.choice([1.15, 1.20, 1.25, 1.30, 1.35])
+        high_p = round(low_p + random.choice([0.15, 0.20, 0.25]), 2)
+        if random.choice([True, False]):
+            p_a, p_b = low_p, high_p
+            best_pack = "Pack A"
+        else:
+            p_a, p_b = high_p, low_p
+            best_pack = "Pack B"
         cost_a = 6 * p_a
         cost_b = 8 * p_b
-        p_b_short = f"{p_b:.2f}".rstrip("0").rstrip(".")
+        best_p = min(p_a, p_b)
+        best_p_short = f"{best_p:.2f}".rstrip("0").rstrip(".")
         q["question"] = (
             f"Pack A has 6 muffins for ${cost_a:.2f}.\n"
             f"Pack B has 8 muffins for ${cost_b:.2f}.\n"
-            f"What is the unit price (in dollars) of the CHEAPER pack?"
+            f"What is the unit price (in dollars) of the BETTER VALUE pack?"
         )
-        q["accepted_answers"] = [f"{p_b:.2f}", p_b_short, f"${p_b:.2f}", f"${p_b_short}"]
-        q["worked_solution"] = f"Pack A = ${p_a:.2f} each; Pack B = ${p_b:.2f} each. Cheaper = ${p_b:.2f}."
+        q["accepted_answers"] = [f"{best_p:.2f}", best_p_short, f"${best_p:.2f}", f"${best_p_short}"]
+        q["worked_solution"] = (
+            f"Pack A = ${p_a:.2f} each; Pack B = ${p_b:.2f} each. "
+            f"Better value is {best_pack} at ${best_p:.2f} each."
+        )
 
     elif qid == "rat_450":
         a, b = random.choice([(3, 5), (4, 7), (2, 5), (3, 4), (5, 6)])
@@ -1284,13 +1346,14 @@ def parameterise_question(q_data, force_regenerate=False):
         q["worked_solution"] = f"{cm_val} × {scale_k} cm = {km_val} km."
 
     elif qid == "rat_600":
-        avg = random.choice([20, 25, 30, 35, 40])
-        tot_d = avg * 3
-        d1 = tot_d // 2 - 5
-        d2 = tot_d - d1
+        d1, d2, avg = random.choice([
+            (15, 60, 25), (18, 54, 24), (21, 60, 27),
+            (20, 70, 30), (36, 48, 28), (40, 50, 30)
+        ])
+        tot_d = d1 + d2
         q["question"] = (
-            f"A cyclist rides {d1} km in 1.5 hours,\n"
-            f"then rides another {d2} km in 1.5 hours.\n"
+            f"A cyclist rides {d1} km in 1 hour,\n"
+            f"then rides another {d2} km in 2 hours.\n"
             f"What is the cyclist's average speed (in km/h)?"
         )
         q["accepted_answers"] = [str(avg), f"{avg}km/h", f"{avg} km/h"]
@@ -1402,8 +1465,8 @@ def parameterise_question(q_data, force_regenerate=False):
 
     elif qid == "prob_100":
         cond, fav = random.choice([
-            ("greater than 4", 2), ("less than 3", 2),
-            ("greater than 3", 3), ("an even number", 3), ("less than 5", 4)
+            ("a number greater than 4", 2), ("a number less than 3", 2),
+            ("a number greater than 3", 3), ("an even number", 3), ("a number less than 5", 4)
         ])
         g = math.gcd(fav, 6)
         rn, rd = fav // g, 6 // g
@@ -1527,14 +1590,15 @@ def parameterise_question(q_data, force_regenerate=False):
         g = math.gcd(gp, 25)
         rn, rd = gp // g, 25 // g
         dec = gp / 25.0
+        dec_s = f"{dec:.2f}".rstrip("0").rstrip(".")
         q["question"] = (
             f"In a class of 25 students: {bp} boys play sport,\n"
             f"{bn} boys do not, {gp} girls play sport, and {gn} girls do not.\n"
             f"What is the probability a random student is a girl\n"
-            f"who plays sport? (Give as a fraction or decimal)"
+            f"who plays sport? (Give as a simplified fraction or decimal)"
         )
-        q["accepted_answers"] = [f"{rn}/{rd}", f"{dec:.2f}", f"{gp * 4}%"]
-        q["worked_solution"] = f"{gp} out of 25 students → {rn}/{rd} = {dec:.2f}."
+        q["accepted_answers"] = [f"{rn}/{rd}", f"{gp}/25", dec_s, f"{dec:.2f}", f"{gp * 4}%"]
+        q["worked_solution"] = f"{gp} out of 25 students → {rn}/{rd} = {dec_s}."
 
     elif qid == "prob_600":
         num, den = random.choice([(3, 5), (2, 5), (3, 4), (2, 3), (5, 8), (3, 8)])
@@ -1604,6 +1668,12 @@ def check_answer(user_input, accepted_answers):
         a_compact = a_clean.replace(",", "").replace(" ", "")
         if u_compact and u_compact == a_compact:
             return True
+        # Match numerically equivalent decimals (e.g. '.25' vs '0.25', '0.2' vs '0.20', '18.0' vs '18')
+        try:
+            if abs(float(u_compact) - float(a_compact)) < 1e-9:
+                return True
+        except ValueError:
+            pass
         suffixes = [
             "years", "yrs", "year", "yr",
             "km/hr", "km/h", "kmh", "km/l",

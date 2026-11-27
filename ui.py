@@ -316,7 +316,7 @@ class UIManager:
                 lolly_surf = pygame.image.load(lolly_path).convert_alpha()
                 lolly_surf = pygame.transform.smoothscale(lolly_surf, (80, 80))
                 screen.blit(lolly_surf, (center_x - 40, img_center_y - 40))
-            except Exception:
+            except Exception as e:
                 print(f"UI Error: Failed to render victory lolly image: {e}")
 
         detail_lines = [
@@ -341,15 +341,4 @@ class UIManager:
             pygame.draw.rect(screen, (18, 24, 34), bg_rect, border_radius=8)
             pygame.draw.rect(screen, (255, 215, 60), bg_rect, 2, border_radius=8)
             screen.blit(final_surf, (bg_rect.x + 20, bg_rect.y + 15))
-
-        prompt_surf = FONT_VICTORY_PROMPT.render("Press ENTER, SPACE, or ESC to exit", True, (255, 240, 160))
-        btn_w = prompt_surf.get_width() + 28
-        btn_h = prompt_surf.get_height() + 10
-        btn_x = center_x - btn_w // 2
-        btn_y = box_y + box_h - 52
-        btn_bg = pygame.Surface((btn_w, btn_h), pygame.SRCALPHA)
-        btn_bg.fill((30, 45, 25, 230))
-        pygame.draw.rect(btn_bg, (100, 220, 140), (0, 0, btn_w, btn_h), 2, border_radius=6)
-        screen.blit(btn_bg, (btn_x, btn_y))
-        screen.blit(prompt_surf, (btn_x + 14, btn_y + 5))
 

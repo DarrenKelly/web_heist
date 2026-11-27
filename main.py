@@ -831,8 +831,8 @@ class Game:
                             self.send_telemetry()
 
                 elif self.state == "victory":
-                    if event.type == pygame.KEYDOWN and event.key in (pygame.K_RETURN, pygame.K_SPACE, pygame.K_ESCAPE):
-                        running = False
+                    # Keep the victory screen displayed indefinitely
+                    pass
 
                 elif self.state == "playing":
                     if event.type == pygame.KEYDOWN:
