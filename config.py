@@ -2,7 +2,28 @@
 Global Configuration and Constants for Maths Heist
 """
 import os
+import sys
 import json
+import platform
+
+def log_diag(level, message):
+    """
+    Logs diagnostic messages to both standard output (local terminal)
+    and the browser's DevTools console (when running under Pygbag/Emscripten).
+    """
+    formatted = f"[{level.upper()}] {message}"
+    print(formatted, flush=True)
+    if sys.platform == "emscripten":
+        try:
+            if level.upper() in ("ERROR", "CRITICAL"):
+                platform.window.console.error(formatted)
+            elif level.upper() in ("WARN", "WARNING"):
+                platform.window.console.warn(formatted)
+            else:
+                platform.window.console.log(formatted)
+        except Exception:
+            pass
+
 
 WINDOW_WIDTH = 1024
 WINDOW_HEIGHT = 768
@@ -35,7 +56,7 @@ RIGHT_CHARS = set("─┌└├┬┴┼")
 def get_class_config(class_id="DEFAULT", config_filename="classes.json"):
     """
     Loads classes.json and returns the configuration dictionary for the given class_id.
-    Falls back gracefully to DEFAULT if the class_id is not found or classes.json is missing.
+    Logs explicit warnings whenever it falls back to DEFAULT or default_cfg.
     """
     default_cfg = {
         "class_id": class_id,
@@ -66,10 +87,19 @@ def get_class_config(class_id="DEFAULT", config_filename="classes.json"):
                 with open(candidate, "r", encoding="utf-8") as f:
                     data = json.load(f)
 
-                # Case-insensitive lookup for convenience with URL query parameters
                 upper_map = {str(k).upper(): v for k, v in data.items()}
                 query_key = str(class_id).strip().upper()
-                matched = upper_map.get(query_key) or upper_map.get("DEFAULT")
+                
+                if query_key in upper_map:
+                    matched = upper_map[query_key]
+                    log_diag("INFO", f"Class '{class_id}' matched in '{candidate}'.")
+                else:
+                    matched = upper_map.get("DEFAULT")
+                    log_diag(
+                        "WARN",
+                        f"Class ID '{class_id}' (normalised: '{query_key}') NOT FOUND in '{candidate}'. "
+                        f"Available keys: {list(data.keys())}. Falling back to 'DEFAULT' config!"
+                    )
 
                 if matched:
                     cfg = dict(default_cfg)
@@ -77,6 +107,11 @@ def get_class_config(class_id="DEFAULT", config_filename="classes.json"):
                     cfg["class_id"] = class_id
                     return cfg
             except Exception as e:
-                print(f"Error loading class configuration from '{candidate}': {e}")
+                log_diag("ERROR", f"Failed parsing class config '{candidate}': {e}")
 
+    log_diag(
+        "ERROR",
+        f"Could not find or load '{config_filename}' in any candidate path: {unique_candidates}. "
+        f"Falling back to hardcoded default_cfg: {default_cfg}"
+    )
     return default_cfg

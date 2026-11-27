@@ -1,5 +1,5 @@
 {
-  "exam_target": "Year 7 HPL Mathematics",
+  "exam_target": "NSW Stage 4 Mathematics (Year 8)",
   "categories": [
     {
       "category_name": "Data Analysis & Visualisation",
@@ -18,6 +18,19 @@
           "worked_solution": "Time is measured on a continuous scale rather than counted in whole numbers, so it is continuous numerical data."
         },
         {
+          "id": "data_125",
+          "points": 150,
+          "stage_3_accessible": true,
+          "question": "Find the mode of the following dataset:\n7, 4, 9, 4, 6, 4, 8, 9",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "4",
+            "four"
+          ],
+          "worked_solution": "The mode is the most frequent score. The number 4 appears three times, more than any other value."
+        },
+        {
           "id": "data_150",
           "points": 150,
           "stage_3_accessible": false,
@@ -29,6 +42,21 @@
             "categorical ordinal"
           ],
           "worked_solution": "Because the categories have a natural, logical order from lowest to highest rating, the data is ordinal."
+        },
+        {
+          "id": "data_175",
+          "points": 200,
+          "stage_3_accessible": true,
+          "question": "Find the range of the following daily maximum\ntemperatures (in °C):\n14, 29, 18, 35, 22, 11",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "24",
+            "24°",
+            "24°c",
+            "twenty-four"
+          ],
+          "worked_solution": "Range = highest value − lowest value = 35 − 11 = 24."
         },
         {
           "id": "data_200",
@@ -45,6 +73,19 @@
           "worked_solution": "Ordered scores: 12, 14, 17, 19, 25, 28. The middle two scores are 17 and 19. Median = (17 + 19) ÷ 2 = 18."
         },
         {
+          "id": "data_225",
+          "points": 250,
+          "stage_3_accessible": true,
+          "question": "Find the median of the following 7 scores:\n23, 15, 31, 19, 27, 12, 25",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "23",
+            "twenty-three"
+          ],
+          "worked_solution": "Ordered scores: 12, 15, 19, 23, 25, 27, 31. The middle (4th) score is 23."
+        },
+        {
           "id": "data_250",
           "points": 250,
           "stage_3_accessible": false,
@@ -56,6 +97,34 @@
             "twenty-five"
           ],
           "worked_solution": "Highest score = 95. Lowest score = 70. Range = 95 − 70 = 25."
+        },
+        {
+          "id": "data_275",
+          "points": 300,
+          "stage_3_accessible": true,
+          "question": "Calculate the mean of these 5 test scores:\n64, 72, 80, 68, 76",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "72",
+            "72.0",
+            "seventy-two"
+          ],
+          "worked_solution": "Sum = 64 + 72 + 80 + 68 + 76 = 360. Mean = 360 ÷ 5 = 72."
+        },
+        {
+          "id": "data_325",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "A frequency table shows quiz scores out of 5:\nScore 2 (freq 3), Score 3 (freq 4), Score 4 (freq 3).\nCalculate the mean score.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "3",
+            "3.0",
+            "three"
+          ],
+          "worked_solution": "Total score = (2 × 3) + (3 × 4) + (4 × 3) = 6 + 12 + 12 = 30. Total frequency = 10. Mean = 30 ÷ 10 = 3."
         },
         {
           "id": "data_350",
@@ -86,6 +155,20 @@
             "pos"
           ],
           "worked_solution": "A distribution follows the direction of its tail. A long tail to the right (towards higher positive values) is positively skewed."
+        },
+        {
+          "id": "data_425",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "Class A (12 students) has a mean test score of 75.\nClass B (8 students) has a mean test score of 85.\nWhat is the combined mean for all 20 students?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "79",
+            "79.0",
+            "seventy-nine"
+          ],
+          "worked_solution": "Class A sum = 12 × 75 = 900. Class B sum = 8 × 85 = 680. Combined mean = (900 + 680) ÷ 20 = 1580 ÷ 20 = 79."
         },
         {
           "id": "data_450",
@@ -162,6 +245,21 @@
           "worked_solution": "Angles on opposite sides of the transversal inside the parallel lines (forming a Z shape) are alternate angles."
         },
         {
+          "id": "geo_125",
+          "points": 100,
+          "stage_3_accessible": true,
+          "question": "Two angles are complementary (they add to 90°).\nIf one angle measures 34°,\nwhat is the size of the other angle?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "56",
+            "56°",
+            "56 degrees",
+            "56 deg"
+          ],
+          "worked_solution": "Complementary angles sum to 90°. 90° − 34° = 56°."
+        },
+        {
           "id": "geo_150",
           "points": 150,
           "stage_3_accessible": false,
@@ -175,6 +273,21 @@
             "112 deg"
           ],
           "worked_solution": "Co-interior angles on parallel lines are supplementary (add to 180°). 180° − 68° = 112°."
+        },
+        {
+          "id": "geo_175",
+          "points": 150,
+          "stage_3_accessible": true,
+          "question": "Three angles lie along a straight line (180°).\nThey measure 42°, x°, and 65°.\nFind the value of x.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "73",
+            "73°",
+            "73 degrees",
+            "x=73"
+          ],
+          "worked_solution": "Angles on a straight line add to 180°. x = 180 − (42 + 65) = 180 − 107 = 73°."
         },
         {
           "id": "geo_200",
@@ -192,6 +305,21 @@
           "worked_solution": "Angle sum of a quadrilateral is 360°. Remaining angle sum = 360° − (70° + 50°) = 240°. Each equal angle = 240° ÷ 2 = 120°."
         },
         {
+          "id": "geo_225",
+          "points": 200,
+          "stage_3_accessible": true,
+          "question": "Four angles meet at a single point (a full revolution).\nThree of the angles measure 110°, 85°, and 95°.\nWhat is the size of the fourth angle?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "70",
+            "70°",
+            "70 degrees",
+            "70 deg"
+          ],
+          "worked_solution": "Angles at a point sum to 360°. 360° − (110° + 85° + 95°) = 360° − 290° = 70°."
+        },
+        {
           "id": "geo_250",
           "points": 250,
           "stage_3_accessible": false,
@@ -205,6 +333,21 @@
             "230 deg"
           ],
           "worked_solution": "The interior angles of any quadrilateral sum to 360°. Reflex angle = 360° − (35° + 45° + 50°) = 360° − 130° = 230°."
+        },
+        {
+          "id": "geo_275",
+          "points": 250,
+          "stage_3_accessible": true,
+          "question": "Two interior angles of a triangle measure 48° and 67°.\nWhat is the size of the third interior angle?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "65",
+            "65°",
+            "65 degrees",
+            "65 deg"
+          ],
+          "worked_solution": "Angle sum of a triangle is 180°. Third angle = 180° − (48° + 67°) = 65°."
         },
         {
           "id": "geo_300",
@@ -222,6 +365,21 @@
           "worked_solution": "By the exterior angle theorem, the exterior angle equals the sum of the two opposite interior angles: 135° − 60° = 75°."
         },
         {
+          "id": "geo_325",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "Two parallel lines are cut by a transversal.\nOne of the acute angles formed measures 62°.\nWhat is the size of each obtuse angle formed?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "118",
+            "118°",
+            "118 degrees",
+            "118 deg"
+          ],
+          "worked_solution": "Adjacent angles along the parallel line are supplementary: 180° − 62° = 118°."
+        },
+        {
           "id": "geo_350",
           "points": 350,
           "stage_3_accessible": false,
@@ -237,6 +395,21 @@
           "worked_solution": "Base angles of an isosceles triangle are equal. ∠ABC = (180° − 44°) ÷ 2 = 136° ÷ 2 = 68°."
         },
         {
+          "id": "geo_375",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "Using the formula S = 180 × (n − 2),\ncalculate the interior angle sum of a hexagon (6 sides).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "720",
+            "720°",
+            "720 degrees",
+            "720 deg"
+          ],
+          "worked_solution": "For n = 6, S = 180 × (6 − 2) = 180 × 4 = 720°."
+        },
+        {
           "id": "geo_400",
           "points": 400,
           "stage_3_accessible": false,
@@ -249,7 +422,22 @@
             "x=50",
             "fifty"
           ],
-          "worked_solution": "(2x + 10) + (x + 20) = 180 (co-int. ∠s, ∥ lines) → 3x + 30 = 180 → 3x = 150 → x = 50."
+          "worked_solution": "(2x + 10) + (x + 20) = 180 (co-int. ∠s, || lines) → 3x + 30 = 180 → 3x = 150 → x = 50."
+        },
+        {
+          "id": "geo_425",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "Calculate the size of ONE interior angle\nof a regular octagon (8 equal sides and angles).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "135",
+            "135°",
+            "135 degrees",
+            "135 deg"
+          ],
+          "worked_solution": "Angle sum = 180 × (8 − 2) = 1080°. Each angle = 1080° ÷ 8 = 135°."
         },
         {
           "id": "geo_450",
@@ -265,6 +453,18 @@
             "92 deg"
           ],
           "worked_solution": "Draw a third parallel line through the vertex of the bend. By alternate angles on parallel lines, x = 38° + 54° = 92°."
+        },
+        {
+          "id": "geo_475",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "Two triangles both have side lengths of 6 cm and 9 cm,\nwith the included angle between those sides equal to 50°.\nWhich congruence test proves they are congruent\n('SSS', 'SAS', 'AAS', or 'RHS')?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "sas"
+          ],
+          "worked_solution": "Two pairs of matching sides and the included angle between them satisfy the Side-Angle-Side (SAS) congruence test."
         },
         {
           "id": "geo_500",
@@ -285,7 +485,7 @@
           "id": "geo_550",
           "points": 550,
           "stage_3_accessible": false,
-          "question": "In the diagram, ΔABC is similar to ΔADE (DE ∥ BC).\nIf AE = 6 cm, AB = 15 cm, and AD = 8 cm,\nhow long is the full side AC (in cm)?",
+          "question": "In the diagram, ΔABC is similar to ΔAED (DE || BC).\nIf AE = 6 cm, AB = 15 cm, and AD = 8 cm,\nhow long is the full side AC (in cm)?",
           "svg_prompt": "[SVG Prompt: Draw a large triangle ABC with internal line DE parallel to base BC. Label AE = 6 cm, full right side AB = 15 cm, and top left side AD = 8 cm.]",
           "image": "img/geo_550.png",
           "accepted_answers": [
@@ -332,6 +532,21 @@
           "worked_solution": "A = ½ × base × perpendicular height = ½ × 12 × 5 = 30 square units."
         },
         {
+          "id": "meas_125",
+          "points": 100,
+          "stage_3_accessible": true,
+          "question": "Convert 3.4 kilometres (km) into metres (m).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "3400",
+            "3400m",
+            "3400 m",
+            "3,400"
+          ],
+          "worked_solution": "1 km = 1000 m, so 3.4 × 1000 = 3400 m."
+        },
+        {
           "id": "meas_150",
           "points": 150,
           "stage_3_accessible": false,
@@ -347,10 +562,25 @@
           "worked_solution": "First square side = 5 m, so second square side = 3 × 5 = 15 m. Area = 15 × 15 = 225 m²."
         },
         {
+          "id": "meas_175",
+          "points": 150,
+          "stage_3_accessible": true,
+          "question": "A parallelogram has a base of 11 cm, a slanted side\nof 9 cm, and a perpendicular height of 7 cm.\nCalculate its area (in cm²).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "77",
+            "77cm2",
+            "77 cm2",
+            "77cm²"
+          ],
+          "worked_solution": "Area of parallelogram = base × perpendicular height = 11 × 7 = 77 cm²."
+        },
+        {
           "id": "meas_200",
           "points": 200,
           "stage_3_accessible": false,
-          "question": "A kite has diagonals of length 14 cm and 9 cm.\nCalculate the area of the kite (in cm²)\n.",
+          "question": "A kite has diagonals of length 14 cm and 9 cm.\nCalculate the area of the kite (in cm²).",
           "svg_prompt": null,
           "image": null,
           "accepted_answers": [
@@ -360,6 +590,21 @@
             "63cm²"
           ],
           "worked_solution": "A = ½ × 14 × 9 = 7 × 9 = 63 cm²."
+        },
+        {
+          "id": "meas_225",
+          "points": 200,
+          "stage_3_accessible": true,
+          "question": "A rectangle has a perimeter of 46 cm\nand a length of 15 cm.\nWhat is the width of the rectangle (in cm)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "8",
+            "8cm",
+            "8 cm",
+            "eight"
+          ],
+          "worked_solution": "2 × 15 + 2w = 46 → 2w = 16 → w = 8 cm."
         },
         {
           "id": "meas_250",
@@ -378,6 +623,21 @@
           "worked_solution": "Volume = 8 × 4 × 2 = 64 m³. Since 1 m³ = 1 kL, capacity = 64 kL."
         },
         {
+          "id": "meas_275",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "A trapezium has parallel sides of 8 cm and 14 cm,\nand a perpendicular height of 6 cm.\nCalculate the area of the trapezium (in cm²).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "66",
+            "66cm2",
+            "66 cm2",
+            "66cm²"
+          ],
+          "worked_solution": "A = ½ × (a + b) × h = ½ × (8 + 14) × 6 = 11 × 6 = 66 cm²."
+        },
+        {
           "id": "meas_300",
           "points": 300,
           "stage_3_accessible": false,
@@ -393,6 +653,20 @@
           "worked_solution": "Surface Area = 2 × (10×5 + 10×2 + 5×2) = 2 × (50 + 20 + 10) = 160 m²."
         },
         {
+          "id": "meas_325",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "Calculate the circumference of a circle with a diameter\nof 14 cm, rounded to the nearest whole number (in cm).\n(Use C = π × d)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "44",
+            "44cm",
+            "44 cm"
+          ],
+          "worked_solution": "C = π × 14 ≈ 43.98 cm, which rounds to 44 cm."
+        },
+        {
           "id": "meas_350",
           "points": 350,
           "stage_3_accessible": false,
@@ -406,6 +680,21 @@
             "240cm²"
           ],
           "worked_solution": "Large width = 3 × 4 = 12 cm. Large length = 5 × 4 = 20 cm. Large Area = 12 × 20 = 240 cm²."
+        },
+        {
+          "id": "meas_375",
+          "points": 350,
+          "stage_3_accessible": true,
+          "question": "A train departs Central Station at 14:35\nand arrives at its destination at 17:20.\nHow many minutes did the journey take?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "165",
+            "165 mins",
+            "165 min",
+            "165 minutes"
+          ],
+          "worked_solution": "14:35 to 17:35 is 3 hours (180 minutes). Subtract 15 minutes to reach 17:20: 180 − 15 = 165 minutes."
         },
         {
           "id": "meas_400",
@@ -438,6 +727,21 @@
           "worked_solution": "Area = π × 5² = 78.5398... Rounds up to 79 cm²."
         },
         {
+          "id": "meas_475",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "A cylinder has a radius of 4 cm and a height of 10 cm.\nCalculate its volume (in cm³), rounded to the nearest\nwhole number. (Use V = π × r² × h)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "503",
+            "503cm3",
+            "503 cm3",
+            "503cm³"
+          ],
+          "worked_solution": "V = π × 4² × 10 = 160π ≈ 502.65 cm³, which rounds to 503 cm³."
+        },
+        {
           "id": "meas_500",
           "points": 500,
           "stage_3_accessible": false,
@@ -453,10 +757,26 @@
           "worked_solution": "A = ½ × h × (a + b) → 54 = ½ × 6 × (7 + b) → 54 = 3(7 + b) → 18 = 7 + b → b = 11 cm."
         },
         {
+          "id": "meas_525",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "Convert an area of 3.5 m² into square centimetres (cm²).\n(Remember: 1 m = 100 cm)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "35000",
+            "35,000",
+            "35 000",
+            "35000cm2",
+            "35000 cm2"
+          ],
+          "worked_solution": "1 m² = 100 cm × 100 cm = 10 000 cm². Therefore 3.5 m² = 3.5 × 10 000 = 35 000 cm²."
+        },
+        {
           "id": "meas_550",
           "points": 550,
           "stage_3_accessible": false,
-          "question": "A triangular prism has a front triangular face with an area of 12 m²,\nand a total length (depth) of 10 m.\nWhat is the volume of the prism (in m³)?\n(Use the formula V = A × h)",
+          "question": "A triangular prism has a front triangular face with an\narea of 12 m², and a total length (depth) of 10 m.\nWhat is the volume of the prism (in m³)?\n(Use the formula V = A × h)",
           "svg_prompt": "[SVG Prompt: Draw a 3D triangular prism. Shade the front triangular face and label it 'Area = 12 m²'. Label the long receding edge of the prism '10 m'.]",
           "image": "img/area_550.png",
           "accepted_answers": [
@@ -503,6 +823,19 @@
           "worked_solution": "4x − 9 = 27 → 4x = 36 → x = 9."
         },
         {
+          "id": "alg_125",
+          "points": 100,
+          "stage_3_accessible": false,
+          "question": "Evaluate 3x − 2y when x = 4 and y = −5.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "22",
+            "twenty-two"
+          ],
+          "worked_solution": "3(4) − 2(−5) = 12 − (−10) = 12 + 10 = 22."
+        },
+        {
           "id": "alg_150",
           "points": 150,
           "stage_3_accessible": false,
@@ -518,6 +851,21 @@
           "worked_solution": "(m ÷ 4) + 7 = 15 → m ÷ 4 = 8 → m = 32."
         },
         {
+          "id": "alg_175",
+          "points": 150,
+          "stage_3_accessible": false,
+          "question": "Simplify by collecting like terms:\n7a + 4b − 2a + 5b",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "5a+9b",
+            "5a + 9b",
+            "9b+5a",
+            "9b + 5a"
+          ],
+          "worked_solution": "(7a − 2a) + (4b + 5b) = 5a + 9b."
+        },
+        {
           "id": "alg_200",
           "points": 200,
           "stage_3_accessible": false,
@@ -530,6 +878,20 @@
             "twenty-two"
           ],
           "worked_solution": "RHS = 3(6) + 4 = 18 + 4 = 22. (Since LHS = 5(6 − 2) = 20 ≠ RHS, x = 6 is not the solution)."
+        },
+        {
+          "id": "alg_225",
+          "points": 200,
+          "stage_3_accessible": false,
+          "question": "Expand the brackets:\n4(3x − 5)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "12x-20",
+            "12x - 20",
+            "12x−20"
+          ],
+          "worked_solution": "4 × 3x − 4 × 5 = 12x − 20."
         },
         {
           "id": "alg_250",
@@ -547,6 +909,21 @@
           "worked_solution": "6x − 15 = 27 → 6x = 42 → x = 7."
         },
         {
+          "id": "alg_275",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "Factorise completely using the highest common factor:\n12x + 18",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "6(2x+3)",
+            "6(2x + 3)",
+            "6(3+2x)",
+            "6(3 + 2x)"
+          ],
+          "worked_solution": "The HCF of 12 and 18 is 6. Factorising gives 6(2x + 3)."
+        },
+        {
           "id": "alg_300",
           "points": 300,
           "stage_3_accessible": false,
@@ -560,6 +937,22 @@
             "eight"
           ],
           "worked_solution": "Subtract 3x from both sides: 4x − 4 = 28 → 4x = 32 → x = 8."
+        },
+        {
+          "id": "alg_325",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "On the Cartesian plane, in which quadrant\n(1, 2, 3, or 4) does the point (−4, 7) lie?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "2",
+            "ii",
+            "second",
+            "quadrant 2",
+            "q2"
+          ],
+          "worked_solution": "Negative x-coordinate and positive y-coordinate places the point in Quadrant 2 (top-left)."
         },
         {
           "id": "alg_350",
@@ -577,6 +970,21 @@
           "worked_solution": "Substitute y = 30: 2x + 2 = 30 → 2x = 28 → x = 14."
         },
         {
+          "id": "alg_375",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "Find the x-coordinate of the midpoint\nof the interval joining (−2, 5) and (10, 9).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "4",
+            "x=4",
+            "x = 4",
+            "four"
+          ],
+          "worked_solution": "Midpoint x-coordinate = (−2 + 10) ÷ 2 = 8 ÷ 2 = 4."
+        },
+        {
           "id": "alg_400",
           "points": 400,
           "stage_3_accessible": false,
@@ -590,6 +998,21 @@
             "eighteen"
           ],
           "worked_solution": "3x − 11 = x + 25 → 2x − 11 = 25 → 2x = 36 → x = 18."
+        },
+        {
+          "id": "alg_425",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "A straight line passes through (1, 3) and (5, 15).\nCalculate the gradient (m = rise ÷ run) of this line.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "3",
+            "m=3",
+            "m = 3",
+            "three"
+          ],
+          "worked_solution": "Rise = 15 − 3 = 12. Run = 5 − 1 = 4. Gradient = 12 ÷ 4 = 3."
         },
         {
           "id": "alg_450",
@@ -622,6 +1045,22 @@
           "worked_solution": "4x + 12 − 2x + 2 = 26 → 2x + 14 = 26 → 2x = 12 → x = 6."
         },
         {
+          "id": "alg_525",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "A rectangle has length (2x + 3) cm and width x cm.\nIf its total perimeter is 42 cm,\nfind the value of x.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "6",
+            "x=6",
+            "x = 6",
+            "6cm",
+            "6 cm"
+          ],
+          "worked_solution": "2(2x + 3 + x) = 42 → 6x + 6 = 42 → 6x = 36 → x = 6."
+        },
+        {
           "id": "alg_550",
           "points": 550,
           "stage_3_accessible": false,
@@ -647,6 +1086,787 @@
             "ten"
           ],
           "worked_solution": "Horizontal run = 5 − (−1) = 6. Vertical rise = 5 − (−3) = 8. Distance = √(6² + 8²) = √(36 + 64) = √100 = 10."
+        }
+      ]
+    },
+    {
+      "category_name": "Integers & Order of Operations",
+      "questions": [
+        {
+          "id": "int_100",
+          "points": 100,
+          "stage_3_accessible": true,
+          "question": "Evaluate:\n−7 + 12 − 9",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "-4",
+            "−4"
+          ],
+          "worked_solution": "−7 + 12 = 5, then 5 − 9 = −4."
+        },
+        {
+          "id": "int_150",
+          "points": 150,
+          "stage_3_accessible": false,
+          "question": "Evaluate:\n8 − (−13)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "21",
+            "twenty-one"
+          ],
+          "worked_solution": "Subtracting a negative is the same as adding: 8 + 13 = 21."
+        },
+        {
+          "id": "int_200",
+          "points": 200,
+          "stage_3_accessible": false,
+          "question": "Evaluate:\n(−6) × (−9) ÷ (−3)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "-18",
+            "−18"
+          ],
+          "worked_solution": "(−6) × (−9) = 54, then 54 ÷ (−3) = −18."
+        },
+        {
+          "id": "int_250",
+          "points": 250,
+          "stage_3_accessible": true,
+          "question": "Using the order of operations (BIDMAS), evaluate:\n5 + 3 × 8 − 6 ÷ 2",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "26",
+            "twenty-six"
+          ],
+          "worked_solution": "Multiply and divide first: 5 + 24 − 3 = 26."
+        },
+        {
+          "id": "int_300",
+          "points": 300,
+          "stage_3_accessible": true,
+          "question": "At midnight in Thredbo the temperature was −4°C.\nBy midday it rose by 13°C, then dropped 11°C by evening.\nWhat was the evening temperature (in °C)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "-2",
+            "−2",
+            "-2°c",
+            "-2c",
+            "-2°"
+          ],
+          "worked_solution": "−4 + 13 − 11 = 9 − 11 = −2°C."
+        },
+        {
+          "id": "int_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "Evaluate using the order of operations:\n4 × (9 − 5)² − 12",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "52",
+            "fifty-two"
+          ],
+          "worked_solution": "Brackets: 9 − 5 = 4. Indices: 4² = 16. Multiply: 4 × 16 = 64. Subtract: 64 − 12 = 52."
+        },
+        {
+          "id": "int_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "Evaluate:\n(−3)² + (−2)³",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "1",
+            "one"
+          ],
+          "worked_solution": "(−3)² = 9 and (−2)³ = −8. Therefore 9 + (−8) = 1."
+        },
+        {
+          "id": "int_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "A submarine is at an elevation of −140 m.\nIt dives 35 m per minute for 4 minutes,\nthen rises 95 m. What is its new elevation (in m)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "-185",
+            "−185",
+            "-185m",
+            "-185 m"
+          ],
+          "worked_solution": "−140 − (35 × 4) + 95 = −140 − 140 + 95 = −185 m."
+        },
+        {
+          "id": "int_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "Evaluate:\n[−18 ÷ (7 − 10)]² − 4 × (−5)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "56",
+            "fifty-six"
+          ],
+          "worked_solution": "7 − 10 = −3. −18 ÷ (−3) = 6. 6² = 36. −4 × (−5) = +20. Total = 36 + 20 = 56."
+        },
+        {
+          "id": "int_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "In a maths quiz, a correct answer scores +4 points\nand a wrong answer scores −2 points.\nIf Sam gets 14 correct and 5 wrong, what is Sam's total score?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "46",
+            "46 pts",
+            "46 points"
+          ],
+          "worked_solution": "14 × 4 + 5 × (−2) = 56 − 10 = 46 points."
+        },
+        {
+          "id": "int_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "Two integers have a product of −36 and a sum of −5.\nWhat is the SMALLER of the two integers?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "-9",
+            "−9"
+          ],
+          "worked_solution": "The two integers are −9 and 4 (−9 × 4 = −36 and −9 + 4 = −5). The smaller integer is −9."
+        }
+      ]
+    },
+    {
+      "category_name": "Fractions, Decimals & Percentages",
+      "questions": [
+        {
+          "id": "fdp_100",
+          "points": 100,
+          "stage_3_accessible": true,
+          "question": "Write the fraction 18/24 in its simplest form.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "3/4"
+          ],
+          "worked_solution": "Divide numerator and denominator by their HCF of 6: 18 ÷ 6 = 3, 24 ÷ 6 = 4 → 3/4."
+        },
+        {
+          "id": "fdp_150",
+          "points": 150,
+          "stage_3_accessible": true,
+          "question": "Calculate 3/5 of 85.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "51",
+            "fifty-one"
+          ],
+          "worked_solution": "85 ÷ 5 = 17, then 17 × 3 = 51."
+        },
+        {
+          "id": "fdp_200",
+          "points": 200,
+          "stage_3_accessible": true,
+          "question": "Calculate 15% of $240.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "36",
+            "$36",
+            "36.00",
+            "$36.00"
+          ],
+          "worked_solution": "10% of 240 = 24, 5% = 12. Total = 24 + 12 = $36."
+        },
+        {
+          "id": "fdp_250",
+          "points": 250,
+          "stage_3_accessible": true,
+          "question": "Convert the fraction 7/20 into a percentage.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "35%",
+            "35"
+          ],
+          "worked_solution": "7/20 × 100% = 7 × 5% = 35%."
+        },
+        {
+          "id": "fdp_300",
+          "points": 300,
+          "stage_3_accessible": true,
+          "question": "Calculate 2/3 + 1/4.\nWrite your answer as a simplified fraction.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "11/12"
+          ],
+          "worked_solution": "Common denominator is 12: 8/12 + 3/12 = 11/12."
+        },
+        {
+          "id": "fdp_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "A $160 pair of sneakers is discounted by 25%.\nWhat is the sale price?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "120",
+            "$120",
+            "120.00",
+            "$120.00"
+          ],
+          "worked_solution": "Discount = 25% of $160 = $40. Sale price = $160 − $40 = $120."
+        },
+        {
+          "id": "fdp_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "A skateboard costs $85 before GST.\nIf 10% GST is added, what is the final price?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "93.5",
+            "93.50",
+            "$93.5",
+            "$93.50"
+          ],
+          "worked_solution": "10% of $85 = $8.50. Final price = $85 + $8.50 = $93.50."
+        },
+        {
+          "id": "fdp_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "A bicycle is bought for $200 and sold for $250.\nCalculate the percentage profit.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "25%",
+            "25"
+          ],
+          "worked_solution": "Profit = $50. Percentage profit = (50 ÷ 200) × 100% = 25%."
+        },
+        {
+          "id": "fdp_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "Evaluate (3/4) ÷ (9/8).\nWrite your answer as a simplified fraction.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "2/3"
+          ],
+          "worked_solution": "(3/4) × (8/9) = 24/36 = 2/3."
+        },
+        {
+          "id": "fdp_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "After a 20% discount, a hoodie costs $96.\nWhat was the ORIGINAL price before the discount?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "120",
+            "$120",
+            "120.00",
+            "$120.00"
+          ],
+          "worked_solution": "80% = $96, so 10% = $12, and 100% = $120."
+        },
+        {
+          "id": "fdp_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "A $200 share rises in value by 10% on Monday,\nthen falls by 10% on Tuesday.\nWhat is the share worth at the end of Tuesday?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "198",
+            "$198",
+            "198.00",
+            "$198.00"
+          ],
+          "worked_solution": "Monday: $200 × 1.1 = $220. Tuesday: $220 × 0.9 = $198."
+        }
+      ]
+    },
+    {
+      "category_name": "Ratios & Rates",
+      "questions": [
+        {
+          "id": "rat_100",
+          "points": 100,
+          "stage_3_accessible": true,
+          "question": "Write the ratio 24 : 36 in its simplest form.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "2:3",
+            "2 : 3",
+            "2 to 3"
+          ],
+          "worked_solution": "Divide both sides by their HCF of 12: 24 ÷ 12 = 2, 36 ÷ 12 = 3 → 2 : 3."
+        },
+        {
+          "id": "rat_150",
+          "points": 150,
+          "stage_3_accessible": true,
+          "question": "Find the missing value x in this equivalent ratio:\n3 : 5 = 18 : x",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "30",
+            "x=30",
+            "x = 30"
+          ],
+          "worked_solution": "3 × 6 = 18, so multiply the second term by 6: x = 5 × 6 = 30."
+        },
+        {
+          "id": "rat_200",
+          "points": 200,
+          "stage_3_accessible": false,
+          "question": "A car uses 36 litres of petrol to travel 450 km.\nCalculate the car's fuel rate in km per litre.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "12.5",
+            "12.5 km/l",
+            "12.5km/l"
+          ],
+          "worked_solution": "450 ÷ 36 = 12.5 km per litre."
+        },
+        {
+          "id": "rat_250",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "Simplify the ratio 40 cm : 2 m\nby converting to the same units first.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "1:5",
+            "1 : 5",
+            "1 to 5"
+          ],
+          "worked_solution": "2 m = 200 cm. Ratio = 40 : 200. Divide both by 40 → 1 : 5."
+        },
+        {
+          "id": "rat_300",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "Divide $120 in the ratio 3 : 5.\nWhat is the value of the LARGER share?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "75",
+            "$75",
+            "75.00",
+            "$75.00"
+          ],
+          "worked_solution": "Total parts = 3 + 5 = 8. 1 part = $120 ÷ 8 = $15. Larger share = 5 × $15 = $75."
+        },
+        {
+          "id": "rat_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "A train travels 270 km in 3 hours at a constant speed.\nAt this same speed, how far does it travel in 5 hours (in km)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "450",
+            "450km",
+            "450 km"
+          ],
+          "worked_solution": "Speed = 270 ÷ 3 = 90 km/h. Distance in 5 hours = 90 × 5 = 450 km."
+        },
+        {
+          "id": "rat_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "Pack A has 6 muffins for $9.00.\nPack B has 8 muffins for $10.40.\nWhat is the unit price (in dollars) of the CHEAPER pack?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "1.30",
+            "1.3",
+            "$1.30",
+            "$1.3"
+          ],
+          "worked_solution": "Pack A: $9.00 ÷ 6 = $1.50 each. Pack B: $10.40 ÷ 8 = $1.30 each. Cheaper unit price is $1.30."
+        },
+        {
+          "id": "rat_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "The ratio of boys to girls in a club is 4 : 7.\nIf there are 28 girls in the club,\nhow many students are in the club IN TOTAL?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "44",
+            "44 students"
+          ],
+          "worked_solution": "7 parts = 28 → 1 part = 4. Total parts = 4 + 7 = 11 → 11 × 4 = 44 students."
+        },
+        {
+          "id": "rat_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "A prize of $180 is shared in the ratio 2 : 3 : 4.\nWhat is the value of the MIDDLE share?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "60",
+            "$60",
+            "60.00",
+            "$60.00"
+          ],
+          "worked_solution": "Total parts = 2 + 3 + 4 = 9. 1 part = $180 ÷ 9 = $20. Middle share = 3 × $20 = $60."
+        },
+        {
+          "id": "rat_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "On a map with a scale of 1 : 50 000,\ntwo towns are 6 cm apart.\nWhat is the actual distance between them (in km)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "3",
+            "3km",
+            "3 km"
+          ],
+          "worked_solution": "6 cm × 50 000 = 300 000 cm = 3000 m = 3 km."
+        },
+        {
+          "id": "rat_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "A cyclist rides 30 km in 1.5 hours,\nthen rides another 45 km in 1.5 hours.\nWhat is the cyclist's average speed (in km/h)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "25",
+            "25km/h",
+            "25 km/h"
+          ],
+          "worked_solution": "Total distance = 30 + 45 = 75 km. Total time = 1.5 + 1.5 = 3 hours. Average speed = 75 ÷ 3 = 25 km/h."
+        }
+      ]
+    },
+    {
+      "category_name": "Indices, Primes & Pythagoras",
+      "questions": [
+        {
+          "id": "ind_100",
+          "points": 100,
+          "stage_3_accessible": true,
+          "question": "Evaluate:\n5² + √64",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "33",
+            "thirty-three"
+          ],
+          "worked_solution": "5² = 25 and √64 = 8. 25 + 8 = 33."
+        },
+        {
+          "id": "ind_150",
+          "points": 150,
+          "stage_3_accessible": true,
+          "question": "Find the Highest Common Factor (HCF)\nof 36 and 48.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "12",
+            "twelve"
+          ],
+          "worked_solution": "Factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36. Factors of 48: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48. HCF = 12."
+        },
+        {
+          "id": "ind_200",
+          "points": 200,
+          "stage_3_accessible": true,
+          "question": "Find the Lowest Common Multiple (LCM)\nof 12 and 18.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "36",
+            "thirty-six"
+          ],
+          "worked_solution": "Multiples of 12: 12, 24, 36... Multiples of 18: 18, 36... LCM = 36."
+        },
+        {
+          "id": "ind_250",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "Using the zero index law, evaluate:\n7 × 5^0 + 3^0",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "8",
+            "eight"
+          ],
+          "worked_solution": "Any non-zero number to the power of 0 equals 1: 7 × 1 + 1 = 8."
+        },
+        {
+          "id": "ind_300",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "Using index laws, simplify and evaluate:\n(2^5 × 2^4) ÷ 2^6",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "8",
+            "2^3",
+            "eight"
+          ],
+          "worked_solution": "2^(5 + 4 − 6) = 2^3 = 8."
+        },
+        {
+          "id": "ind_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "Evaluate:\n(cube root of 27) + 4³",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "67",
+            "sixty-seven"
+          ],
+          "worked_solution": "Cube root of 27 is 3 (since 3³ = 27), and 4³ = 64. 3 + 64 = 67."
+        },
+        {
+          "id": "pyt_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "A right-angled triangle has shorter sides of\n6 cm and 8 cm.\nUse Pythagoras' theorem to find the hypotenuse (in cm).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "10",
+            "10cm",
+            "10 cm"
+          ],
+          "worked_solution": "c² = 6² + 8² = 36 + 64 = 100 → c = √100 = 10 cm."
+        },
+        {
+          "id": "pyt_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "A right-angled triangle has a hypotenuse of 13 cm\nand one shorter side of 5 cm.\nFind the length of the other shorter side (in cm).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "12",
+            "12cm",
+            "12 cm"
+          ],
+          "worked_solution": "a² = 13² − 5² = 169 − 25 = 144 → a = √144 = 12 cm."
+        },
+        {
+          "id": "pyt_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "A 10 m ladder leans against a vertical wall\nwith its foot 6 m away from the base of the wall.\nHow high up the wall does the ladder reach (in m)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "8",
+            "8m",
+            "8 m"
+          ],
+          "worked_solution": "h² = 10² − 6² = 100 − 36 = 64 → h = √64 = 8 m."
+        },
+        {
+          "id": "pyt_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "A rectangular paddock is 24 m long and 7 m wide.\nA straight fence is built diagonally from one corner\nto the opposite corner. How long is the fence (in m)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "25",
+            "25m",
+            "25 m"
+          ],
+          "worked_solution": "d² = 24² + 7² = 576 + 49 = 625 → d = √625 = 25 m."
+        },
+        {
+          "id": "pyt_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "A right-angled triangle has a hypotenuse of 17 cm\nand a base of 15 cm.\nCalculate the AREA of the triangle (in cm²).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "60",
+            "60cm2",
+            "60 cm2",
+            "60cm²"
+          ],
+          "worked_solution": "Height = √(17² − 15²) = √(289 − 225) = √64 = 8 cm. Area = ½ × 15 × 8 = 60 cm²."
+        }
+      ]
+    },
+    {
+      "category_name": "Probability & Chance",
+      "questions": [
+        {
+          "id": "prob_100",
+          "points": 100,
+          "stage_3_accessible": true,
+          "question": "A fair 6-sided die is rolled once.\nWhat is the probability of rolling a number greater than 4?\nGive your answer as a simplified fraction.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "1/3"
+          ],
+          "worked_solution": "Numbers greater than 4 are 5 and 6 (2 outcomes out of 6). 2/6 simplifies to 1/3."
+        },
+        {
+          "id": "prob_150",
+          "points": 150,
+          "stage_3_accessible": true,
+          "question": "The probability that it rains in Sydney tomorrow is 0.35.\nWhat is the probability that it does NOT rain\n(as a decimal)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "0.65",
+            ".65",
+            "65%",
+            "13/20"
+          ],
+          "worked_solution": "Complementary event: P(not rain) = 1 − 0.35 = 0.65."
+        },
+        {
+          "id": "prob_200",
+          "points": 200,
+          "stage_3_accessible": true,
+          "question": "A bag of lollies holds 5 red, 7 green, and 8 yellow snakes.\nWhat is the probability of picking a red snake?\n(Give as a simplified fraction or decimal)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "1/4",
+            "0.25",
+            "25%"
+          ],
+          "worked_solution": "Total snakes = 5 + 7 + 8 = 20. P(red) = 5/20 = 1/4 = 0.25."
+        },
+        {
+          "id": "prob_250",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "A spinner lands on blue with a probability of 0.3.\nIf you spin it 200 times, how many times\nwould you expect it to land on blue?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "60",
+            "60 times"
+          ],
+          "worked_solution": "Expected frequency = 0.3 × 200 = 60."
+        },
+        {
+          "id": "prob_300",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "One card is drawn at random from a standard 52-card deck.\nWhat is the probability of drawing a Heart?\n(Give as a simplified fraction or decimal)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "1/4",
+            "0.25",
+            "25%"
+          ],
+          "worked_solution": "There are 13 Hearts in 52 cards. 13/52 simplifies to 1/4."
+        },
+        {
+          "id": "prob_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "A jar contains 6 blue, 9 red, and 5 white marbles.\nWhat is the probability of NOT picking a blue marble?\n(Give as a simplified fraction or decimal)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "7/10",
+            "0.7",
+            "0.70",
+            "70%"
+          ],
+          "worked_solution": "Total = 20. Non-blue = 9 + 5 = 14. P(not blue) = 14/20 = 7/10 = 0.7."
+        },
+        {
+          "id": "prob_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "One letter is chosen at random from the word\nMATHEMATICS.\nWhat is the probability that it is a vowel (A, E, I, O, U)?\nGive your answer as a fraction.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "4/11"
+          ],
+          "worked_solution": "MATHEMATICS has 11 letters, of which 4 are vowels (A, E, A, I). Probability = 4/11."
+        },
+        {
+          "id": "prob_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "In a class of 30 students, 18 play soccer,\n15 play basketball, and 7 play BOTH sports.\nHow many students play NEITHER sport?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "4",
+            "4 students",
+            "four"
+          ],
+          "worked_solution": "Play at least one sport = 18 + 15 − 7 = 26. Neither = 30 − 26 = 4 students."
+        },
+        {
+          "id": "prob_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "In a survey of 40 students, 22 like maths,\n19 like science, and 6 like neither subject.\nHow many students like BOTH maths and science?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "7",
+            "7 students",
+            "seven"
+          ],
+          "worked_solution": "At least one = 40 − 6 = 34. Both = (22 + 19) − 34 = 41 − 34 = 7 students."
+        },
+        {
+          "id": "prob_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "In a class of 25 students: 10 boys play sport,\n4 boys do not, 8 girls play sport, and 3 girls do not.\nWhat is the probability a random student is a girl\nwho plays sport? (Give as a fraction or decimal)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "8/25",
+            "0.32",
+            "32%"
+          ],
+          "worked_solution": "8 girls play sport out of 25 students total: 8/25 = 0.32."
+        },
+        {
+          "id": "prob_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "A bag contains 12 blue marbles and some red marbles.\nIf the probability of randomly picking a blue marble\nis 3/5, how many RED marbles are in the bag?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "8",
+            "8 marbles",
+            "eight"
+          ],
+          "worked_solution": "3 parts = 12 blue marbles → 1 part = 4 marbles. Total = 5 × 4 = 20 marbles. Red = 20 − 12 = 8."
         }
       ]
     }

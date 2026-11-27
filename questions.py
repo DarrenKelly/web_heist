@@ -4,6 +4,7 @@ Questions, Dynamic Parameterisation, and Progression Data Management
 
 import os
 import json
+import math
 import random
 from chest import OBJECT_DEFINITIONS
 
@@ -586,7 +587,969 @@ def parameterise_question(q_data, force_regenerate=False):
             f"3x + 6 = {total} → 3x = {3 * x_val} → x = {x_val}. Largest = {x_val} + 4 = {largest}."
         )
 
-    # --- 5. Fallback Arithmetic & Template Problems ---
+    # --- 5. Extended NSW Stage 4 Dynamic Parameterisation ---
+    elif qid == "data_125":
+        mode_val = random.randint(2, 9)
+        others = [v for v in range(2, 11) if v != mode_val]
+        d1, d2, d3, d4 = random.sample(others, 4)
+        vals = [mode_val, mode_val, mode_val, d1, d1, d2, d3, d4]
+        random.shuffle(vals)
+        q["question"] = f"Find the mode of the following dataset:\n{', '.join(map(str, vals))}"
+        q["accepted_answers"] = [str(mode_val)]
+        q["worked_solution"] = f"The number {mode_val} appears 3 times, more frequently than any other value."
+
+    elif qid == "data_175":
+        lo = random.randint(8, 15)
+        hi = random.randint(28, 39)
+        mids = random.sample(range(lo + 2, hi - 1), 4)
+        vals = [lo, hi] + mids
+        random.shuffle(vals)
+        ans = hi - lo
+        q["question"] = (
+            f"Find the range of the following daily maximum\n"
+            f"temperatures (in °C):\n"
+            f"{', '.join(map(str, vals))}"
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}°", f"{ans}°c"]
+        q["worked_solution"] = f"Range = {hi} − {lo} = {ans}."
+
+    elif qid == "data_225":
+        s1 = random.randint(8, 13)
+        s2 = s1 + random.randint(2, 4)
+        s3 = s2 + random.randint(2, 4)
+        s4 = s3 + random.randint(2, 5)
+        s5 = s4 + random.randint(2, 4)
+        s6 = s5 + random.randint(2, 4)
+        s7 = s6 + random.randint(2, 5)
+        vals = [s1, s2, s3, s4, s5, s6, s7]
+        random.shuffle(vals)
+        q["question"] = f"Find the median of the following 7 scores:\n{', '.join(map(str, vals))}"
+        q["accepted_answers"] = [str(s4)]
+        q["worked_solution"] = f"Ordered: {', '.join(map(str, [s1, s2, s3, s4, s5, s6, s7]))}. Middle (4th) score = {s4}."
+
+    elif qid == "data_275":
+        mean_val = random.randint(64, 84)
+        step = random.choice([3, 4, 5])
+        vals = [mean_val - 2 * step, mean_val - step, mean_val, mean_val + step, mean_val + 2 * step]
+        random.shuffle(vals)
+        q["question"] = f"Calculate the mean of these 5 test scores:\n{', '.join(map(str, vals))}"
+        q["accepted_answers"] = [str(mean_val), f"{mean_val}.0"]
+        q["worked_solution"] = f"Sum = {5 * mean_val}. Mean = {5 * mean_val} ÷ 5 = {mean_val}."
+
+    elif qid == "data_325":
+        mid_s = random.randint(2, 4)
+        k = random.choice([2, 3, 4])
+        mid_f = 10 - 2 * k
+        q["question"] = (
+            f"A frequency table shows quiz scores out of 5:\n"
+            f"Score {mid_s - 1} (freq {k}), Score {mid_s} (freq {mid_f}), Score {mid_s + 1} (freq {k}).\n"
+            f"Calculate the mean score."
+        )
+        q["accepted_answers"] = [str(mid_s), f"{mid_s}.0"]
+        q["worked_solution"] = f"Total score = {10 * mid_s}, total frequency = 10. Mean = {mid_s}."
+
+    elif qid == "data_425":
+        m1 = random.randint(64, 78)
+        diff = random.choice([5, 10, 15])
+        m2 = m1 + diff
+        comb = m1 + (8 * diff) // 20
+        q["question"] = (
+            f"Class A (12 students) has a mean test score of {m1}.\n"
+            f"Class B (8 students) has a mean test score of {m2}.\n"
+            f"What is the combined mean for all 20 students?"
+        )
+        q["accepted_answers"] = [str(comb), f"{comb}.0"]
+        q["worked_solution"] = f"Total = (12 × {m1}) + (8 × {m2}) = {12 * m1 + 8 * m2}. Mean = {12 * m1 + 8 * m2} ÷ 20 = {comb}."
+
+    elif qid == "geo_125":
+        ang = random.randint(18, 72)
+        ans = 90 - ang
+        q["question"] = (
+            f"Two angles are complementary (they add to 90°).\n"
+            f"If one angle measures {ang}°,\n"
+            f"what is the size of the other angle?"
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}°", f"{ans} degrees", f"{ans} deg"]
+        q["worked_solution"] = f"90° − {ang}° = {ans}°."
+
+    elif qid == "geo_175":
+        a = random.randint(32, 62)
+        b = random.randint(45, 78)
+        ans = 180 - a - b
+        q["question"] = (
+            f"Three angles lie along a straight line (180°).\n"
+            f"They measure {a}°, x°, and {b}°.\n"
+            f"Find the value of x."
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}°", f"{ans} degrees", f"x={ans}"]
+        q["worked_solution"] = f"x = 180 − ({a} + {b}) = {ans}°."
+
+    elif qid == "geo_225":
+        a = random.randint(75, 120)
+        b = random.randint(65, 105)
+        c = random.randint(60, 95)
+        ans = 360 - a - b - c
+        q["question"] = (
+            f"Four angles meet at a single point (a full revolution).\n"
+            f"Three of the angles measure {a}°, {b}°, and {c}°.\n"
+            f"What is the size of the fourth angle?"
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}°", f"{ans} degrees", f"{ans} deg"]
+        q["worked_solution"] = f"360° − ({a}° + {b}° + {c}°) = {ans}°."
+
+    elif qid == "geo_275":
+        a = random.randint(36, 74)
+        b = random.randint(40, 74)
+        ans = 180 - a - b
+        q["question"] = (
+            f"Two interior angles of a triangle measure {a}° and {b}°.\n"
+            f"What is the size of the third interior angle?"
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}°", f"{ans} degrees", f"{ans} deg"]
+        q["worked_solution"] = f"180° − ({a}° + {b}°) = {ans}°."
+
+    elif qid == "geo_325":
+        ang = random.randint(38, 82)
+        ans = 180 - ang
+        q["question"] = (
+            f"Two parallel lines are cut by a transversal.\n"
+            f"One of the acute angles formed measures {ang}°.\n"
+            f"What is the size of each obtuse angle formed?"
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}°", f"{ans} degrees", f"{ans} deg"]
+        q["worked_solution"] = f"180° − {ang}° = {ans}°."
+
+    elif qid == "geo_375":
+        name, n = random.choice([
+            ("pentagon", 5), ("hexagon", 6), ("heptagon", 7), ("octagon", 8), ("decagon", 10)
+        ])
+        ans = (n - 2) * 180
+        q["question"] = (
+            f"Using the formula S = 180 × (n − 2),\n"
+            f"calculate the interior angle sum of a {name} ({n} sides)."
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}°", f"{ans} degrees", f"{ans} deg"]
+        q["worked_solution"] = f"S = 180 × ({n} − 2) = {ans}°."
+
+    elif qid == "geo_425":
+        name, n, ans = random.choice([
+            ("pentagon", 5, 108), ("hexagon", 6, 120), ("octagon", 8, 135),
+            ("nonagon", 9, 140), ("decagon", 10, 144), ("dodecagon", 12, 150)
+        ])
+        q["question"] = (
+            f"Calculate the size of ONE interior angle\n"
+            f"of a regular {name} ({n} equal sides and angles)."
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}°", f"{ans} degrees", f"{ans} deg"]
+        q["worked_solution"] = f"Angle sum = {(n - 2) * 180}°. Each angle = {(n - 2) * 180}° ÷ {n} = {ans}°."
+
+    elif qid == "meas_125":
+        km_tenths = random.randint(12, 88)
+        km_val = km_tenths / 10.0
+        ans = km_tenths * 100
+        q["question"] = f"Convert {km_val:.1f} kilometres (km) into metres (m)."
+        q["accepted_answers"] = [str(ans), f"{ans}m", f"{ans} m"]
+        q["worked_solution"] = f"{km_val:.1f} × 1000 = {ans} m."
+
+    elif qid == "meas_175":
+        b = random.randint(7, 15)
+        h = random.randint(4, 10)
+        slanted = h + random.randint(2, 4)
+        ans = b * h
+        q["question"] = (
+            f"A parallelogram has a base of {b} cm, a slanted side\n"
+            f"of {slanted} cm, and a perpendicular height of {h} cm.\n"
+            f"Calculate its area (in cm²)."
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}cm2", f"{ans} cm2", f"{ans}cm²"]
+        q["worked_solution"] = f"Area = base × perpendicular height = {b} × {h} = {ans} cm²."
+
+    elif qid == "meas_225":
+        w = random.randint(5, 12)
+        l = w + random.randint(4, 10)
+        p = 2 * (l + w)
+        q["question"] = (
+            f"A rectangle has a perimeter of {p} cm\n"
+            f"and a length of {l} cm.\n"
+            f"What is the width of the rectangle (in cm)?"
+        )
+        q["accepted_answers"] = [str(w), f"{w}cm", f"{w} cm"]
+        q["worked_solution"] = f"2w = {p} − {2 * l} = {2 * w} → w = {w} cm."
+
+    elif qid == "meas_275":
+        a = random.randint(5, 11)
+        b = a + random.randrange(4, 12, 2)
+        h = random.choice([4, 6, 8, 10])
+        ans = ((a + b) * h) // 2
+        q["question"] = (
+            f"A trapezium has parallel sides of {a} cm and {b} cm,\n"
+            f"and a perpendicular height of {h} cm.\n"
+            f"Calculate the area of the trapezium (in cm²)."
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}cm2", f"{ans} cm2", f"{ans}cm²"]
+        q["worked_solution"] = f"Area = ½ × ({a} + {b}) × {h} = {ans} cm²."
+
+    elif qid == "meas_325":
+        d = random.randint(8, 24)
+        ans = int(round(math.pi * d))
+        q["question"] = (
+            f"Calculate the circumference of a circle with a diameter\n"
+            f"of {d} cm, rounded to the nearest whole number (in cm).\n"
+            f"(Use C = π × d)"
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}cm", f"{ans} cm"]
+        q["worked_solution"] = f"C = π × {d} ≈ {math.pi * d:.2f} cm → {ans} cm."
+
+    elif qid == "meas_375":
+        start_h = random.randint(9, 15)
+        start_m = random.choice([10, 15, 20, 25, 35, 40, 45])
+        dur = random.choice([95, 115, 135, 145, 165, 175, 195])
+        end_h, end_m = divmod(start_h * 60 + start_m + dur, 60)
+        q["question"] = (
+            f"A train departs Central Station at {start_h:02d}:{start_m:02d}\n"
+            f"and arrives at its destination at {end_h:02d}:{end_m:02d}.\n"
+            f"How many minutes did the journey take?"
+        )
+        q["accepted_answers"] = [str(dur), f"{dur} mins", f"{dur} min", f"{dur} minutes"]
+        q["worked_solution"] = f"Elapsed time from {start_h:02d}:{start_m:02d} to {end_h:02d}:{end_m:02d} is {dur} minutes."
+
+    elif qid == "meas_475":
+        r = random.randint(3, 7)
+        h = random.randint(6, 14)
+        vol = math.pi * r * r * h
+        ans = int(round(vol))
+        q["question"] = (
+            f"A cylinder has a radius of {r} cm and a height of {h} cm.\n"
+            f"Calculate its volume (in cm³), rounded to the nearest\n"
+            f"whole number. (Use V = π × r² × h)"
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}cm3", f"{ans} cm3", f"{ans}cm³"]
+        q["worked_solution"] = f"V = π × {r}² × {h} ≈ {vol:.2f} cm³ → {ans} cm³."
+
+    elif qid == "meas_525":
+        m2_tenths = random.randint(15, 75)
+        m2_val = m2_tenths / 10.0
+        ans = m2_tenths * 1000
+        q["question"] = (
+            f"Convert an area of {m2_val:.1f} m² into square centimetres (cm²).\n"
+            f"(Remember: 1 m = 100 cm)"
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}cm2", f"{ans} cm2"]
+        q["worked_solution"] = f"1 m² = 10 000 cm². {m2_val:.1f} × 10 000 = {ans} cm²."
+
+    elif qid == "alg_125":
+        a = random.randint(2, 5)
+        b = random.randint(2, 5)
+        x_val = random.randint(2, 7)
+        y_abs = random.randint(2, 7)
+        ans = a * x_val + b * y_abs
+        q["question"] = f"Evaluate {a}x − {b}y when x = {x_val} and y = −{y_abs}."
+        q["accepted_answers"] = [str(ans)]
+        q["worked_solution"] = f"{a}({x_val}) − {b}(−{y_abs}) = {a * x_val} + {b * y_abs} = {ans}."
+
+    elif qid == "alg_175":
+        a1 = random.randint(5, 11)
+        a2 = random.randint(2, a1 - 2)
+        b1 = random.randint(2, 7)
+        b2 = random.randint(2, 7)
+        ca = a1 - a2
+        cb = b1 + b2
+        q["question"] = f"Simplify by collecting like terms:\n{a1}a + {b1}b − {a2}a + {b2}b"
+        q["accepted_answers"] = [f"{ca}a+{cb}b", f"{ca}a + {cb}b", f"{cb}b+{ca}a", f"{cb}b + {ca}a"]
+        q["worked_solution"] = f"({a1}a − {a2}a) + ({b1}b + {b2}b) = {ca}a + {cb}b."
+
+    elif qid == "alg_225":
+        k = random.randint(2, 6)
+        a = random.randint(2, 5)
+        b = random.randint(2, 7)
+        ka, kb = k * a, k * b
+        q["question"] = f"Expand the brackets:\n{k}({a}x − {b})"
+        q["accepted_answers"] = [f"{ka}x-{kb}", f"{ka}x - {kb}"]
+        q["worked_solution"] = f"{k} × {a}x − {k} × {b} = {ka}x − {kb}."
+
+    elif qid == "alg_275":
+        hcf = random.randint(3, 7)
+        a, b = random.choice([(2, 3), (2, 5), (3, 4), (3, 5), (4, 5)])
+        c1, c2 = hcf * a, hcf * b
+        q["question"] = f"Factorise completely using the highest common factor:\n{c1}x + {c2}"
+        q["accepted_answers"] = [
+            f"{hcf}({a}x+{b})", f"{hcf}({a}x + {b})",
+            f"{hcf}({b}+{a}x)", f"{hcf}({b} + {a}x)"
+        ]
+        q["worked_solution"] = f"HCF of {c1} and {c2} is {hcf}. Factorised: {hcf}({a}x + {b})."
+
+    elif qid == "alg_325":
+        q_num = random.choice([1, 2, 3, 4])
+        xr = random.randint(2, 9)
+        yr = random.randint(2, 9)
+        if q_num == 1:
+            pt = f"({xr}, {yr})"
+            roman = "i"
+            word = "first"
+        elif q_num == 2:
+            pt = f"(−{xr}, {yr})"
+            roman = "ii"
+            word = "second"
+        elif q_num == 3:
+            pt = f"(−{xr}, −{yr})"
+            roman = "iii"
+            word = "third"
+        else:
+            pt = f"({xr}, −{yr})"
+            roman = "iv"
+            word = "fourth"
+        q["question"] = (
+            f"On the Cartesian plane, in which quadrant\n"
+            f"(1, 2, 3, or 4) does the point {pt} lie?"
+        )
+        q["accepted_answers"] = [str(q_num), roman, word, f"quadrant {q_num}", f"q{q_num}"]
+        q["worked_solution"] = f"The signs of {pt} place it in Quadrant {q_num}."
+
+    elif qid == "alg_375":
+        x1 = random.randrange(-8, 4, 2)
+        x2 = random.randrange(6, 16, 2)
+        y1 = random.randint(1, 7)
+        y2 = random.randint(3, 11)
+        mx = (x1 + x2) // 2
+        x1_s = f"−{abs(x1)}" if x1 < 0 else str(x1)
+        q["question"] = (
+            f"Find the x-coordinate of the midpoint\n"
+            f"of the interval joining ({x1_s}, {y1}) and ({x2}, {y2})."
+        )
+        q["accepted_answers"] = [str(mx), f"x={mx}", f"x = {mx}"]
+        q["worked_solution"] = f"Midpoint x = ({x1_s} + {x2}) ÷ 2 = {mx}."
+
+    elif qid == "alg_425":
+        x1 = random.randint(1, 4)
+        run = random.randint(2, 5)
+        m = random.randint(2, 5)
+        y1 = random.randint(1, 6)
+        x2 = x1 + run
+        y2 = y1 + m * run
+        q["question"] = (
+            f"A straight line passes through ({x1}, {y1}) and ({x2}, {y2}).\n"
+            f"Calculate the gradient (m = rise ÷ run) of this line."
+        )
+        q["accepted_answers"] = [str(m), f"m={m}", f"m = {m}"]
+        q["worked_solution"] = f"Rise = {y2} − {y1} = {m * run}. Run = {x2} − {x1} = {run}. m = {m}."
+
+    elif qid == "alg_525":
+        x_val = random.randint(4, 11)
+        b = random.randint(2, 6)
+        perim = 2 * (3 * x_val + b)
+        q["question"] = (
+            f"A rectangle has length (2x + {b}) cm and width x cm.\n"
+            f"If its total perimeter is {perim} cm,\n"
+            f"find the value of x."
+        )
+        q["accepted_answers"] = [str(x_val), f"x={x_val}", f"x = {x_val}", f"{x_val}cm"]
+        q["worked_solution"] = f"2(3x + {b}) = {perim} → 6x + {2 * b} = {perim} → x = {x_val}."
+
+    elif qid == "int_100":
+        a = random.randint(4, 12)
+        b = random.randint(10, 18)
+        c = random.randint(6, 15)
+        ans = -a + b - c
+        q["question"] = f"Evaluate:\n−{a} + {b} − {c}"
+        q["accepted_answers"] = [str(ans)]
+        q["worked_solution"] = f"−{a} + {b} = {-a + b}, then {-a + b} − {c} = {ans}."
+
+    elif qid == "int_150":
+        a = random.randint(4, 15)
+        b = random.randint(6, 19)
+        ans = a + b
+        q["question"] = f"Evaluate:\n{a} − (−{b})"
+        q["accepted_answers"] = [str(ans)]
+        q["worked_solution"] = f"{a} − (−{b}) = {a} + {b} = {ans}."
+
+    elif qid == "int_200":
+        d = random.randint(2, 5)
+        a = random.randint(2, 5) * d
+        b = random.randint(3, 9)
+        ans = -(a * b // d)
+        q["question"] = f"Evaluate:\n(−{a}) × (−{b}) ÷ (−{d})"
+        q["accepted_answers"] = [str(ans)]
+        q["worked_solution"] = f"(−{a}) × (−{b}) = {a * b}. {a * b} ÷ (−{d}) = {ans}."
+
+    elif qid == "int_250":
+        a = random.randint(3, 10)
+        b = random.randint(2, 5)
+        c = random.randint(4, 9)
+        d = random.choice([2, 3, 4])
+        e = d * random.randint(2, 5)
+        ans = a + b * c - (e // d)
+        q["question"] = f"Using the order of operations (BIDMAS), evaluate:\n{a} + {b} × {c} − {e} ÷ {d}"
+        q["accepted_answers"] = [str(ans)]
+        q["worked_solution"] = f"{a} + {b * c} − {e // d} = {ans}."
+
+    elif qid == "int_300":
+        start = random.randint(2, 7)
+        rise = random.randint(9, 16)
+        drop = random.randint(10, 18)
+        ans = -start + rise - drop
+        q["question"] = (
+            f"At midnight in Thredbo the temperature was −{start}°C.\n"
+            f"By midday it rose by {rise}°C, then dropped {drop}°C by evening.\n"
+            f"What was the evening temperature (in °C)?"
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}°c", f"{ans}°"]
+        q["worked_solution"] = f"−{start} + {rise} − {drop} = {ans}°C."
+
+    elif qid == "int_350":
+        a = random.randint(2, 5)
+        diff = random.randint(3, 5)
+        y = random.randint(2, 6)
+        x = y + diff
+        c = random.randint(5, 16)
+        ans = a * (diff ** 2) - c
+        q["question"] = f"Evaluate using the order of operations:\n{a} × ({x} − {y})² − {c}"
+        q["accepted_answers"] = [str(ans)]
+        q["worked_solution"] = f"{a} × {diff}² − {c} = {a * diff * diff} − {c} = {ans}."
+
+    elif qid == "int_400":
+        a = random.randint(3, 6)
+        b = random.randint(2, 3)
+        ans = (a ** 2) + ((-b) ** 3)
+        q["question"] = f"Evaluate:\n(−{a})² + (−{b})³"
+        q["accepted_answers"] = [str(ans)]
+        q["worked_solution"] = f"(−{a})² = {a * a} and (−{b})³ = {-b ** 3}. Total = {ans}."
+
+    elif qid == "int_450":
+        start = random.randint(90, 160)
+        rate = random.choice([20, 25, 30, 35])
+        mins = random.randint(3, 5)
+        rise = random.randint(50, 110)
+        ans = -start - rate * mins + rise
+        q["question"] = (
+            f"A submarine is at an elevation of −{start} m.\n"
+            f"It dives {rate} m per minute for {mins} minutes,\n"
+            f"then rises {rise} m. What is its new elevation (in m)?"
+        )
+        q["accepted_answers"] = [str(ans), f"{ans}m", f"{ans} m"]
+        q["worked_solution"] = f"−{start} − ({rate} × {mins}) + {rise} = {ans} m."
+
+    elif qid == "int_500":
+        q_val = random.randint(3, 7)
+        diff = random.randint(2, 4)
+        x = random.randint(4, 9)
+        y = x + diff
+        num = q_val * diff
+        a = random.randint(2, 5)
+        b = random.randint(3, 7)
+        ans = (q_val ** 2) + a * b
+        q["question"] = f"Evaluate:\n[−{num} ÷ ({x} − {y})]² − {a} × (−{b})"
+        q["accepted_answers"] = [str(ans)]
+        q["worked_solution"] = f"[−{num} ÷ (−{diff})]² + {a * b} = {q_val}² + {a * b} = {ans}."
+
+    elif qid == "int_550":
+        c_pts = random.choice([4, 5])
+        w_pts = random.choice([2, 3])
+        corr = random.randint(10, 18)
+        wrong = random.randint(3, 8)
+        ans = corr * c_pts - wrong * w_pts
+        q["question"] = (
+            f"In a maths quiz, a correct answer scores +{c_pts} points\n"
+            f"and a wrong answer scores −{w_pts} points.\n"
+            f"If Sam gets {corr} correct and {wrong} wrong, what is Sam's total score?"
+        )
+        q["accepted_answers"] = [str(ans), f"{ans} pts", f"{ans} points"]
+        q["worked_solution"] = f"{corr} × {c_pts} − {wrong} × {w_pts} = {ans}."
+
+    elif qid == "int_600":
+        big = random.randint(3, 7)
+        small = -(big + random.randint(2, 6))
+        prod = big * small
+        s = big + small
+        q["question"] = (
+            f"Two integers have a product of −{abs(prod)} and a sum of −{abs(s)}.\n"
+            f"What is the SMALLER of the two integers?"
+        )
+        q["accepted_answers"] = [str(small)]
+        q["worked_solution"] = f"The integers are {small} and {big}. The smaller is {small}."
+
+    elif qid == "fdp_100":
+        n, d = random.choice([(2, 3), (3, 4), (2, 5), (3, 5), (4, 5), (5, 6), (3, 7), (5, 8)])
+        k = random.randint(3, 7)
+        q["question"] = f"Write the fraction {n * k}/{d * k} in its simplest form."
+        q["accepted_answers"] = [f"{n}/{d}"]
+        q["worked_solution"] = f"Divide top and bottom by {k} → {n}/{d}."
+
+    elif qid == "fdp_150":
+        n, d = random.choice([(2, 3), (3, 4), (2, 5), (3, 5), (4, 5), (5, 6), (3, 8), (5, 8)])
+        mult = random.randint(7, 19)
+        qty = d * mult
+        ans = n * mult
+        q["question"] = f"Calculate {n}/{d} of {qty}."
+        q["accepted_answers"] = [str(ans)]
+        q["worked_solution"] = f"{qty} ÷ {d} = {mult}, then {mult} × {n} = {ans}."
+
+    elif qid == "fdp_200":
+        pct = random.choice([10, 15, 20, 25, 30, 35, 40])
+        amt = random.choice([120, 160, 200, 240, 300, 400])
+        ans = (pct * amt) // 100
+        q["question"] = f"Calculate {pct}% of ${amt}."
+        q["accepted_answers"] = [str(ans), f"${ans}", f"{ans}.00", f"${ans}.00"]
+        q["worked_solution"] = f"({pct} ÷ 100) × ${amt} = ${ans}."
+
+    elif qid == "fdp_250":
+        n, d = random.choice([
+            (3, 20), (7, 20), (9, 20), (11, 20), (13, 20), (17, 20),
+            (7, 25), (9, 25), (12, 25), (16, 25), (19, 25), (3, 10), (7, 10)
+        ])
+        ans = (n * 100) // d
+        q["question"] = f"Convert the fraction {n}/{d} into a percentage."
+        q["accepted_answers"] = [f"{ans}%", str(ans)]
+        q["worked_solution"] = f"({n}/{d}) × 100% = {ans}%."
+
+    elif qid == "fdp_300":
+        n1, d1, n2, d2 = random.choice([
+            (2, 3, 1, 4), (1, 3, 1, 4), (2, 5, 1, 3),
+            (3, 5, 1, 4), (1, 2, 2, 5), (1, 3, 2, 5), (3, 4, 1, 5)
+        ])
+        num = n1 * d2 + n2 * d1
+        den = d1 * d2
+        g = math.gcd(num, den)
+        rn, rd = num // g, den // g
+        q["question"] = f"Calculate {n1}/{d1} + {n2}/{d2}.\nWrite your answer as a simplified fraction."
+        q["accepted_answers"] = [f"{rn}/{rd}"]
+        q["worked_solution"] = f"{n1 * d2}/{den} + {n2 * d1}/{den} = {rn}/{rd}."
+
+    elif qid == "fdp_350":
+        pct = random.choice([15, 20, 25, 30])
+        orig = random.choice([80, 120, 160, 200, 240])
+        disc = (orig * pct) // 100
+        sale = orig - disc
+        q["question"] = f"A ${orig} pair of sneakers is discounted by {pct}%.\nWhat is the sale price?"
+        q["accepted_answers"] = [str(sale), f"${sale}", f"{sale}.00", f"${sale}.00"]
+        q["worked_solution"] = f"Discount = ${disc}. Sale price = ${orig} − ${disc} = ${sale}."
+
+    elif qid == "fdp_400":
+        orig = random.choice([45, 55, 65, 75, 85, 95, 115, 125])
+        gst = orig * 0.1
+        final = orig + gst
+        q["question"] = f"A skateboard costs ${orig} before GST.\nIf 10% GST is added, what is the final price?"
+        q["accepted_answers"] = [f"{final:.1f}", f"{final:.2f}", f"${final:.1f}", f"${final:.2f}"]
+        q["worked_solution"] = f"10% of ${orig} = ${gst:.2f}. Final price = ${final:.2f}."
+
+    elif qid == "fdp_450":
+        cost = random.choice([100, 150, 200, 250, 400])
+        pct = random.choice([10, 20, 25, 30, 40])
+        sell = cost + (cost * pct) // 100
+        q["question"] = f"A bicycle is bought for ${cost} and sold for ${sell}.\nCalculate the percentage profit."
+        q["accepted_answers"] = [f"{pct}%", str(pct)]
+        q["worked_solution"] = f"Profit = ${sell - cost}. ({sell - cost} ÷ {cost}) × 100% = {pct}%."
+
+    elif qid == "fdp_500":
+        a, b, c, d = random.choice([
+            (3, 4, 9, 8), (2, 3, 4, 9), (5, 6, 5, 3),
+            (4, 5, 8, 15), (3, 5, 9, 10), (5, 8, 15, 16)
+        ])
+        num, den = a * d, b * c
+        g = math.gcd(num, den)
+        rn, rd = num // g, den // g
+        q["question"] = f"Evaluate ({a}/{b}) ÷ ({c}/{d}).\nWrite your answer as a simplified fraction."
+        q["accepted_answers"] = [f"{rn}/{rd}"]
+        q["worked_solution"] = f"({a}/{b}) × ({d}/{c}) = {num}/{den} = {rn}/{rd}."
+
+    elif qid == "fdp_550":
+        pct = random.choice([20, 25, 30])
+        orig = random.choice([80, 100, 120, 160, 200])
+        sale = (orig * (100 - pct)) // 100
+        q["question"] = f"After a {pct}% discount, a hoodie costs ${sale}.\nWhat was the ORIGINAL price before the discount?"
+        q["accepted_answers"] = [str(orig), f"${orig}", f"{orig}.00", f"${orig}.00"]
+        q["worked_solution"] = f"{100 - pct}% = ${sale} → 100% = ${orig}."
+
+    elif qid == "fdp_600":
+        orig = random.choice([100, 200, 300, 400, 500])
+        pct = random.choice([10, 20])
+        after_mon = (orig * (100 + pct)) // 100
+        after_tue = (after_mon * (100 - pct)) // 100
+        q["question"] = (
+            f"A ${orig} share rises in value by {pct}% on Monday,\n"
+            f"then falls by {pct}% on Tuesday.\n"
+            f"What is the share worth at the end of Tuesday?"
+        )
+        q["accepted_answers"] = [str(after_tue), f"${after_tue}", f"{after_tue}.00", f"${after_tue}.00"]
+        q["worked_solution"] = f"Monday: ${after_mon}. Tuesday: ${after_tue}."
+
+    elif qid == "rat_100":
+        a, b = random.choice([(2, 3), (3, 4), (2, 5), (3, 5), (4, 5), (3, 7), (5, 6)])
+        k = random.randint(4, 12)
+        q["question"] = f"Write the ratio {a * k} : {b * k} in its simplest form."
+        q["accepted_answers"] = [f"{a}:{b}", f"{a} : {b}", f"{a} to {b}"]
+        q["worked_solution"] = f"Divide both terms by {k} → {a} : {b}."
+
+    elif qid == "rat_150":
+        a, b = random.choice([(2, 5), (3, 4), (3, 5), (4, 7), (5, 6)])
+        k = random.randint(4, 9)
+        ans = b * k
+        q["question"] = f"Find the missing value x in this equivalent ratio:\n{a} : {b} = {a * k} : x"
+        q["accepted_answers"] = [str(ans), f"x={ans}", f"x = {ans}"]
+        q["worked_solution"] = f"Multiply by {k}: x = {b} × {k} = {ans}."
+
+    elif qid == "rat_200":
+        rate = random.choice([10, 12, 12.5, 14, 15])
+        litres = random.choice([20, 24, 32, 36, 40])
+        dist = int(rate * litres)
+        rate_s = str(int(rate)) if rate == int(rate) else f"{rate:.1f}"
+        q["question"] = (
+            f"A car uses {litres} litres of petrol to travel {dist} km.\n"
+            f"Calculate the car's fuel rate in km per litre."
+        )
+        q["accepted_answers"] = [rate_s, f"{rate_s} km/l", f"{rate_s}km/l"]
+        q["worked_solution"] = f"{dist} ÷ {litres} = {rate_s} km per litre."
+
+    elif qid == "rat_250":
+        cm_val, m_val = random.choice([(40, 2), (50, 2), (25, 1), (60, 3), (50, 3), (75, 3), (20, 1)])
+        m_cm = m_val * 100
+        g = math.gcd(cm_val, m_cm)
+        ra, rb = cm_val // g, m_cm // g
+        q["question"] = f"Simplify the ratio {cm_val} cm : {m_val} m\nby converting to the same units first."
+        q["accepted_answers"] = [f"{ra}:{rb}", f"{ra} : {rb}", f"{ra} to {rb}"]
+        q["worked_solution"] = f"{m_val} m = {m_cm} cm. {cm_val} : {m_cm} simplifies to {ra} : {rb}."
+
+    elif qid == "rat_300":
+        a, b = random.choice([(2, 3), (3, 5), (2, 5), (3, 7), (4, 5)])
+        part = random.choice([10, 12, 15, 20, 25])
+        total = (a + b) * part
+        larger = max(a, b) * part
+        q["question"] = f"Divide ${total} in the ratio {a} : {b}.\nWhat is the value of the LARGER share?"
+        q["accepted_answers"] = [str(larger), f"${larger}", f"{larger}.00", f"${larger}.00"]
+        q["worked_solution"] = f"Total parts = {a + b}. 1 part = ${part}. Larger share = ${larger}."
+
+    elif qid == "rat_350":
+        speed = random.choice([70, 80, 90, 100, 110])
+        t1 = random.choice([2, 3, 4])
+        t2 = t1 + random.choice([2, 3])
+        d1, d2 = speed * t1, speed * t2
+        q["question"] = (
+            f"A train travels {d1} km in {t1} hours at a constant speed.\n"
+            f"At this same speed, how far does it travel in {t2} hours (in km)?"
+        )
+        q["accepted_answers"] = [str(d2), f"{d2}km", f"{d2} km"]
+        q["worked_solution"] = f"Speed = {speed} km/h. Distance in {t2} h = {d2} km."
+
+    elif qid == "rat_400":
+        p_a = random.choice([1.40, 1.50, 1.60])
+        p_b = round(p_a - random.choice([0.15, 0.20, 0.25]), 2)
+        cost_a = 6 * p_a
+        cost_b = 8 * p_b
+        p_b_short = f"{p_b:.2f}".rstrip("0").rstrip(".")
+        q["question"] = (
+            f"Pack A has 6 muffins for ${cost_a:.2f}.\n"
+            f"Pack B has 8 muffins for ${cost_b:.2f}.\n"
+            f"What is the unit price (in dollars) of the CHEAPER pack?"
+        )
+        q["accepted_answers"] = [f"{p_b:.2f}", p_b_short, f"${p_b:.2f}", f"${p_b_short}"]
+        q["worked_solution"] = f"Pack A = ${p_a:.2f} each; Pack B = ${p_b:.2f} each. Cheaper = ${p_b:.2f}."
+
+    elif qid == "rat_450":
+        a, b = random.choice([(3, 5), (4, 7), (2, 5), (3, 4), (5, 6)])
+        part = random.randint(3, 7)
+        girls = b * part
+        tot = (a + b) * part
+        q["question"] = (
+            f"The ratio of boys to girls in a club is {a} : {b}.\n"
+            f"If there are {girls} girls in the club,\n"
+            f"how many students are in the club IN TOTAL?"
+        )
+        q["accepted_answers"] = [str(tot), f"{tot} students"]
+        q["worked_solution"] = f"{b} parts = {girls} → 1 part = {part}. Total = {a + b} × {part} = {tot}."
+
+    elif qid == "rat_500":
+        a, b, c = random.choice([(2, 3, 4), (1, 3, 5), (2, 3, 5), (1, 4, 5)])
+        part = random.choice([15, 20, 25, 30])
+        total = (a + b + c) * part
+        mid = b * part
+        q["question"] = (
+            f"A prize of ${total} is shared in the ratio {a} : {b} : {c}.\n"
+            f"What is the value of the MIDDLE share?"
+        )
+        q["accepted_answers"] = [str(mid), f"${mid}", f"{mid}.00", f"${mid}.00"]
+        q["worked_solution"] = f"Total parts = {a + b + c}. 1 part = ${part}. Middle share = {b} × ${part} = ${mid}."
+
+    elif qid == "rat_550":
+        scale_k, cm_val = random.choice([
+            (50000, 4), (50000, 6), (50000, 8), (50000, 10),
+            (25000, 8), (25000, 12), (100000, 3), (100000, 7)
+        ])
+        km_val = (cm_val * scale_k) // 100000
+        scale_str = f"{scale_k:,}".replace(",", " ")
+        q["question"] = (
+            f"On a map with a scale of 1 : {scale_str},\n"
+            f"two towns are {cm_val} cm apart.\n"
+            f"What is the actual distance between them (in km)?"
+        )
+        q["accepted_answers"] = [str(km_val), f"{km_val}km", f"{km_val} km"]
+        q["worked_solution"] = f"{cm_val} × {scale_k} cm = {km_val} km."
+
+    elif qid == "rat_600":
+        avg = random.choice([20, 25, 30, 35, 40])
+        tot_d = avg * 3
+        d1 = tot_d // 2 - 5
+        d2 = tot_d - d1
+        q["question"] = (
+            f"A cyclist rides {d1} km in 1.5 hours,\n"
+            f"then rides another {d2} km in 1.5 hours.\n"
+            f"What is the cyclist's average speed (in km/h)?"
+        )
+        q["accepted_answers"] = [str(avg), f"{avg}km/h", f"{avg} km/h"]
+        q["worked_solution"] = f"Total distance = {tot_d} km in 3 hours → {tot_d} ÷ 3 = {avg} km/h."
+
+    elif qid == "ind_100":
+        a = random.randint(3, 9)
+        r = random.randint(4, 12)
+        sq = r * r
+        ans = a * a + r
+        q["question"] = f"Evaluate:\n{a}² + √{sq}"
+        q["accepted_answers"] = [str(ans)]
+        q["worked_solution"] = f"{a}² + √{sq} = {a * a} + {r} = {ans}."
+
+    elif qid == "ind_150":
+        hcf = random.choice([6, 8, 9, 12, 14, 15])
+        m1, m2 = random.choice([(2, 3), (3, 4), (3, 5), (4, 5)])
+        n1, n2 = hcf * m1, hcf * m2
+        q["question"] = f"Find the Highest Common Factor (HCF)\nof {n1} and {n2}."
+        q["accepted_answers"] = [str(hcf)]
+        q["worked_solution"] = f"HCF({n1}, {n2}) = {hcf}."
+
+    elif qid == "ind_200":
+        a, b = random.choice([(8, 12), (12, 18), (10, 15), (12, 16), (9, 12), (14, 21), (15, 20)])
+        ans = (a * b) // math.gcd(a, b)
+        q["question"] = f"Find the Lowest Common Multiple (LCM)\nof {a} and {b}."
+        q["accepted_answers"] = [str(ans)]
+        q["worked_solution"] = f"LCM({a}, {b}) = {ans}."
+
+    elif qid == "ind_250":
+        k = random.randint(4, 12)
+        b1 = random.randint(3, 9)
+        b2 = random.randint(2, 9)
+        ans = k + 1
+        q["question"] = f"Using the zero index law, evaluate:\n{k} × {b1}^0 + {b2}^0"
+        q["accepted_answers"] = [str(ans)]
+        q["worked_solution"] = f"{k} × 1 + 1 = {ans}."
+
+    elif qid == "ind_300":
+        base = random.choice([2, 3])
+        e1 = random.randint(4, 7)
+        e2 = random.randint(3, 5)
+        res_e = random.choice([2, 3])
+        e3 = e1 + e2 - res_e
+        ans = base ** res_e
+        q["question"] = f"Using index laws, simplify and evaluate:\n({base}^{e1} × {base}^{e2}) ÷ {base}^{e3}"
+        q["accepted_answers"] = [str(ans), f"{base}^{res_e}"]
+        q["worked_solution"] = f"{base}^({e1}+{e2}−{e3}) = {base}^{res_e} = {ans}."
+
+    elif qid == "ind_350":
+        cr = random.choice([2, 3, 4])
+        cube = cr ** 3
+        b = random.choice([3, 4, 5])
+        ans = cr + (b ** 3)
+        q["question"] = f"Evaluate:\n(cube root of {cube}) + {b}³"
+        q["accepted_answers"] = [str(ans)]
+        q["worked_solution"] = f"Cube root of {cube} is {cr}, and {b}³ = {b ** 3}. {cr} + {b ** 3} = {ans}."
+
+    elif qid == "pyt_400":
+        a, b, c = random.choice([(3, 4, 5), (6, 8, 10), (5, 12, 13), (9, 12, 15), (8, 15, 17), (12, 16, 20)])
+        q["question"] = (
+            f"A right-angled triangle has shorter sides of\n"
+            f"{a} cm and {b} cm.\n"
+            f"Use Pythagoras' theorem to find the hypotenuse (in cm)."
+        )
+        q["accepted_answers"] = [str(c), f"{c}cm", f"{c} cm"]
+        q["worked_solution"] = f"c = √({a}² + {b}²) = √{c * c} = {c} cm."
+
+    elif qid == "pyt_450":
+        a, b, c = random.choice([(5, 12, 13), (6, 8, 10), (8, 15, 17), (9, 12, 15), (7, 24, 25)])
+        q["question"] = (
+            f"A right-angled triangle has a hypotenuse of {c} cm\n"
+            f"and one shorter side of {a} cm.\n"
+            f"Find the length of the other shorter side (in cm)."
+        )
+        q["accepted_answers"] = [str(b), f"{b}cm", f"{b} cm"]
+        q["worked_solution"] = f"b = √({c}² − {a}²) = √{b * b} = {b} cm."
+
+    elif qid == "pyt_500":
+        a, b, c = random.choice([(6, 8, 10), (5, 12, 13), (3, 4, 5), (9, 12, 15), (8, 15, 17)])
+        q["question"] = (
+            f"A {c} m ladder leans against a vertical wall\n"
+            f"with its foot {a} m away from the base of the wall.\n"
+            f"How high up the wall does the ladder reach (in m)?"
+        )
+        q["accepted_answers"] = [str(b), f"{b}m", f"{b} m"]
+        q["worked_solution"] = f"h = √({c}² − {a}²) = {b} m."
+
+    elif qid == "pyt_550":
+        a, b, c = random.choice([(7, 24, 25), (8, 15, 17), (9, 12, 15), (12, 16, 20), (5, 12, 13)])
+        q["question"] = (
+            f"A rectangular paddock is {b} m long and {a} m wide.\n"
+            f"A straight fence is built diagonally from one corner\n"
+            f"to the opposite corner. How long is the fence (in m)?"
+        )
+        q["accepted_answers"] = [str(c), f"{c}m", f"{c} m"]
+        q["worked_solution"] = f"d = √({b}² + {a}²) = {c} m."
+
+    elif qid == "pyt_600":
+        a, b, c = random.choice([(8, 15, 17), (5, 12, 13), (6, 8, 10), (9, 12, 15), (7, 24, 25)])
+        area = (a * b) // 2
+        q["question"] = (
+            f"A right-angled triangle has a hypotenuse of {c} cm\n"
+            f"and a base of {b} cm.\n"
+            f"Calculate the AREA of the triangle (in cm²)."
+        )
+        q["accepted_answers"] = [str(area), f"{area}cm2", f"{area} cm2", f"{area}cm²"]
+        q["worked_solution"] = f"Height = √({c}² − {b}²) = {a} cm. Area = ½ × {b} × {a} = {area} cm²."
+
+    elif qid == "prob_100":
+        cond, fav = random.choice([
+            ("greater than 4", 2), ("less than 3", 2),
+            ("greater than 3", 3), ("an even number", 3), ("less than 5", 4)
+        ])
+        g = math.gcd(fav, 6)
+        rn, rd = fav // g, 6 // g
+        q["question"] = (
+            f"A fair 6-sided die is rolled once.\n"
+            f"What is the probability of rolling {cond}?\n"
+            f"Give your answer as a simplified fraction."
+        )
+        q["accepted_answers"] = [f"{rn}/{rd}"]
+        q["worked_solution"] = f"{fav}/6 simplifies to {rn}/{rd}."
+
+    elif qid == "prob_150":
+        p = random.choice([0.15, 0.25, 0.35, 0.45, 0.65, 0.75, 0.85])
+        comp = round(1.0 - p, 2)
+        pct = int(round(comp * 100))
+        g = math.gcd(pct, 100)
+        q["question"] = (
+            f"The probability that it rains in Sydney tomorrow is {p:.2f}.\n"
+            f"What is the probability that it does NOT rain\n"
+            f"(as a decimal)?"
+        )
+        q["accepted_answers"] = [f"{comp:.2f}", f"{comp:.2f}".lstrip("0"), f"{pct}%", f"{pct // g}/{100 // g}"]
+        q["worked_solution"] = f"P(not rain) = 1 − {p:.2f} = {comp:.2f}."
+
+    elif qid == "prob_200":
+        r, g_c, y = random.choice([(5, 7, 8), (4, 9, 7), (6, 8, 6), (8, 5, 7), (10, 4, 6), (2, 11, 7)])
+        gcd_v = math.gcd(r, 20)
+        rn, rd = r // gcd_v, 20 // gcd_v
+        dec = r / 20.0
+        dec_s = f"{dec:.2f}".rstrip("0").rstrip(".")
+        q["question"] = (
+            f"A bag of lollies holds {r} red, {g_c} green, and {y} yellow snakes.\n"
+            f"What is the probability of picking a red snake?\n"
+            f"(Give as a simplified fraction or decimal)"
+        )
+        q["accepted_answers"] = [f"{rn}/{rd}", dec_s, f"{dec:.2f}", f"{r * 5}%"]
+        q["worked_solution"] = f"Total = 20. P(red) = {r}/20 = {rn}/{rd} = {dec_s}."
+
+    elif qid == "prob_250":
+        p = random.choice([0.2, 0.25, 0.3, 0.4, 0.6, 0.7])
+        n = random.choice([100, 200, 300, 400])
+        ans = int(round(p * n))
+        q["question"] = (
+            f"A spinner lands on blue with a probability of {p}.\n"
+            f"If you spin it {n} times, how many times\n"
+            f"would you expect it to land on blue?"
+        )
+        q["accepted_answers"] = [str(ans), f"{ans} times"]
+        q["worked_solution"] = f"Expected frequency = {p} × {n} = {ans}."
+
+    elif qid == "prob_300":
+        label, fav = random.choice([
+            ("a Heart", 13), ("a Red card", 26), ("an Ace", 4), ("a King or Queen", 8)
+        ])
+        g = math.gcd(fav, 52)
+        rn, rd = fav // g, 52 // g
+        ans_list = [f"{rn}/{rd}"]
+        if fav in (13, 26):
+            dec = fav / 52.0
+            ans_list.extend([f"{dec:g}", f"{int(dec * 100)}%"])
+        q["question"] = (
+            f"One card is drawn at random from a standard 52-card deck.\n"
+            f"What is the probability of drawing {label}?\n"
+            f"(Give as a simplified fraction)"
+        )
+        q["accepted_answers"] = ans_list
+        q["worked_solution"] = f"{fav}/52 simplifies to {rn}/{rd}."
+
+    elif qid == "prob_350":
+        b, r, w = random.choice([(6, 9, 5), (4, 10, 6), (8, 7, 5), (5, 8, 7), (2, 11, 7)])
+        non_b = 20 - b
+        g = math.gcd(non_b, 20)
+        rn, rd = non_b // g, 20 // g
+        dec = non_b / 20.0
+        dec_s = f"{dec:.2f}".rstrip("0").rstrip(".")
+        q["question"] = (
+            f"A jar contains {b} blue, {r} red, and {w} white marbles.\n"
+            f"What is the probability of NOT picking a blue marble?\n"
+            f"(Give as a simplified fraction or decimal)"
+        )
+        q["accepted_answers"] = [f"{rn}/{rd}", dec_s, f"{dec:.2f}", f"{non_b * 5}%"]
+        q["worked_solution"] = f"Non-blue = {non_b}/20 = {rn}/{rd} = {dec_s}."
+
+    elif qid == "prob_450":
+        tot = random.choice([28, 30, 32, 35])
+        both = random.randint(5, 8)
+        a = random.randint(14, 18)
+        b = random.randint(12, 16)
+        neither = tot - (a + b - both)
+        if neither < 2:
+            tot = a + b - both + random.randint(3, 6)
+            neither = tot - (a + b - both)
+        q["question"] = (
+            f"In a class of {tot} students, {a} play soccer,\n"
+            f"{b} play basketball, and {both} play BOTH sports.\n"
+            f"How many students play NEITHER sport?"
+        )
+        q["accepted_answers"] = [str(neither), f"{neither} students"]
+        q["worked_solution"] = f"At least one = {a} + {b} − {both} = {a + b - both}. Neither = {tot} − {a + b - both} = {neither}."
+
+    elif qid == "prob_500":
+        tot = random.choice([35, 40, 45])
+        neither = random.randint(4, 8)
+        at_least = tot - neither
+        both = random.randint(5, 10)
+        a = random.randint(at_least // 2, at_least - 5)
+        b = at_least + both - a
+        q["question"] = (
+            f"In a survey of {tot} students, {a} like maths,\n"
+            f"{b} like science, and {neither} like neither subject.\n"
+            f"How many students like BOTH maths and science?"
+        )
+        q["accepted_answers"] = [str(both), f"{both} students"]
+        q["worked_solution"] = f"At least one = {tot} − {neither} = {at_least}. Both = {a} + {b} − {at_least} = {both}."
+
+    elif qid == "prob_550":
+        bp = random.randint(6, 10)
+        bn = random.randint(3, 5)
+        gp = random.randint(5, 8)
+        gn = 25 - (bp + bn + gp)
+        g = math.gcd(gp, 25)
+        rn, rd = gp // g, 25 // g
+        dec = gp / 25.0
+        q["question"] = (
+            f"In a class of 25 students: {bp} boys play sport,\n"
+            f"{bn} boys do not, {gp} girls play sport, and {gn} girls do not.\n"
+            f"What is the probability a random student is a girl\n"
+            f"who plays sport? (Give as a fraction or decimal)"
+        )
+        q["accepted_answers"] = [f"{rn}/{rd}", f"{dec:.2f}", f"{gp * 4}%"]
+        q["worked_solution"] = f"{gp} out of 25 students → {rn}/{rd} = {dec:.2f}."
+
+    elif qid == "prob_600":
+        num, den = random.choice([(3, 5), (2, 5), (3, 4), (2, 3), (5, 8), (3, 8)])
+        k = random.randint(3, 7)
+        blue = num * k
+        red = (den - num) * k
+        q["question"] = (
+            f"A bag contains {blue} blue marbles and some red marbles.\n"
+            f"If the probability of randomly picking a blue marble\n"
+            f"is {num}/{den}, how many RED marbles are in the bag?"
+        )
+        q["accepted_answers"] = [str(red), f"{red} marbles"]
+        q["worked_solution"] = f"{num} parts = {blue} → 1 part = {k}. Red = {den - num} × {k} = {red}."
+
+    # --- 6. Fallback Arithmetic & Template Problems ---
     elif qid == "fallback_1":
         f1 = random.randint(7, 14)
         f2 = random.randint(6, 12)
@@ -627,26 +1590,36 @@ def check_answer(user_input, accepted_answers):
         return False
     if user_input.strip() == "~*":
         return True
-    u = user_input.strip().lower().replace("−", "-")
+    u = user_input.strip().lower().replace("−", "-").replace("–", "-")
     for ans in accepted_answers:
-        a = str(ans).strip().lower().replace("−", "-")
+        a = str(ans).strip().lower().replace("−", "-").replace("–", "-")
         if u == a:
             return True
-        u_clean = u.replace("$", "").replace("°", "").replace("%", "").strip()
-        a_clean = a.replace("$", "").replace("°", "").replace("%", "").strip()
+        u_clean = u.replace("$", "").replace("°c", "").replace("°", "").replace("%", "").strip()
+        a_clean = a.replace("$", "").replace("°c", "").replace("°", "").replace("%", "").strip()
         if u_clean and u_clean == a_clean:
+            return True
+        # Match ignoring spaces and thousands commas (e.g. '2 : 3' vs '2:3', '35 000' vs '35000', '5a + 9b' vs '5a+9b')
+        u_compact = u_clean.replace(",", "").replace(" ", "")
+        a_compact = a_clean.replace(",", "").replace(" ", "")
+        if u_compact and u_compact == a_compact:
             return True
         suffixes = [
             "years", "yrs", "year", "yr",
+            "km/hr", "km/h", "kmh", "km/l",
             "m2", "m²", "cm2", "cm²", "m3", "m³",
-            "kl", "cm", "m", "degrees", "deg", "units", "cans", "cans of paint"
+            "kl", "km", "mm", "ml", "cm", "m",
+            "minutes", "mins", "min", "hours", "hrs", "hr",
+            "seconds", "secs", "sec", "times",
+            "students", "marbles", "points", "pts",
+            "degrees", "deg", "units", "cans", "cans of paint"
         ]
         for suffix in suffixes:
             if u_clean.endswith(suffix):
                 u_clean = u_clean[:-len(suffix)].strip()
             if a_clean.endswith(suffix):
                 a_clean = a_clean[:-len(suffix)].strip()
-        if u_clean and u_clean == a_clean:
+        if u_clean and (u_clean == a_clean or u_clean.replace(",", "").replace(" ", "") == a_clean.replace(",", "").replace(" ", "")):
             return True
     return False
 

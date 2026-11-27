@@ -6,6 +6,7 @@ import os
 import re
 import pygame
 from config import TILE_SIZE, COLOUR_BLACK, WALL_CHARS, UP_CHARS, DOWN_CHARS, LEFT_CHARS, RIGHT_CHARS
+from config import log_diag
 
 
 class Floor(pygame.sprite.Sprite):
@@ -176,6 +177,7 @@ def load_level_map(filename="LEVEL_MAP.txt"):
                 lines.pop()
             if lines:
                 return lines
+    log_diag("WARN", f"Map file '{filename}' not found! Falling back to hardcoded default ASCII map.")
     return [
         "████████┌───────┐████████",
         "████████│       │████████",

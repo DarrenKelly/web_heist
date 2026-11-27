@@ -262,7 +262,7 @@
             "x=50",
             "fifty"
           ],
-          "worked_solution": "(2x + 10) + (x + 20) = 180 (co-int. ∠s, ∥ lines) → 3x + 30 = 180 → 3x = 150 → x = 50."
+          "worked_solution": "(2x + 10) + (x + 20) = 180 (co-int. ∠s, || lines) → 3x + 30 = 180 → 3x = 150 → x = 50."
         },
         {
           "id": "geo_450",
@@ -298,7 +298,7 @@
           "id": "geo_550",
           "points": 550,
           "stage_3_accessible": false,
-          "question": "In the diagram, ΔABC is similar to ΔADE (DE ∥ BC).\nIf AE = 6 cm, AB = 15 cm, and AD = 8 cm,\nhow long is the full side AC (in cm)?",
+          "question": "In the diagram, ΔABC is similar to ΔADE (DE || BC).\nIf AE = 6 cm, AB = 15 cm, and AD = 8 cm,\nhow long is the full side AC (in cm)?",
           "svg_prompt": "[SVG Prompt: Draw a large triangle ABC with internal line DE parallel to base BC. Label AE = 6 cm, full right side AB = 15 cm, and top left side AD = 8 cm.]",
           "image": "img/geo_550.png",
           "accepted_answers": [
@@ -469,7 +469,7 @@
           "id": "meas_550",
           "points": 550,
           "stage_3_accessible": false,
-          "question": "A triangular prism has a front triangular face with an area of 12 m²,\nand a total length (depth) of 10 m.\nWhat is the volume of the prism (in m³)?\n(Use the formula V = A × h)",
+          "question": "A triangular prism has a front triangular face with an\narea of 12 m², and a total length (depth) of 10 m.\nWhat is the volume of the prism (in m³)?\n(Use the formula V = A × h)",
           "svg_prompt": "[SVG Prompt: Draw a 3D triangular prism. Shade the front triangular face and label it 'Area = 12 m²'. Label the long receding edge of the prism '10 m'.]",
           "image": "img/area_550.png",
           "accepted_answers": [

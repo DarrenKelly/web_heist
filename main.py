@@ -15,6 +15,11 @@ import random
 import inspect
 
 from collections import deque, defaultdict
+from config import (
+    WINDOW_WIDTH, WINDOW_HEIGHT, FPS, TILE_SIZE,
+    COLOUR_BLACK, COLOUR_WHITE, COLOUR_GREY, COLOUR_RED, COLOUR_GREEN,
+    WALL_CHARS, SIN_BIN_TIERS, get_class_config, log_diag
+)
 
 # Detect class_id from URL query string (?class=7MAT1) or command-line argument
 class_id = "DEFAULT"
@@ -313,39 +318,84 @@ class Game:
 
     def load_students_json(self, filename="students.json"):
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        candidates = [
+        fname_lower = os.path.basename(filename).lower()
+
+        # 1. Primary candidates: variations of the requested class roster
+        primary_candidates = [
             filename,
+            filename.lower(),
             os.path.join(base_dir, filename),
+            os.path.join(base_dir, filename.lower()),
             os.path.join(base_dir, "data", filename),
-            os.path.join(base_dir, "data", "rosters", filename),
-            os.path.join("data", "rosters", filename),
+            os.path.join(base_dir, "data", "rosters", os.path.basename(filename)),
+            os.path.join(base_dir, "data", "rosters", fname_lower),
+            os.path.join("data", "rosters", os.path.basename(filename)),
+            os.path.join("data", "rosters", fname_lower),
+        ]
+
+        # 2. Fallback candidates: generic rosters if primary is missing
+        fallback_candidates = [
             os.path.join(base_dir, "students.json"),
             "students.json",
             os.path.join(base_dir, "data", "rosters", "7mat2_students.json"),
             os.path.join("data", "rosters", "7mat2_students.json")
         ]
-        names = []
-        seen = set()
-        unique_candidates = [c for c in candidates if not (c in seen or seen.add(c))]
 
-        for path in unique_candidates:
+        def extract_names_from_file(path):
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            extracted = []
+            # Support both {"students": [...]} and flat [...] arrays
+            raw_list = data.get("students", []) if isinstance(data, dict) else (data if isinstance(data, list) else [])
+            for item in raw_list:
+                if isinstance(item, str) and item.strip():
+                    extracted.append(item.strip())
+                elif isinstance(item, dict):
+                    name = (item.get("name") or item.get("student_name") or "").strip()
+                    if name:
+                        extracted.append(name)
+            return extracted
+
+        seen = set()
+        unique_primary = [c for c in primary_candidates if not (c in seen or seen.add(c))]
+
+        for path in unique_primary:
             if os.path.exists(path):
                 try:
-                    with open(path, "r", encoding="utf-8") as f:
-                        data = json.load(f)
-                    for s in data.get("students", []):
-                        name = s.get("name", "Student").strip()
-                        if name:
-                            names.append(name)
+                    names = extract_names_from_file(path)
                     if names:
-                        print(f"[INFO] Loaded {len(names)} students from '{path}'.")
-                        break
+                        log_diag("INFO", f"Loaded {len(names)} students from requested roster '{path}'.")
+                        return names
+                    else:
+                        log_diag("WARN", f"Roster file '{path}' exists but contained 0 valid student names!")
                 except Exception as e:
-                    print(f"Error loading students roster from '{path}': {e}")
+                    log_diag("ERROR", f"Error reading requested student roster '{path}': {e}")
 
-        if not names:
-            names = ["John", "Mary", "David", "Sarah"]
-        return names
+        # Log diagnostic directory listing to reveal why the primary file wasn't found
+        rosters_dir = os.path.join(base_dir, "data", "rosters")
+        available_rosters = os.listdir(rosters_dir) if os.path.exists(rosters_dir) else "DIRECTORY MISSING"
+        log_diag(
+            "WARN",
+            f"Requested student roster '{filename}' NOT FOUND in {unique_primary}. "
+            f"Files inside data/rosters/: {available_rosters}. Attempting fallback rosters..."
+        )
+
+        unique_fallbacks = [c for c in fallback_candidates if not (c in seen or seen.add(c))]
+        for path in unique_fallbacks:
+            if os.path.exists(path):
+                try:
+                    names = extract_names_from_file(path)
+                    if names:
+                        log_diag("WARN", f"FALLBACK ACTIVE: Loaded {len(names)} default students from '{path}' instead of '{filename}'.")
+                        return names
+                except Exception as e:
+                    log_diag("ERROR", f"Error reading fallback student roster '{path}': {e}")
+
+        log_diag(
+            "CRITICAL",
+            f"All primary and fallback student rosters failed! Using hardcoded emergency list ['John', 'Mary', 'David', 'Sarah']."
+        )
+        return ["John", "Mary", "David", "Sarah"]
 
     def show_door_locked_popup(self, door_item):
         door_char = getattr(door_item, "door_char", "?")
@@ -420,7 +470,7 @@ class Game:
     def load_map(self):
         try:
             load_chest_sheet()
-        except Exception:
+        except Exception as e:
             print(f"Error loading chest sheet: {e}")
 
         level_maps = load_level_maps()
@@ -454,6 +504,7 @@ class Game:
             self.exit_level_id = door_z_loc[0]
             self.exit_tile = (door_z_loc[1], door_z_loc[2])
         else:
+            log_diag("WARN", "No exit door 'Z' found in level maps! Defaulting exit_tile to Level 0, (12, 2).")
             self.exit_level_id = 0
             self.exit_tile = (12, 2)
 
@@ -462,6 +513,7 @@ class Game:
             player_start_col = player_spawn_loc[1]
             player_start_row = player_spawn_loc[2]
         else:
+            log_diag("WARN", "No player spawn ('*' or 'P') found in level maps! Defaulting spawn to Level 0, (12, 8).")
             player_start_lvl = 0
             player_start_col, player_start_row = 12, 8
 
@@ -1022,8 +1074,12 @@ class Game:
 
 
 async def main():
-    game = Game()
-    await game.run()
+    try:
+        game = Game()
+        await game.run()
+    except Exception as e:
+        import traceback
+        log_diag("CRITICAL", f"Unhandled crash in main(): {e}\n{traceback.format_exc()}")
 
 
 if __name__ == "__main__":
