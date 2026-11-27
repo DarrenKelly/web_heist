@@ -1,0 +1,15 @@
+{
+  "class_id": "10MATC1",
+  "teacher": "Mr Siles",
+  "class_name": "Year 10 Mathematics Γ1",
+  "students_file": "data/rosters/10matc1_students.json",
+  "question_banks": [
+    "data/banks/yr9b_questions.json"
+  ],
+  "categories": null,
+  "exclude_categories": [],
+  "min_points": 100,
+  "max_points": 600,
+  "exclude_question_ids": [],
+  "stage_3_accessible_only": false
+}

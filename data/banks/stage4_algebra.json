@@ -1,0 +1,291 @@
+{
+  "bank_name": "Algebra & Equations",
+  "stage": "NSW Stage 4",
+  "categories": [
+    {
+      "category_name": "Algebra & Equations",
+      "questions": [
+        {
+          "id": "alg_100",
+          "points": 100,
+          "stage_3_accessible": false,
+          "question": "Solve for x:\n4x − 9 = 27",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "9",
+            "x=9",
+            "x = 9",
+            "nine"
+          ],
+          "worked_solution": "4x − 9 = 27 → 4x = 36 → x = 9."
+        },
+        {
+          "id": "alg_125",
+          "points": 100,
+          "stage_3_accessible": false,
+          "question": "Evaluate 3x − 2y when x = 4 and y = −5.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "22",
+            "twenty-two"
+          ],
+          "worked_solution": "3(4) − 2(−5) = 12 − (−10) = 12 + 10 = 22."
+        },
+        {
+          "id": "alg_150",
+          "points": 150,
+          "stage_3_accessible": false,
+          "question": "Solve for m:\n(m ÷ 4) + 7 = 15",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "32",
+            "m=32",
+            "m = 32",
+            "thirty-two"
+          ],
+          "worked_solution": "(m ÷ 4) + 7 = 15 → m ÷ 4 = 8 → m = 32."
+        },
+        {
+          "id": "alg_175",
+          "points": 150,
+          "stage_3_accessible": false,
+          "question": "Simplify by collecting like terms:\n7a + 4b − 2a + 5b",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "5a+9b",
+            "5a + 9b",
+            "9b+5a",
+            "9b + 5a"
+          ],
+          "worked_solution": "(7a − 2a) + (4b + 5b) = 5a + 9b."
+        },
+        {
+          "id": "alg_200",
+          "points": 200,
+          "stage_3_accessible": false,
+          "question": "To check if x = 6 is the correct solution to\n5(x − 2) = 3x + 4, you substitute x = 6 into both sides.\nWhat is the numerical value of the Right-Hand Side (RHS)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "22",
+            "rhs=22",
+            "twenty-two"
+          ],
+          "worked_solution": "RHS = 3(6) + 4 = 18 + 4 = 22. (Since LHS = 5(6 − 2) = 20 ≠ RHS, x = 6 is not the solution)."
+        },
+        {
+          "id": "alg_225",
+          "points": 200,
+          "stage_3_accessible": false,
+          "question": "Expand the brackets:\n4(3x − 5)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "12x-20",
+            "12x - 20",
+            "12x−20"
+          ],
+          "worked_solution": "4 × 3x − 4 × 5 = 12x − 20."
+        },
+        {
+          "id": "alg_250",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "Solve for x:\n3(2x − 5) = 27",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "7",
+            "x=7",
+            "x = 7",
+            "seven"
+          ],
+          "worked_solution": "6x − 15 = 27 → 6x = 42 → x = 7."
+        },
+        {
+          "id": "alg_275",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "Factorise completely using the highest common factor:\n12x + 18",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "6(2x+3)",
+            "6(2x + 3)",
+            "6(3+2x)",
+            "6(3 + 2x)"
+          ],
+          "worked_solution": "The HCF of 12 and 18 is 6. Factorising gives 6(2x + 3)."
+        },
+        {
+          "id": "alg_300",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "Solve for x:\n7x − 4 = 3x + 28",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "8",
+            "x=8",
+            "x = 8",
+            "eight"
+          ],
+          "worked_solution": "Subtract 3x from both sides: 4x − 4 = 28 → 4x = 32 → x = 8."
+        },
+        {
+          "id": "alg_325",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "On the Cartesian plane, in which quadrant\n(1, 2, 3, or 4) does the point (−4, 7) lie?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "2",
+            "ii",
+            "second",
+            "quadrant 2",
+            "q2"
+          ],
+          "worked_solution": "Negative x-coordinate and positive y-coordinate places the point in Quadrant 2 (top-left)."
+        },
+        {
+          "id": "alg_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "The straight line on the grid passes through (0, 2) and (3, 8),\nfollowing the linear rule y = 2x + 2.\nUse this equation to find the value of x when y = 30.",
+          "svg_prompt": "[SVG Prompt: Draw a Cartesian plane showing a straight line passing through a point on the y-axis labelled '(0, 2)' and a point further up and to the right labelled '(3, 8)'. Add a dashed right-angled triangle showing the rise and run between the points.]",
+          "image": "img/lin_350.png",
+          "accepted_answers": [
+            "14",
+            "x=14",
+            "x = 14",
+            "fourteen"
+          ],
+          "worked_solution": "Substitute y = 30: 2x + 2 = 30 → 2x = 28 → x = 14."
+        },
+        {
+          "id": "alg_375",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "Find the x-coordinate of the midpoint\nof the interval joining (−2, 5) and (10, 9).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "4",
+            "x=4",
+            "x = 4",
+            "four"
+          ],
+          "worked_solution": "Midpoint x-coordinate = (−2 + 10) ÷ 2 = 8 ÷ 2 = 4."
+        },
+        {
+          "id": "alg_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "Let x be an unknown number.\nWhen x is tripled and then decreased by 11,\nthe result is equal to x increased by 25.\nFind the value of x.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "18",
+            "x=18",
+            "x = 18",
+            "eighteen"
+          ],
+          "worked_solution": "3x − 11 = x + 25 → 2x − 11 = 25 → 2x = 36 → x = 18."
+        },
+        {
+          "id": "alg_425",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "A straight line passes through (1, 3) and (5, 15).\nCalculate the gradient (m = rise ÷ run) of this line.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "3",
+            "m=3",
+            "m = 3",
+            "three"
+          ],
+          "worked_solution": "Rise = 15 − 3 = 12. Run = 5 − 1 = 4. Gradient = 12 ÷ 4 = 3."
+        },
+        {
+          "id": "alg_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "Solve for x:\n(3x + 5) ÷ 4 = 8",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "9",
+            "x=9",
+            "x = 9",
+            "nine"
+          ],
+          "worked_solution": "Multiply both sides by 4: 3x + 5 = 32 → 3x = 27 → x = 9."
+        },
+        {
+          "id": "alg_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "Expand and simplify to solve for x:\n4(x + 3) − 2(x − 1) = 26",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "6",
+            "x=6",
+            "x = 6",
+            "six"
+          ],
+          "worked_solution": "4x + 12 − 2x + 2 = 26 → 2x + 14 = 26 → 2x = 12 → x = 6."
+        },
+        {
+          "id": "alg_525",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "A rectangle has length (2x + 3) cm and width x cm.\nIf its total perimeter is 42 cm,\nfind the value of x.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "6",
+            "x=6",
+            "x = 6",
+            "6cm",
+            "6 cm"
+          ],
+          "worked_solution": "2(2x + 3 + x) = 42 → 6x + 6 = 42 → 6x = 36 → x = 6."
+        },
+        {
+          "id": "alg_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "The sum of three consecutive odd numbers is 81.\nLet the smallest number be x, so the next two are\n(x + 2) and (x + 4).\nWhat is the LARGEST of the three numbers?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "29",
+            "twenty-nine"
+          ],
+          "worked_solution": "x + (x + 2) + (x + 4) = 81 → 3x + 6 = 81 → 3x = 75 → x = 25. Largest number = 25 + 4 = 29."
+        },
+        {
+          "id": "alg_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "On the Cartesian plane, B is at (−1, 5) and C is at (5, −3).\nFind the exact straight-line\ndistance between Point B and Point C.",
+          "svg_prompt": "[SVG Prompt: Draw a Cartesian plane with axes from −6 to 6. Plot Point B at (−1, 5) and Point C at (5, −3), connected by a straight line segment.]",
+          "image": "img/lin_600.png",
+          "accepted_answers": [
+            "10",
+            "10 units",
+            "ten"
+          ],
+          "worked_solution": "Horizontal run = 5 − (−1) = 6. Vertical rise = 5 − (−3) = 8. Distance = √(6² + 8²) = √(36 + 64) = √100 = 10."
+        }
+      ]
+    }
+  ]
+}

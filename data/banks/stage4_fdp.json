@@ -1,0 +1,161 @@
+{
+  "bank_name": "Fractions, Decimals & Percentages",
+  "stage": "NSW Stage 4",
+  "categories": [
+    {
+      "category_name": "Fractions, Decimals & Percentages",
+      "questions": [
+        {
+          "id": "fdp_100",
+          "points": 100,
+          "stage_3_accessible": true,
+          "question": "Write the fraction 18/24 in its simplest form.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "3/4"
+          ],
+          "worked_solution": "Divide numerator and denominator by their HCF of 6: 18 ÷ 6 = 3, 24 ÷ 6 = 4 → 3/4."
+        },
+        {
+          "id": "fdp_150",
+          "points": 150,
+          "stage_3_accessible": true,
+          "question": "Calculate 3/5 of 85.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "51",
+            "fifty-one"
+          ],
+          "worked_solution": "85 ÷ 5 = 17, then 17 × 3 = 51."
+        },
+        {
+          "id": "fdp_200",
+          "points": 200,
+          "stage_3_accessible": true,
+          "question": "Calculate 15% of $240.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "36",
+            "$36",
+            "36.00",
+            "$36.00"
+          ],
+          "worked_solution": "10% of 240 = 24, 5% = 12. Total = 24 + 12 = $36."
+        },
+        {
+          "id": "fdp_250",
+          "points": 250,
+          "stage_3_accessible": true,
+          "question": "Convert the fraction 7/20 into a percentage.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "35%",
+            "35"
+          ],
+          "worked_solution": "7/20 × 100% = 7 × 5% = 35%."
+        },
+        {
+          "id": "fdp_300",
+          "points": 300,
+          "stage_3_accessible": true,
+          "question": "Calculate 2/3 + 1/4.\nWrite your answer as a simplified fraction.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "11/12"
+          ],
+          "worked_solution": "Common denominator is 12: 8/12 + 3/12 = 11/12."
+        },
+        {
+          "id": "fdp_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "A $160 pair of sneakers is discounted by 25%.\nWhat is the sale price?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "120",
+            "$120",
+            "120.00",
+            "$120.00"
+          ],
+          "worked_solution": "Discount = 25% of $160 = $40. Sale price = $160 − $40 = $120."
+        },
+        {
+          "id": "fdp_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "A skateboard costs $85 before GST.\nIf 10% GST is added, what is the final price?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "93.5",
+            "93.50",
+            "$93.5",
+            "$93.50"
+          ],
+          "worked_solution": "10% of $85 = $8.50. Final price = $85 + $8.50 = $93.50."
+        },
+        {
+          "id": "fdp_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "A bicycle is bought for $200 and sold for $250.\nCalculate the percentage profit.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "25%",
+            "25"
+          ],
+          "worked_solution": "Profit = $50. Percentage profit = (50 ÷ 200) × 100% = 25%."
+        },
+        {
+          "id": "fdp_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "Evaluate (3/4) ÷ (9/8).\nWrite your answer as a simplified fraction.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "2/3"
+          ],
+          "worked_solution": "(3/4) × (8/9) = 24/36 = 2/3."
+        },
+        {
+          "id": "fdp_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "After a 20% discount, a hoodie costs $96.\nWhat was the ORIGINAL price before the discount?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "120",
+            "$120",
+            "120.00",
+            "$120.00"
+          ],
+          "worked_solution": "80% = $96, so 10% = $12, and 100% = $120."
+        },
+        {
+          "id": "fdp_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "A $200 share rises in value by 10% on Monday,\nthen falls by 10% on Tuesday.\nWhat is the share worth at the end of Tuesday?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "198",
+            "$198",
+            "198.00",
+            "$198.00"
+          ],
+          "worked_solution": "Monday: $200 × 1.1 = $220. Tuesday: $220 × 0.9 = $198."
+        }
+      ]
+    }
+  ]
+}

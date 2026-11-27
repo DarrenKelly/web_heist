@@ -1,0 +1,245 @@
+{
+  "bank_name": "Data Analysis & Visualisation",
+  "stage": "NSW Stage 4",
+  "categories": [
+    {
+      "category_name": "Data Analysis & Visualisation",
+      "questions": [
+        {
+          "id": "data_100",
+          "points": 100,
+          "stage_3_accessible": false,
+          "question": "A stopwatch is used to record the exact time (in seconds)\nit takes students to run 100 metres.\nIs this numerical data 'discrete' or 'continuous'?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "continuous",
+            "numerical continuous"
+          ],
+          "worked_solution": "Time is measured on a continuous scale rather than counted in whole numbers, so it is continuous numerical data."
+        },
+        {
+          "id": "data_125",
+          "points": 150,
+          "stage_3_accessible": true,
+          "question": "Find the mode of the following dataset:\n7, 4, 9, 4, 6, 4, 8, 9",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "4",
+            "four"
+          ],
+          "worked_solution": "The mode is the most frequent score. The number 4 appears three times, more than any other value."
+        },
+        {
+          "id": "data_150",
+          "points": 150,
+          "stage_3_accessible": false,
+          "question": "A survey asks customers to rate service as:\n'Poor', 'Fair', 'Good', or 'Excellent'.\nWhat specific type of categorical data is this\n('nominal' or 'ordinal')?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "ordinal",
+            "categorical ordinal"
+          ],
+          "worked_solution": "Because the categories have a natural, logical order from lowest to highest rating, the data is ordinal."
+        },
+        {
+          "id": "data_175",
+          "points": 200,
+          "stage_3_accessible": true,
+          "question": "Find the range of the following daily maximum\ntemperatures (in °C):\n14, 29, 18, 35, 22, 11",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "24",
+            "24°",
+            "24°c",
+            "twenty-four"
+          ],
+          "worked_solution": "Range = highest value − lowest value = 35 − 11 = 24."
+        },
+        {
+          "id": "data_200",
+          "points": 200,
+          "stage_3_accessible": false,
+          "question": "Find the median of the following 6 test scores:\n19, 12, 25, 14, 28, 17",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "18",
+            "18.0",
+            "eighteen"
+          ],
+          "worked_solution": "Ordered scores: 12, 14, 17, 19, 25, 28. The middle two scores are 17 and 19. Median = (17 + 19) ÷ 2 = 18."
+        },
+        {
+          "id": "data_225",
+          "points": 250,
+          "stage_3_accessible": true,
+          "question": "Find the median of the following 7 scores:\n23, 15, 31, 19, 27, 12, 25",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "23",
+            "twenty-three"
+          ],
+          "worked_solution": "Ordered scores: 12, 15, 19, 23, 25, 27, 31. The middle (4th) score is 23."
+        },
+        {
+          "id": "data_250",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "Using this stem-and-leaf plot of 15 exam results,\ncalculate the Range of the data.",
+          "svg_prompt": "[SVG Prompt: Draw a stem-and-leaf plot. Stem 7 | Leaf 0  7  8. Stem 8 | Leaf 0  0  5  5  5  8  8  9. Stem 9 | Leaf 2  4  5  5. Include 'Key: 7 | 0 = 70'.]",
+          "image": "img/lin_300.png",
+          "accepted_answers": [
+            "25",
+            "twenty-five"
+          ],
+          "worked_solution": "Highest score = 95. Lowest score = 70. Range = 95 − 70 = 25."
+        },
+        {
+          "id": "data_275",
+          "points": 300,
+          "stage_3_accessible": true,
+          "question": "Calculate the mean of these 5 test scores:\n64, 72, 80, 68, 76",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "72",
+            "72.0",
+            "seventy-two"
+          ],
+          "worked_solution": "Sum = 64 + 72 + 80 + 68 + 76 = 360. Mean = 360 ÷ 5 = 72."
+        },
+        {
+          "id": "data_300",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "Find the Interquartile Range (IQR = Q3 − Q1)\nfor this stem-and-leaf plot of 15 exam results.",
+          "svg_prompt": "[SVG Prompt: Draw a stem-and-leaf plot. Stem 7 | Leaf 0  7  8. Stem 8 | Leaf 0  0  5  5  5  8  8  9. Stem 9 | Leaf 2  4  5  5. Include 'Key: 7 | 0 = 70'.]",
+          "image": "img/lin_300.png",
+          "accepted_answers": [
+            "12",
+            "twelve"
+          ],
+          "worked_solution": "With 15 scores, the median is the 8th score (85). Bottom 7 middle (4th score) is Q1 = 80. Top 7 middle (12th score) is Q3 = 92. IQR = 92 − 80 = 12."
+        },
+        {
+          "id": "data_325",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "A frequency table shows quiz scores out of 5:\nScore 1 (freq 2), Score 2 (freq 4), Score 5 (freq 4).\nCalculate the mean score.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "3",
+            "3.0",
+            "three"
+          ],
+          "worked_solution": "Total score = (1 × 2) + (2 × 4) + (5 × 4) = 2 + 8 + 20 = 30. Total frequency = 10. Mean = 30 ÷ 10 = 3."
+        },
+        {
+          "id": "data_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "A dot plot records the number of pets for 10 families:\n0 pets (2 dots), 1 pet (4 dots),\n2 pets (3 dots), and 5 pets (1 dot).\nCalculate the mean number of pets per family.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "1.5",
+            "1.50",
+            "3/2"
+          ],
+          "worked_solution": "Total pets = (0 × 2) + (1 × 4) + (2 × 3) + (5 × 1) = 0 + 4 + 6 + 5 = 15. Mean = 15 ÷ 10 = 1.5."
+        },
+        {
+          "id": "data_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "In a frequency histogram, most of the data is clustered\non the left with a long tail stretching out to the right.\nIs this distribution 'positively skewed',\n'negatively skewed', or 'symmetrical'?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "positively skewed",
+            "positive",
+            "positive skew",
+            "positively",
+            "pos"
+          ],
+          "worked_solution": "A distribution follows the direction of its tail. A long tail to the right (towards higher positive values) is positively skewed."
+        },
+        {
+          "id": "data_425",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "Class A (12 students) has a mean test score of 75.\nClass B (8 students) has a mean test score of 85.\nWhat is the combined mean for all 20 students?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "79",
+            "79.0",
+            "seventy-nine"
+          ],
+          "worked_solution": "Class A sum = 12 × 75 = 900. Class B sum = 8 × 85 = 680. Combined mean = (900 + 680) ÷ 20 = 1580 ÷ 20 = 79."
+        },
+        {
+          "id": "data_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "A dataset containing 5 numbers has a mean of 17.\nFour of the numbers are 12, 15, 18, and 21.\nWhat is the 5th number?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "19",
+            "nineteen"
+          ],
+          "worked_solution": "Total of all 5 numbers = 5 × 17 = 85. Sum of known 4 numbers = 12 + 15 + 18 + 21 = 66. Missing number = 85 − 66 = 19."
+        },
+        {
+          "id": "data_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "6 tradies have a mean daily wage of $200.\nA 7th tradie joins the crew, and the new mean daily wage\nfor all 7 tradies becomes $210.\nHow much does the 7th tradie earn?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "270",
+            "$270",
+            "270.00",
+            "$270.00"
+          ],
+          "worked_solution": "Old Total = 6 × $200 = $1200. New Total = 7 × $210 = $1470. 7th Tradie = $1470 − $1200 = $270."
+        },
+        {
+          "id": "data_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "8 students score a mean of 72 on a mathematics test.\nWhen an outlier score of 30 is removed from the dataset,\nwhat is the new mean of the remaining 7 students?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "78",
+            "78.0",
+            "seventy-eight"
+          ],
+          "worked_solution": "Original sum = 8 × 72 = 576. New sum after removing 30 = 576 − 30 = 546. New mean = 546 ÷ 7 = 78."
+        },
+        {
+          "id": "data_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "Five positive integers in ascending order are: 6, 8, x, 14, y.\nThe median of the dataset is 11 and the mean is 12.\nFind the value of y.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "21",
+            "twenty-one"
+          ],
+          "worked_solution": "Since the 5 scores are in order, the 3rd score is the median, so x = 11. Total sum = 5 × 12 = 60. Therefore, 6 + 8 + 11 + 14 + y = 60 → 39 + y = 60 → y = 21."
+        }
+      ]
+    }
+  ]
+}

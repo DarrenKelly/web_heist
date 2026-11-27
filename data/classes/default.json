@@ -1,0 +1,8 @@
+{
+  "extends": "data/classes/stage4_base.json",
+  "class_id": "DEFAULT",
+  "teacher": "Extra",
+  "class_name": "Year 7 Mathematics",
+  "students_file": "data/rosters/7mat2_students.json",
+  "exclude_question_ids": []
+}

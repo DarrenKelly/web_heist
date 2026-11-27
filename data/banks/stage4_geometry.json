@@ -1,0 +1,292 @@
+{
+  "bank_name": "Geometric Reasoning & Shapes",
+  "stage": "NSW Stage 4",
+  "categories": [
+    {
+      "category_name": "Geometric Reasoning & Shapes",
+      "questions": [
+        {
+          "id": "geo_100",
+          "points": 100,
+          "stage_3_accessible": false,
+          "question": "Two parallel lines are cut by a transversal.\nA pair of equal angles form a 'Z' shape on opposite sides\nof the transversal between the parallel lines.\nAre they 'alternate', 'corresponding', or 'co-interior'?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "alternate",
+            "alternate angles",
+            "alt"
+          ],
+          "worked_solution": "Angles on opposite sides of the transversal inside the parallel lines (forming a Z shape) are alternate angles."
+        },
+        {
+          "id": "geo_125",
+          "points": 100,
+          "stage_3_accessible": true,
+          "question": "Two angles are complementary (they add to 90°).\nIf one angle measures 34°,\nwhat is the size of the other angle?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "56",
+            "56°",
+            "56 degrees",
+            "56 deg"
+          ],
+          "worked_solution": "Complementary angles sum to 90°. 90° − 34° = 56°."
+        },
+        {
+          "id": "geo_150",
+          "points": 150,
+          "stage_3_accessible": false,
+          "question": "Two parallel lines are cut by a transversal.\nOne of the co-interior angles measures 68°.\nWhat is the size of the other co-interior angle?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "112",
+            "112°",
+            "112 degrees",
+            "112 deg"
+          ],
+          "worked_solution": "Co-interior angles on parallel lines are supplementary (add to 180°). 180° − 68° = 112°."
+        },
+        {
+          "id": "geo_175",
+          "points": 150,
+          "stage_3_accessible": true,
+          "question": "Three angles lie along a straight line (180°).\nThey measure 42°, x°, and 65°.\nFind the value of x.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "73",
+            "73°",
+            "73 degrees",
+            "x=73"
+          ],
+          "worked_solution": "Angles on a straight line add to 180°. x = 180 − (42 + 65) = 180 − 107 = 73°."
+        },
+        {
+          "id": "geo_200",
+          "points": 200,
+          "stage_3_accessible": false,
+          "question": "In a kite ABCD, the two unequal vertex angles\nmeasure 70° and 50°.\nWhat is the size of each of the two equal opposite angles?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "120",
+            "120°",
+            "120 degrees",
+            "120 deg"
+          ],
+          "worked_solution": "Angle sum of a quadrilateral is 360°. Remaining angle sum = 360° − (70° + 50°) = 240°. Each equal angle = 240° ÷ 2 = 120°."
+        },
+        {
+          "id": "geo_225",
+          "points": 200,
+          "stage_3_accessible": true,
+          "question": "Four angles meet at a single point (a full revolution).\nThree of the angles measure 110°, 85°, and 95°.\nWhat is the size of the fourth angle?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "70",
+            "70°",
+            "70 degrees",
+            "70 deg"
+          ],
+          "worked_solution": "Angles at a point sum to 360°. 360° − (110° + 85° + 95°) = 360° − 290° = 70°."
+        },
+        {
+          "id": "geo_250",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "A non-convex (arrowhead) quadrilateral has three acute\ninterior angles measuring 35°, 45°, and 50°.\nWhat is the size of the fourth (reflex) interior angle?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "230",
+            "230°",
+            "230 degrees",
+            "230 deg"
+          ],
+          "worked_solution": "The interior angles of any quadrilateral sum to 360°. Reflex angle = 360° − (35° + 45° + 50°) = 360° − 130° = 230°."
+        },
+        {
+          "id": "geo_275",
+          "points": 250,
+          "stage_3_accessible": true,
+          "question": "Two interior angles of a triangle measure 48° and 67°.\nWhat is the size of the third interior angle?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "65",
+            "65°",
+            "65 degrees",
+            "65 deg"
+          ],
+          "worked_solution": "Angle sum of a triangle is 180°. Third angle = 180° − (48° + 67°) = 65°."
+        },
+        {
+          "id": "geo_300",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "An exterior angle of a triangle measures 135°.\nOne of the opposite interior angles is 60°.\nWhat is the size of the other opposite interior angle?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "75",
+            "75°",
+            "75 degrees",
+            "75 deg"
+          ],
+          "worked_solution": "By the exterior angle theorem, the exterior angle equals the sum of the two opposite interior angles: 135° − 60° = 75°."
+        },
+        {
+          "id": "geo_325",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "Two parallel lines are cut by a transversal.\nOne of the acute angles formed measures 62°.\nWhat is the size of each obtuse angle formed?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "118",
+            "118°",
+            "118 degrees",
+            "118 deg"
+          ],
+          "worked_solution": "Adjacent angles along the parallel line are supplementary: 180° − 62° = 118°."
+        },
+        {
+          "id": "geo_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "Triangle ABC is isosceles with AB = AC.\nThe apex angle ∠BAC measures 44°.\nWhat is the size of the base angle ∠ABC?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "68",
+            "68°",
+            "68 degrees",
+            "68 deg"
+          ],
+          "worked_solution": "Base angles of an isosceles triangle are equal. ∠ABC = (180° − 44°) ÷ 2 = 136° ÷ 2 = 68°."
+        },
+        {
+          "id": "geo_375",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "Using the formula S = 180 × (n − 2),\ncalculate the interior angle sum of a hexagon (6 sides).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "720",
+            "720°",
+            "720 degrees",
+            "720 deg"
+          ],
+          "worked_solution": "For n = 6, S = 180 × (6 − 2) = 180 × 4 = 720°."
+        },
+        {
+          "id": "geo_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "Two co-interior angles between parallel lines\nmeasure (2x + 10)° and (x + 20)°.\nSolve for x.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "50",
+            "50°",
+            "x=50",
+            "fifty"
+          ],
+          "worked_solution": "(2x + 10) + (x + 20) = 180 (co-int. ∠s, || lines) → 3x + 30 = 180 → 3x = 150 → x = 50."
+        },
+        {
+          "id": "geo_425",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "Calculate the size of ONE interior angle\nof a regular octagon (8 equal sides and angles).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "135",
+            "135°",
+            "135 degrees",
+            "135 deg"
+          ],
+          "worked_solution": "Angle sum = 180 × (8 − 2) = 1080°. Each angle = 1080° ÷ 8 = 135°."
+        },
+        {
+          "id": "geo_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "Two parallel horizontal lines are joined by a V-shaped\nbend pointing to the right. The top acute angle with the\nparallel line is 38° and the bottom acute angle is 54°.\nWhat is the size of the angle at the tip of the bend?",
+          "svg_prompt": "[SVG Prompt: Draw two parallel horizontal lines with arrows. Connect them with a V-shaped bend pointing right. Label the top acute interior angle 38°, the bottom acute interior angle 54°, and the vertex angle at the tip x°.]",
+          "image": "img/geo_450.png",
+          "accepted_answers": [
+            "92",
+            "92°",
+            "92 degrees",
+            "92 deg"
+          ],
+          "worked_solution": "Draw a third parallel line through the vertex of the bend. By alternate angles on parallel lines, x = 38° + 54° = 92°."
+        },
+        {
+          "id": "geo_475",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "Two triangles both have side lengths of 6 cm and 9 cm,\nwith the included angle between those sides equal to 50°.\nWhich congruence test proves they are congruent\n('SSS', 'SAS', 'AAS', or 'RHS')?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "sas"
+          ],
+          "worked_solution": "Two pairs of matching sides and the included angle between them satisfy the Side-Angle-Side (SAS) congruence test."
+        },
+        {
+          "id": "geo_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "The four interior angles of a quadrilateral are\nx°, (x + 20)°, (2x − 10)°, and (2x + 50)°.\nFind the value of x.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "50",
+            "50°",
+            "x=50",
+            "fifty"
+          ],
+          "worked_solution": "x + (x + 20) + (2x − 10) + (2x + 50) = 360 → 6x + 60 = 360 → 6x = 300 → x = 50."
+        },
+        {
+          "id": "geo_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "In the diagram, ΔABC is similar to ΔAED (DE || BC).\nIf AE = 6 cm, AB = 15 cm, and AD = 8 cm,\nhow long is the full side AC (in cm)?",
+          "svg_prompt": "[SVG Prompt: Draw a large triangle ABC with internal line DE parallel to base BC. Label AE = 6 cm, full right side AB = 15 cm, and top left side AD = 8 cm.]",
+          "image": "img/geo_550.png",
+          "accepted_answers": [
+            "20",
+            "20cm",
+            "20 cm",
+            "twenty"
+          ],
+          "worked_solution": "Scale factor = 15 ÷ 6 = 2.5. Side AC = 8 × 2.5 = 20 cm."
+        },
+        {
+          "id": "geo_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "The diagonals of a rhombus measure 16 cm and 30 cm.\nSince the diagonals bisect each other at 90°, they form\nfour right-angled triangles with legs 8 cm and 15 cm.\nFind the PERIMETER of the rhombus.",
+          "svg_prompt": null,
+          "image": "img/geo_600.png",
+          "accepted_answers": [
+            "68",
+            "68cm",
+            "68 cm",
+            "sixty-eight"
+          ],
+          "worked_solution": "Side length s = √(8² + 15²) = √(64 + 225) = √289 = 17 cm. Perimeter of rhombus = 4 × 17 = 68 cm."
+        }
+      ]
+    }
+  ]
+}

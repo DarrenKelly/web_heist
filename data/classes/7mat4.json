@@ -1,0 +1,9 @@
+{
+  "extends": "data/classes/stage4_base.json",
+  "class_id": "7MAT4",
+  "teacher": "Ms Gatenby-Moore",
+  "class_name": "Year 7 Mathematics 4",
+  "students_file": "data/rosters/7mat4_students.json",
+  "min_points": 100,
+  "max_points": 600
+}

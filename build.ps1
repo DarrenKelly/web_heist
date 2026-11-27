@@ -16,6 +16,7 @@ $rootFiles = @(
     "scoreboard.html", 
     "classes.json", 
     "favicon.png", 
+    "index.html",
     "Inter-Regular.ttf"
 )
 

@@ -1,0 +1,9 @@
+{
+  "extends": "data/classes/stage4_base.json",
+  "class_id": "7MAT2",
+  "teacher": "Mr Kelly",
+  "class_name": "Year 7 Mathematics 2",
+  "students_file": "data/rosters/7mat2_students.json",
+  "min_points": 100,
+  "max_points": 600
+}

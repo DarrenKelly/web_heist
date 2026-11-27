@@ -1,0 +1,301 @@
+{
+  "bank_name": "Area, Volume & Surface Area",
+  "stage": "NSW Stage 4",
+  "categories": [
+    {
+      "category_name": "Area, Volume & Surface Area",
+      "questions": [
+        {
+          "id": "meas_100",
+          "points": 100,
+          "stage_3_accessible": false,
+          "question": "In this right-angled triangle, side AB = 5, base BC = 12,\nand hypotenuse AC = 13.\nCalculate the area of triangle ABC.",
+          "svg_prompt": "[SVG Prompt: Draw a right-angled triangle ABC with the right angle at B. Label side AB = 5, side BC = 12, and hypotenuse AC = 13. Mark angle C with an arc.]",
+          "image": "img/trig_200.png",
+          "accepted_answers": [
+            "30",
+            "30m2",
+            "30cm2",
+            "thirty"
+          ],
+          "worked_solution": "A = ½ × base × perpendicular height = ½ × 12 × 5 = 30 square units."
+        },
+        {
+          "id": "meas_125",
+          "points": 100,
+          "stage_3_accessible": true,
+          "question": "Convert 3.4 kilometres (km) into metres (m).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "3400",
+            "3400m",
+            "3400 m",
+            "3,400"
+          ],
+          "worked_solution": "1 km = 1000 m, so 3.4 × 1000 = 3400 m."
+        },
+        {
+          "id": "meas_150",
+          "points": 150,
+          "stage_3_accessible": false,
+          "question": "The square shown has a side length of 5 m.\nA second square has a perimeter 3 times as large.\nWhat is the AREA of the second square (in m²)?",
+          "svg_prompt": "[SVG Prompt: Draw a square with identical tick marks on all four sides. Label the bottom side '5 m'.]",
+          "image": "img/area_150.png",
+          "accepted_answers": [
+            "225",
+            "225m2",
+            "225 m2",
+            "225m²"
+          ],
+          "worked_solution": "First square side = 5 m, so second square side = 3 × 5 = 15 m. Area = 15 × 15 = 225 m²."
+        },
+        {
+          "id": "meas_175",
+          "points": 150,
+          "stage_3_accessible": true,
+          "question": "A parallelogram has a base of 11 cm, a slanted side\nof 9 cm, and a perpendicular height of 7 cm.\nCalculate its area (in cm²).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "77",
+            "77cm2",
+            "77 cm2",
+            "77cm²"
+          ],
+          "worked_solution": "Area of parallelogram = base × perpendicular height = 11 × 7 = 77 cm²."
+        },
+        {
+          "id": "meas_200",
+          "points": 200,
+          "stage_3_accessible": false,
+          "question": "A kite has diagonals of length 14 cm and 9 cm.\nCalculate the area of the kite (in cm²).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "63",
+            "63cm2",
+            "63 cm2",
+            "63cm²"
+          ],
+          "worked_solution": "A = ½ × 14 × 9 = 7 × 9 = 63 cm²."
+        },
+        {
+          "id": "meas_225",
+          "points": 200,
+          "stage_3_accessible": true,
+          "question": "A rectangle has a perimeter of 46 cm\nand a length of 15 cm.\nWhat is the width of the rectangle (in cm)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "8",
+            "8cm",
+            "8 cm",
+            "eight"
+          ],
+          "worked_solution": "2 × 15 + 2w = 46 → 2w = 16 → w = 8 cm."
+        },
+        {
+          "id": "meas_250",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "A rectangular swimming pool is 8 m long, 4 m wide,\nand 2 m deep. Given that 1 m³ = 1 kilolitre (1000 L),\nhow many kilolitres (kL) of water does the full pool hold?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "64",
+            "64kl",
+            "64 kl",
+            "64m3",
+            "64m³"
+          ],
+          "worked_solution": "Volume = 8 × 4 × 2 = 64 m³. Since 1 m³ = 1 kL, capacity = 64 kL."
+        },
+        {
+          "id": "meas_275",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "A trapezium has parallel sides of 8 cm and 14 cm,\nand a perpendicular height of 6 cm.\nCalculate the area of the trapezium (in cm²).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "66",
+            "66cm2",
+            "66 cm2",
+            "66cm²"
+          ],
+          "worked_solution": "A = ½ × (a + b) × h = ½ × (8 + 14) × 6 = 11 × 6 = 66 cm²."
+        },
+        {
+          "id": "meas_300",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "A rectangular shipping crate is 10 m long, 5 m wide, and 2 m high.\nWhat is the total surface area of the prism (in m²)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "160",
+            "160m2",
+            "160 m2",
+            "160m²"
+          ],
+          "worked_solution": "Surface Area = 2 × (10×5 + 10×2 + 5×2) = 2 × (50 + 20 + 10) = 160 m²."
+        },
+        {
+          "id": "meas_325",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "Calculate the circumference of a circle with a diameter\nof 14 cm, rounded to the nearest whole number (in cm).\n(Use C = π × d)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "44",
+            "44cm",
+            "44 cm"
+          ],
+          "worked_solution": "C = π × 14 ≈ 43.98 cm, which rounds to 44 cm."
+        },
+        {
+          "id": "meas_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "Two similar rectangles have a scale factor of 4.\nThe small rectangle has a width of 3 cm and length of 5 cm.\nWhat is the AREA of the large rectangle (in cm²)?",
+          "svg_prompt": "[SVG Prompt: Draw two rectangles side-by-side. The smaller rectangle has a width labelled '3 cm'. A curved arrow points to the larger rectangle with the text 'Scale Factor 4'. The width of the larger rectangle is labelled 'w'.]",
+          "image": "img/area_350.png",
+          "accepted_answers": [
+            "240",
+            "240cm2",
+            "240 cm2",
+            "240cm²"
+          ],
+          "worked_solution": "Large width = 3 × 4 = 12 cm. Large length = 5 × 4 = 20 cm. Large Area = 12 × 20 = 240 cm²."
+        },
+        {
+          "id": "meas_375",
+          "points": 350,
+          "stage_3_accessible": true,
+          "question": "A train departs Central Station at 14:35\nand arrives at its destination at 17:20.\nHow many minutes did the journey take?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "165",
+            "165 mins",
+            "165 min",
+            "165 minutes"
+          ],
+          "worked_solution": "14:35 to 17:35 is 3 hours (180 minutes). Subtract 15 minutes to reach 17:20: 180 − 15 = 165 minutes."
+        },
+        {
+          "id": "meas_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "The rectangular garden shown measures 12 m by 8 m.\nA uniform concrete path 1 m wide is built all the way around\nthe OUTSIDE of the garden.\nWhat is the area of the path alone (in m²)?",
+          "svg_prompt": "[SVG Prompt: Draw a simple rectangle labelled '12 m' along the top length and '8 m' along the right width.]",
+          "image": "img/area_100.png",
+          "accepted_answers": [
+            "44",
+            "44m2",
+            "44 m2",
+            "44m²"
+          ],
+          "worked_solution": "Outer rectangle = (12 + 2) × (8 + 2) = 14 × 10 = 140 m². Inner garden = 12 × 8 = 96 m². Path area = 140 − 96 = 44 m²."
+        },
+        {
+          "id": "meas_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "Calculate the area of a circle with a radius of 5 cm.\nRound your answer to the nearest whole number (in cm²).\n(Use the formula A = π × r²)",
+          "svg_prompt": "[SVG Prompt: Draw a circle with a dot in the centre. Draw a solid line from the centre to the edge, labelled 'r = 5 cm'.]",
+          "image": "img/area_450.png",
+          "accepted_answers": [
+            "79",
+            "79cm2",
+            "79 cm2",
+            "79cm²"
+          ],
+          "worked_solution": "Area = π × 5² = 78.5398... Rounds up to 79 cm²."
+        },
+        {
+          "id": "meas_475",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "A cylinder has a radius of 4 cm and a height of 10 cm.\nCalculate its volume (in cm³), rounded to the nearest\nwhole number. (Use V = π × r² × h and the π button)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "503",
+            "503cm3",
+            "503 cm3",
+            "503cm³",
+            "502",
+            "502cm3",
+            "502 cm3",
+            "502cm³"
+          ],
+          "worked_solution": "V = π × 4² × 10 = 160π ≈ 502.65 cm³, which rounds to 503 cm³."
+        },
+        {
+          "id": "meas_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "A trapezium has an area of 54 cm² and a perpendicular\nheight of 6 cm. One of its parallel sides is 7 cm long.\nFind the length of the other parallel side (in cm).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "11",
+            "11cm",
+            "11 cm",
+            "eleven"
+          ],
+          "worked_solution": "A = ½ × h × (a + b) → 54 = ½ × 6 × (7 + b) → 54 = 3(7 + b) → 18 = 7 + b → b = 11 cm."
+        },
+        {
+          "id": "meas_525",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "Convert an area of 3.5 m² into square centimetres (cm²).\n(Remember: 1 m = 100 cm)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "35000",
+            "35,000",
+            "35 000",
+            "35000cm2",
+            "35000 cm2"
+          ],
+          "worked_solution": "1 m² = 100 cm × 100 cm = 10 000 cm². Therefore 3.5 m² = 3.5 × 10 000 = 35 000 cm²."
+        },
+        {
+          "id": "meas_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "A triangular prism has a front triangular face with an\narea of 12 m², and a total length (depth) of 10 m.\nWhat is the volume of the prism (in m³)?\n(Use the formula V = A × h)",
+          "svg_prompt": "[SVG Prompt: Draw a 3D triangular prism. Shade the front triangular face and label it 'Area = 12 m²'. Label the long receding edge of the prism '10 m'.]",
+          "image": "img/area_550.png",
+          "accepted_answers": [
+            "120",
+            "120m3",
+            "120 m3",
+            "120m³"
+          ],
+          "worked_solution": "Volume = Area of cross-section × perpendicular height (length) = 12 × 10 = 120 m³."
+        },
+        {
+          "id": "meas_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "A rectangular garden measures 10 m by 6 m. A concreter\nremoves a semicircular patio (diameter = 6 m)\nand a triangular flower bed (base = 4 m, height = 3 m).\nWhat area is left over for grass, correct to 1 decimal place?",
+          "svg_prompt": "[SVG Prompt: Draw a 10 m by 6 m rectangle. On one of the 6 m ends, draw an inward-curving semicircle of diameter 6 m. Inside the rectangle, draw a triangle with base 4 m and perpendicular height 3 m. Shade the remaining grass area.]",
+          "image": "img/area_600.png",
+          "accepted_answers": [
+            "39.9",
+            "39.9m2",
+            "39.9 m2",
+            "39.9m²"
+          ],
+          "worked_solution": "Rectangle = 10 × 6 = 60 m². Semicircle (r = 3) = ½ × π × 3² = 14.14 m². Triangle = ½ × 4 × 3 = 6 m². Grass = 60 − 14.14 − 6 = 39.9 m²."
+        }
+      ]
+    }
+  ]
+}

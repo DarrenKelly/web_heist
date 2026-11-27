@@ -1,0 +1,15 @@
+{
+  "class_id": "9MATB4",
+  "teacher": "Mr Kelly",
+  "class_name": "Year 9 Mathematics β4",
+  "students_file": "data/rosters/9matb4_students.json",
+  "question_banks": [
+    "data/banks/yr9b_questions.json"
+  ],
+  "categories": null,
+  "exclude_categories": [],
+  "min_points": 100,
+  "max_points": 400,
+  "exclude_question_ids": [],
+  "stage_3_accessible_only": false
+}

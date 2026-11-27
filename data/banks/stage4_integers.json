@@ -1,0 +1,160 @@
+{
+  "bank_name": "Integers & Order of Operations",
+  "stage": "NSW Stage 4",
+  "categories": [
+    {
+      "category_name": "Integers & Order of Operations",
+      "questions": [
+        {
+          "id": "int_100",
+          "points": 100,
+          "stage_3_accessible": true,
+          "question": "Evaluate:\n−7 + 12 − 9",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "-4",
+            "−4"
+          ],
+          "worked_solution": "−7 + 12 = 5, then 5 − 9 = −4."
+        },
+        {
+          "id": "int_150",
+          "points": 150,
+          "stage_3_accessible": false,
+          "question": "Evaluate:\n8 − (−13)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "21",
+            "twenty-one"
+          ],
+          "worked_solution": "Subtracting a negative is the same as adding: 8 + 13 = 21."
+        },
+        {
+          "id": "int_200",
+          "points": 200,
+          "stage_3_accessible": false,
+          "question": "Evaluate:\n(−6) × (−9) ÷ (−3)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "-18",
+            "−18"
+          ],
+          "worked_solution": "(−6) × (−9) = 54, then 54 ÷ (−3) = −18."
+        },
+        {
+          "id": "int_250",
+          "points": 250,
+          "stage_3_accessible": true,
+          "question": "Using the order of operations (BIDMAS), evaluate:\n5 + 3 × 8 − 6 ÷ 2",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "26",
+            "twenty-six"
+          ],
+          "worked_solution": "Multiply and divide first: 5 + 24 − 3 = 26."
+        },
+        {
+          "id": "int_300",
+          "points": 300,
+          "stage_3_accessible": true,
+          "question": "At midnight in Thredbo the temperature was −4°C.\nBy midday it rose by 13°C, then dropped 11°C by evening.\nWhat was the evening temperature (in °C)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "-2",
+            "−2",
+            "-2°c",
+            "-2c",
+            "-2°"
+          ],
+          "worked_solution": "−4 + 13 − 11 = 9 − 11 = −2°C."
+        },
+        {
+          "id": "int_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "Evaluate using the order of operations:\n4 × (9 − 5)² − 12",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "52",
+            "fifty-two"
+          ],
+          "worked_solution": "Brackets: 9 − 5 = 4. Indices: 4² = 16. Multiply: 4 × 16 = 64. Subtract: 64 − 12 = 52."
+        },
+        {
+          "id": "int_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "Evaluate:\n(−3)² + (−2)³",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "1",
+            "one"
+          ],
+          "worked_solution": "(−3)² = 9 and (−2)³ = −8. Therefore 9 + (−8) = 1."
+        },
+        {
+          "id": "int_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "A submarine is at an elevation of −140 m.\nIt dives 35 m per minute for 4 minutes,\nthen rises 95 m. What is its new elevation\n(in m, include the − sign)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "-185",
+            "−185",
+            "-185m",
+            "-185 m"
+          ],
+          "worked_solution": "−140 − (35 × 4) + 95 = −140 − 140 + 95 = −185 m."
+        },
+        {
+          "id": "int_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "Evaluate:\n[−18 ÷ (7 − 10)]² − 4 × (−5)",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "56",
+            "fifty-six"
+          ],
+          "worked_solution": "7 − 10 = −3. −18 ÷ (−3) = 6. 6² = 36. −4 × (−5) = +20. Total = 36 + 20 = 56."
+        },
+        {
+          "id": "int_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "In a maths quiz, a correct answer scores +4 points\nand a wrong answer scores −2 points.\nIf Sam gets 14 correct and 5 wrong, what is Sam's total score?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "46",
+            "46 pts",
+            "46 points"
+          ],
+          "worked_solution": "14 × 4 + 5 × (−2) = 56 − 10 = 46 points."
+        },
+        {
+          "id": "int_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "Two integers have a product of −36 and a sum of −5.\nWhat is the SMALLER (more negative) of the two integers?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "-9",
+            "−9"
+          ],
+          "worked_solution": "The two integers are −9 and 4 (−9 × 4 = −36 and −9 + 4 = −5). The smaller integer is −9."
+        }
+      ]
+    }
+  ]
+}

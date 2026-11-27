@@ -167,16 +167,20 @@ class Level:
 
 def load_level_map(filename="LEVEL_MAP.txt"):
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(base_dir, filename)
-    if not os.path.exists(file_path):
-        file_path = filename
-    if os.path.exists(file_path):
-        with open(file_path, "r", encoding="utf-8") as f:
-            lines = [line.rstrip("\r\n") for line in f]
-            while lines and not lines[-1].strip():
-                lines.pop()
-            if lines:
-                return lines
+    candidates = [
+        os.path.join(base_dir, "data", filename),
+        os.path.join("data", filename),
+        os.path.join(base_dir, filename),
+        filename,
+    ]
+    for file_path in candidates:
+        if os.path.exists(file_path):
+            with open(file_path, "r", encoding="utf-8") as f:
+                lines = [line.rstrip("\r\n") for line in f]
+                while lines and not lines[-1].strip():
+                    lines.pop()
+                if lines:
+                    return lines
     log_diag("WARN", f"Map file '{filename}' not found! Falling back to hardcoded default ASCII map.")
     return [
         "████████┌───────┐████████",
@@ -204,7 +208,7 @@ def load_level_maps():
     level_files = {}
 
     pattern = re.compile(r"^LEVEL_MAP_(\d+)\.txt$", re.IGNORECASE)
-    search_dirs = [base_dir, os.path.join(base_dir, "data"), "data"]
+    search_dirs = [os.path.join(base_dir, "data"), "data", base_dir]
     for d in search_dirs:
         if os.path.exists(d):
             for fname in os.listdir(d):
@@ -226,8 +230,9 @@ def load_level_maps():
         return maps
 
     for candidate in [
-        os.path.join(base_dir, "LEVEL_MAP.txt"),
         os.path.join(base_dir, "data", "LEVEL_MAP.txt"),
+        os.path.join("data", "LEVEL_MAP.txt"),
+        os.path.join(base_dir, "LEVEL_MAP.txt"),
         "LEVEL_MAP.txt"
     ]:
         if os.path.exists(candidate):

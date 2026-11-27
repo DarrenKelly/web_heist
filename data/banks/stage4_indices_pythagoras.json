@@ -1,0 +1,161 @@
+{
+  "bank_name": "Indices, Primes & Pythagoras",
+  "stage": "NSW Stage 4",
+  "categories": [
+    {
+      "category_name": "Indices, Primes & Pythagoras",
+      "questions": [
+        {
+          "id": "ind_100",
+          "points": 100,
+          "stage_3_accessible": true,
+          "question": "Evaluate:\n5² + √64",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "33",
+            "thirty-three"
+          ],
+          "worked_solution": "5² = 25 and √64 = 8. 25 + 8 = 33."
+        },
+        {
+          "id": "ind_150",
+          "points": 150,
+          "stage_3_accessible": true,
+          "question": "Find the Highest Common Factor (HCF)\nof 36 and 48.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "12",
+            "twelve"
+          ],
+          "worked_solution": "Factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36. Factors of 48: 1, 2, 3, 4, 6, 8, 12, 16, 24, 48. HCF = 12."
+        },
+        {
+          "id": "ind_200",
+          "points": 200,
+          "stage_3_accessible": true,
+          "question": "Find the Lowest Common Multiple (LCM)\nof 12 and 18.",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "36",
+            "thirty-six"
+          ],
+          "worked_solution": "Multiples of 12: 12, 24, 36... Multiples of 18: 18, 36... LCM = 36."
+        },
+        {
+          "id": "ind_250",
+          "points": 250,
+          "stage_3_accessible": false,
+          "question": "Using the zero index law, evaluate:\n7 × 5^0 + 3^0",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "8",
+            "eight"
+          ],
+          "worked_solution": "Any non-zero number to the power of 0 equals 1: 7 × 1 + 1 = 8."
+        },
+        {
+          "id": "ind_300",
+          "points": 300,
+          "stage_3_accessible": false,
+          "question": "Using index laws, simplify and evaluate:\n(2^5 × 2^4) ÷ 2^6",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "8",
+            "2^3",
+            "eight"
+          ],
+          "worked_solution": "2^(5 + 4 − 6) = 2^3 = 8."
+        },
+        {
+          "id": "ind_350",
+          "points": 350,
+          "stage_3_accessible": false,
+          "question": "Evaluate:\n(cube root of 27) + 4³",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "67",
+            "sixty-seven"
+          ],
+          "worked_solution": "Cube root of 27 is 3 (since 3³ = 27), and 4³ = 64. 3 + 64 = 67."
+        },
+        {
+          "id": "pyt_400",
+          "points": 400,
+          "stage_3_accessible": false,
+          "question": "A right-angled triangle has shorter sides of\n6 cm and 8 cm.\nUse Pythagoras' theorem to find the hypotenuse (in cm).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "10",
+            "10cm",
+            "10 cm"
+          ],
+          "worked_solution": "c² = 6² + 8² = 36 + 64 = 100 → c = √100 = 10 cm."
+        },
+        {
+          "id": "pyt_450",
+          "points": 450,
+          "stage_3_accessible": false,
+          "question": "A right-angled triangle has a hypotenuse of 13 cm\nand one shorter side of 5 cm.\nFind the length of the other shorter side (in cm).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "12",
+            "12cm",
+            "12 cm"
+          ],
+          "worked_solution": "a² = 13² − 5² = 169 − 25 = 144 → a = √144 = 12 cm."
+        },
+        {
+          "id": "pyt_500",
+          "points": 500,
+          "stage_3_accessible": false,
+          "question": "A 10 m ladder leans against a vertical wall\nwith its foot 6 m away from the base of the wall.\nHow high up the wall does the ladder reach (in m)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "8",
+            "8m",
+            "8 m"
+          ],
+          "worked_solution": "h² = 10² − 6² = 100 − 36 = 64 → h = √64 = 8 m."
+        },
+        {
+          "id": "pyt_550",
+          "points": 550,
+          "stage_3_accessible": false,
+          "question": "A rectangular paddock is 24 m long and 7 m wide.\nA straight fence is built diagonally from one corner\nto the opposite corner. How long is the fence (in m)?",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "25",
+            "25m",
+            "25 m"
+          ],
+          "worked_solution": "d² = 24² + 7² = 576 + 49 = 625 → d = √625 = 25 m."
+        },
+        {
+          "id": "pyt_600",
+          "points": 600,
+          "stage_3_accessible": false,
+          "question": "A right-angled triangle has a hypotenuse of 17 cm\nand a base of 15 cm.\nCalculate the AREA of the triangle (in cm²).",
+          "svg_prompt": null,
+          "image": null,
+          "accepted_answers": [
+            "60",
+            "60cm2",
+            "60 cm2",
+            "60cm²"
+          ],
+          "worked_solution": "Height = √(17² − 15²) = √(289 − 225) = √64 = 8 cm. Area = ½ × 15 × 8 = 60 cm²."
+        }
+      ]
+    }
+  ]
+}

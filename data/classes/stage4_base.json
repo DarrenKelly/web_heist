@@ -1,0 +1,21 @@
+{
+  "question_banks": [
+    "data/banks/stage4_data.json",
+    "data/banks/stage4_geometry.json",
+    "data/banks/stage4_measurement.json",
+    "data/banks/stage4_algebra.json",
+    "data/banks/stage4_integers.json",
+    "data/banks/stage4_fdp.json",
+    "data/banks/stage4_ratios.json",
+    "data/banks/stage4_indices_pythagoras.json",
+    "data/banks/stage4_probability.json"
+  ],
+  "categories": null,
+  "exclude_categories": [],
+  "min_points": 100,
+  "max_points": 600,
+  "exclude_question_ids": [
+    "data_300"
+  ],
+  "stage_3_accessible_only": false
+}

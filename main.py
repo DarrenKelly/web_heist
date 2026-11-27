@@ -50,7 +50,7 @@ from config import (
 )
 from audio import SoundManager
 from questions import (
-    load_questions, parameterise_question, check_answer,
+    load_questions, load_questions_for_class, parameterise_question, check_answer,
     load_chest_to_doors_map, get_door_requirement, CHEST_TO_DOORS_MAP
 )
 from environment import (
@@ -149,7 +149,7 @@ class Game:
         self.sound = SoundManager()
         self.ui = UIManager()
         self.chest_to_doors_map = load_chest_to_doors_map()
-        self.questions = load_questions(self.class_config.get("questions_file", "questions.json"))
+        self.questions = load_questions_for_class(self.class_config)
         self.notification = ""
         self.notification_timer = 0
         self.door_popup = None

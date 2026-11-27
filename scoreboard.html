@@ -331,22 +331,42 @@
             let rosterCandidates = [];
 
             try {
-                const cfgResp = await fetch('classes.json');
-                if (cfgResp.ok) {
-                    const classesCfg = await cfgResp.json();
-                    const entry = classesCfg[classIdUpper] || classesCfg[classIdLower] || classesCfg[classId] || classesCfg["DEFAULT"];
+                let entry = null;
 
-                    if (entry) {
-                        if (entry.class_name) {
-                            document.getElementById("classSubtitle").textContent = `${entry.class_name} (${entry.teacher || 'Teacher'})`;
+                // 1. Check dedicated per-class config file first (data/classes/<class_id>.json)
+                try {
+                    const directResp = await fetch(`data/classes/${classIdLower}.json`, { cache: "no-store" });
+                    if (directResp.ok) {
+                        entry = await directResp.json();
+                    }
+                } catch (e) { }
+
+                // 2. Fallback to classes.json registry (and its referenced config_file if present)
+                if (!entry) {
+                    const cfgResp = await fetch('classes.json', { cache: "no-store" });
+                    if (cfgResp.ok) {
+                        const classesCfg = await cfgResp.json();
+                        entry = classesCfg[classIdUpper] || classesCfg[classIdLower] || classesCfg[classId] || classesCfg["DEFAULT"];
+                        if (entry && entry.config_file) {
+                            try {
+                                const subResp = await fetch(entry.config_file, { cache: "no-store" });
+                                if (subResp.ok) {
+                                    const subData = await subResp.json();
+                                    entry = { ...subData, ...entry };
+                                }
+                            } catch (e) { }
                         }
-                        const rosterPath = entry.students_file || entry.roster;
-                        if (rosterPath) {
-                            rosterCandidates.push(rosterPath);
-                            rosterCandidates.push(rosterPath.toLowerCase());
-                        }
-                    } else {
-                        document.getElementById("classSubtitle").textContent = `Class: ${classId}`;
+                    }
+                }
+
+                if (entry) {
+                    if (entry.class_name) {
+                        document.getElementById("classSubtitle").textContent = `${entry.class_name} (${entry.teacher || 'Teacher'})`;
+                    }
+                    const rosterPath = entry.students_file || entry.roster;
+                    if (rosterPath) {
+                        rosterCandidates.push(rosterPath);
+                        rosterCandidates.push(rosterPath.toLowerCase());
                     }
                 } else {
                     document.getElementById("classSubtitle").textContent = `Class: ${classId}`;
